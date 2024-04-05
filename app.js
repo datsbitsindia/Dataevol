@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // Define a route
+// Define a route
 app.get('/', (req, res) => {
   // Render the 'index.ejs' template
   res.render('index');
@@ -43,59 +43,88 @@ app.get('/career_single', (req, res) => {
   res.render('career_single');
 });
 
-app.get('/aspdotnet', (req, res) => {
-  res.render('aspdotnet');
-});
 
-app.get('/angular', (req, res) => {
-  res.render('angular');
-});
-
-app.get('/ionic', (req, res) => {
-  res.render('ionic');
-});
-
-app.get('/html_css', (req, res) => {
-  res.render('html_css');
-});
-
-app.get('/ssis', (req, res) => {
-  res.render('ssis');
-});
-
-app.get('/ssrs', (req, res) => {
-  res.render('ssrs');
-});
-
-app.get('/devoops', (req, res) => {
-  res.render('devoops');
-});
 
 app.get('/lan', (req, res) => {
-  const divId = req.query.lan;
-  console.log(req.query.lan);
   res.render('lan');
 });
 
-app.get('/contactSendMail', async (req, res) => {
-  try {
-    // const to = 'recipient@example.com';
-    // const subject = 'Hello ✔';
-    // const text = 'Hello world?';
-    // const html = '<b>Hello world?</b>';
+// Configuring our data parsing
+app.use(express.urlencoded({
+  extend: false
+}));
+app.use(express.json());
 
-    //const result = await emailService.sendEmail(to, subject, text, html);
-    const result = await emailService.sendEmail();
-    console.log('Email sent:', result);
 
-    res.send('Email sent successfully');
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).send('Internal Server Error');
-  }
+
+app.post('/email', (req, res) => {
+  //Send an email here but currently dummy email
+    console.log('Data:', req.body);
+    const { name, email, com_site, com_mail, budget, country, about } = req.body;
+
+
+    emailService.sendMail(name, email, com_site, com_mail, budget, country, about, function(err, data) {
+      if (err) {
+          res.status(500).json({ message: 'Internal Error' });
+      } else {
+          res.status({ message: 'Email sent!!!' });
+      }
+    });
+
+    try{
+      console.log('email_start');
+      emailService.sendMail;
+    }
+    catch (error) {
+      console.error('Error sending email:', error);
+      res.status(500).send('Internal Server Error');
+    }
 });
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.get('/aspdotnet', (req, res) => {
+//   res.render('aspdotnet');
+// });
+
+// app.get('/angular', (req, res) => {
+//   res.render('angular');
+// });
+
+// app.get('/ionic', (req, res) => {
+//   res.render('ionic');
+// });
+
+// app.get('/html_css', (req, res) => {
+//   res.render('html_css');
+// });
+
+// app.get('/ssis', (req, res) => {
+//   res.render('ssis');
+// });
+
+// app.get('/ssrs', (req, res) => {
+//   res.render('ssrs');
+// });
+
+// app.get('/devoops', (req, res) => {
+//   res.render('devoops');
+// });
