@@ -78,16 +78,14 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-5 col-lg-5 col-md-12 order-1 order-lg-0">
                         <div class="testimonial-tab-slider-wrap mt-5">
-                            <h1 class="fw-bold text-white display-5">Start Your Project with Us</h1>
-                            <p>Whatever your goal or project size we will handel it utilize standards compliant. We hope you
-                                will be 100% satisfied.</p>
+                            <h1 class="fw-bold text-white display-5">Start Your Journy with Us</h1>
+                            <p>"Join us in our mission, where innovation meets passion."
+                                "Together, let's shape the future and make a difference."</p>
                             <hr>
-                            <div class="tab-content testimonial-tab-content text-white-80" id="pills-tabContent">
+                            <!-- <div class="tab-content testimonial-tab-content text-white-80" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="testimonial-tab-1" role="tabpanel">
                                     <blockquote class="blockquote">
-                                        <em>"Globally actualize economically sound alignments before tactical systems.
-                                            Rapidiously actualize processes technically sound infomediaries. Holisticly
-                                            pursue team building catalysts for change before team driven products. "</em>
+                                        <em>"Join us in our mission to create positive change. Together, we can make a difference. Join our community and be part of something greater. Your contributions matter. Join us now! "</em>
                                     </blockquote>
                                     <div class="author-info mt-3">
                                         <span class="h6">Veronica P. Byrd</span>
@@ -135,7 +133,7 @@
                                         <img src="img/testimonial/6.jpg" alt="testimonial" width="55" class="img-fluid rounded-circle">
                                     </button>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-7 col-md-12 order-0 order-lg-1">
@@ -156,25 +154,37 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="com_site" class="form-control" placeholder="Company website" aria-label="company-website">
+                                            <input type="text" id="mobile" class="form-control" placeholder="Mobile No." aria-label="mobile-no">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="email" id="com_mail" class="form-control" placeholder="Work email" aria-label="work-Email">
+                                            <input type="text" id="experience" class="form-control" placeholder="Experience" aria-label="experience">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <select class="form-control form-select" name="budget" id="budget" required="" data-msg="Please select your budget.">
-                                                <option value="" selected="" disabled="">Budget</option>
-                                                <option value="budget1">None, just getting started</option>
-                                                <option value="budget1">Less than $20,000</option>
-                                                <option value="budget1">$20,000 to $50,000</option>
-                                                <option value="budget1">$50,000 to $100,000</option>
-                                                <option value="budget2">$100,000 to $500,000</option>
-                                                <option value="budget3">More than $500,000</option>
-                                            </select>
+                                            <input type="text" id="cur_com" class="form-control" placeholder="Current Company" aria-label="cur-job-loc">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="cur_job_loc" class="form-control" placeholder="Current Job Location" aria-label="cur-job-loc">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="cur_ctc" class="form-control" placeholder="Current CTC" aria-label="cur-ctc">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="exp_ctc" class="form-control" placeholder="Expected CTC" aria-label="exp-ctc">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="notice_period" class="form-control" placeholder="Notice Period" aria-label="notice-period">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -435,7 +445,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="input-group mb-3">
-                                            <textarea id="about" class="form-control" placeholder="Tell us more about your project, needs and budget" style="height: 120px"></textarea>
+                                            <textarea id="about" class="form-control" placeholder="Tell us more about your journy." style="height: 120px"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -476,23 +486,31 @@
         $('form').on('submit', (e) => {
             const name = $('#name').val().trim();
             const email = $('#email').val().trim();
-            const com_site = $('#com_site').val().trim();
-            const com_mail = $('#com_mail').val().trim();
-            const budget = $('#budget').val().trim();
+            const mobile = $('#mobile').val().trim();
+            const experience = $('#experience').val().trim();
+            const cur_com = $('#cur_com').val().trim();
+            const cur_job_loc = $('#cur_job_loc').val().trim();
+            const cur_ctc = $('#cur_ctc').val().trim();
+            const exp_ctc = $('#exp_ctc').val().trim();
+            const notice_period = $('#notice_period').val().trim();
             const country = $('#country').val().trim();
             const about = $('#about').val().trim();
 
             const data = {
                 name,
                 email,
-                com_site,
-                com_mail,
-                budget,
+                mobile,
+                experience,
+                cur_com,
+                cur_job_loc,
+                cur_ctc,
+                exp_ctc,
+                notice_period,
                 country,
                 about
             };
 
-            $.post('/email', data, function() {
+            $.post('/email_resume', data, function() {
                 console.log('Server recieved our data');
             });
         });

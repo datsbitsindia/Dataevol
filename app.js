@@ -43,6 +43,10 @@ app.get('/career_single', (req, res) => {
   res.render('career_single');
 });
 
+app.get('/apply', (req, res) => {
+  res.render('apply');
+});
+
 
 
 app.get('/lan', (req, res) => {
@@ -80,6 +84,32 @@ app.post('/email', (req, res) => {
       res.status(500).send('Internal Server Error');
     }
 });
+
+app.post('/email_resume', (req, res) => {
+  //Send an email here but currently dummy email
+    console.log('Data:', req.body);
+    const {name, email, mobile, experience, cur_com, cur_job_loc, cur_ctc, exp_ctc, notice_period, country, about } = req.body;
+
+
+    emailService.sendMailResume(name, email, mobile, experience, cur_com, cur_job_loc, cur_ctc, exp_ctc, notice_period, country, about, function(err, data) {
+      if (err) {
+          res.status(500).json({ message: 'Internal Error' });
+      } else {
+          res.status({ message: 'Email sent!!!' });
+      }
+    });
+
+    try{
+      console.log('email_start');
+      emailService.sendMailResume;
+    }
+    catch (error) {
+      console.error('Error sending email:', error);
+      res.status(500).send('Internal Server Error');
+    }
+});
+
+
 
 // Start the server
 app.listen(port, () => {

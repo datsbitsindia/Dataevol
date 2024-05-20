@@ -13975,6 +13975,7 @@ fieldset:disabled .btn {
     background-clip: padding-box;
     border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
     border-radius: var(--bs-dropdown-border-radius)
+    
 }
 
 .dropdown-menu[data-bs-popper] {
@@ -27338,7 +27339,7 @@ h4 {
 }
 
 .ptb-120 {
-    padding: 120px 0
+    padding: 60px 0
 }
 
 .ptb-100 {
@@ -27592,7 +27593,7 @@ h4 {
 
 .dropdown-grid.width-full {
     grid-template-columns: 1fr 1fr;
-    width: 580px
+    width: max-content
 }
 
 .dropdown-grid.width-full.homepage-dropdown {
@@ -27612,7 +27613,7 @@ h4 {
 
 .dropdown-grid-item {
     width: auto;
-    padding: 20px
+    padding: 20px 0px
 }
 
 .width-full-3 .dropdown-grid-item.last-item {
@@ -27751,7 +27752,8 @@ h4 {
     -ms-flex-align: center;
     align-items: center;
     text-decoration: none;
-    padding: .55rem 1rem !important;
+    padding: .15rem 1rem !important;
+    /* padding: .55rem 1rem !important; */
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     border-radius: 4px
