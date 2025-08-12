@@ -54,9 +54,7 @@ app.get('/lan', (req, res) => {
 });
 
 // Configuring our data parsing
-app.use(express.urlencoded({
-  extend: false
-}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
