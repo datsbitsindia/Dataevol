@@ -1,0 +1,563 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Node.js Project</title>
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/img/logo-white.png">
+    <link rel="preload" as="image" href="/img/Logo 2.png">
+    <link rel="preload" as="image" href="/img/company/LogoICon.png">
+    
+    <!-- Add the Font Awesome CSS link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Image Optimization CSS -->
+    <link rel="stylesheet" href="/css/image-optimization.css">
+    <!-- Mobile Responsive - Perfect Desktop Replica -->
+    <link rel="stylesheet" href="/css/mobile-responsive.css">
+
+
+
+    
+<header class="main-header position-absolute w-100">
+    <nav class="navbar navbar-expand-xl navbar-light sticky-header">
+        <div class="container d-flex align-items-center justify-content-lg-between position-relative">
+            <a href="/" class="navbar-brand d-flex align-items-center mb-md-0 text-decoration-none img-fluid logo-color">
+                <img src="/img/logo-white.png" alt="logo" class="img-fluid logo-white" width="270" />
+                <img src="/img/Logo 2.png" alt="logo" class="img-fluid logo-color" width="270" />
+            </a>
+            <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop" role="button">
+                <i class="flaticon-menu"
+                   data-bs-toggle="offcanvas"
+                   data-bs-target="#offcanvasWithBackdrop"
+                   aria-controls="offcanvasWithBackdrop"></i>
+            </a>
+            <div class="clearfix"></div>
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/aboutus" class="nav-link">About us</a></li>
+                    <li class="nav-item dropdown position-static d-flex align-items-center">
+                        <a class="nav-link" href="/services">Services</a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle Services" style="margin-left: 0;"></a>
+                        <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white">
+                            <div class="dropdown-grid rounded-custom width-full-services">
+                                <div class="dropdown-grid-item bg-light-subtle radius-left-side">
+                                    <h6 class="drop-heading">Database Development</h6>
+                                    <a href="/lan?lan=sqlserver" class="dropdown-link">
+                                        <img src="/img/slide_img/MsSqlServer.png" alt="SQL Server" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">SQL Server</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=mysql" class="dropdown-link">
+                                        <img src="/img/slide_img/MySQL.png" alt="MySQL" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">My SQL</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=mongodb" class="dropdown-link">
+                                        <img src="/img/slide_img/MongoDB.png" alt="MongoDB" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Mongo DB</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=postgresql" class="dropdown-link">
+                                        <img src="/img/slide_img/PostgreSQL.png" alt="PostgreSQL" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Postegre SQL</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=powerbi" class="dropdown-link">
+                                        <img src="/img/slide_img/PowerBI.png" alt="Power BI" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Power Bi</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=ssrs" class="dropdown-link">
+                                        <img src="/img/slide_img/SSRS.png" alt="SSRS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">SSRS</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=ssis" class="dropdown-link">
+                                        <img src="/img/slide_img/SSIS.png" alt="SSIS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">SSIS</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-grid-item  bg-light-subtle">
+                                    <h6 class="drop-heading">Web Development</h6>
+                                    <a href="/lan?lan=aspdotnet" class="dropdown-link">
+                                        <img src="/img/slide_img/AspDotNet.png" alt="ASP.NET" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">ASP.net</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=aspdotnetcore" class="dropdown-link">
+                                        <img src="/img/slide_img/DotNetCore.png" alt=".NET Core" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">.Net Core</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=angular" class="dropdown-link">
+                                        <img src="/img/slide_img/AngularJs.png" alt="Angular" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Angular</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=node" class="dropdown-link">
+                                        <img src="/img/slide_img/NodeJs.png" alt="Node.js" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Node</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=magento" class="dropdown-link">
+                                        <img src="/img/slide_img/Magento.png" alt="Magento" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Magento</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=wordpress" class="dropdown-link">  
+                                        <img src="/img/slide_img/Wordpress.png" alt="WordPress" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Wordpress</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=ecommerce" class="dropdown-link">
+                                        <img src="/img/slide_img/eCommerce.png" alt="eCommerce" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">eCommerce</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=python" class="dropdown-link">
+                                        <img src="/img/python.png" alt="Python" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Python</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=java" class="dropdown-link">
+                                        <img src="/img/slide_img/Java.png" alt="Java" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Java</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=php" class="dropdown-link">
+                                        <img src="/img/slide_img/PHP.png" alt="PHP" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">PHP</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-grid-item radius-right-side bg-light-subtle">
+                                    <h6 class="drop-heading">Mobile App Dev.</h6>
+                                    <a href="/lan?lan=android" class="dropdown-link">
+                                        <img src="/img/slide_img/Android.png" alt="Android" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Android</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=ios" class="dropdown-link">
+                                        <img src="/img/slide_img/ios.png" alt="iOS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">IOS</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=ionic" class="dropdown-link">
+                                        <img src="/img/slide_img/Ionic.png" alt="Ionic" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Ionic</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=xamarin" class="dropdown-link">
+                                        <img src="/img/slide_img/Xamarin.png" alt="Xamarin" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Xamarin</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=react" class="dropdown-link">
+                                        <img src="/img/slide_img/ReactNative.png" alt="React" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">React</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=kotlin" class="dropdown-link">
+                                        <img src="/img/slide_img/Kotlin.png" alt="Kotlin" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Kotlin</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=flutter" class="dropdown-link">
+                                        <img src="/img/slide_img/Flutter.png" alt="Flutter" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Flutter</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-grid-item bg-light-subtle">
+                                    <h6 class="drop-heading">UI/UX Design</h6>
+                                    <a href="/lan?lan=uxui" class="dropdown-link">
+                                        <img src="/img/slide_img/UxUi.png" alt="UI/UX" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">UI/UX</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=frontend" class="dropdown-link">
+                                        <img src="/img/slide_img/FrontEnd.png" alt="FrontEnd" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">FrontEnd</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=responsiveweb" class="dropdown-link">
+                                        <img src="/img/slide_img/ResponsiveWebDesign.png" alt="Responsive Web" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Responsiv Web</div>
+                                        </div>
+                                    </a>
+                                
+                                </div>
+                                <div class="dropdown-grid-item bg-light-subtle">
+                                    <h6 class="drop-heading">Cloud Development</h6>
+                                    <a href="/lan?lan=azure" class="dropdown-link">
+                                        <img src="/img/Azure.png" alt="Azure" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Azure</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=aws" class="dropdown-link">
+                                        <img src="/img/AWS.png" alt="AWS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">AWS</div>
+                                        </div>
+                                    </a>
+                                    <a href="/lan?lan=googlecloud" class="dropdown-link">
+                                        <img src="/img/goog.png" alt="Google Cloud" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Google Cloud</div>
+                                        </div>
+                                    </a>
+                                
+                                </div>                               
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle Industry">Industry</a>
+                        <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white">
+                            <div class="dropdown-grid rounded-custom width-full-2">
+                                <div class="dropdown-grid-item bg-light-subtle radius-left-side">
+                                    <h6 class="drop-heading">Industries We Serve</h6>
+                                    <a href="/industry/finance" class="dropdown-link">
+                                        <img src="/img/Industry/finance.png" alt="Finance" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Finance Industry</div>
+                                            <p>Banking & Financial Solutions</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/healthcare" class="dropdown-link">
+                                        <img src="/img/Industry/healthcare.png" alt="Healthcare" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Healthcare Industry</div>
+                                            <p>Transforming Health Tech</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/logistics" class="dropdown-link">
+                                        <img src="/img/Industry/Logistic.png" alt="Logistics" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Logistics Industry</div>
+                                            <p>Streamlining Supply Chains</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/travel" class="dropdown-link">
+                                        <img src="/img/Industry/Travel%26Hospitilaity.png" alt="Travel & Hospitality" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Travel & Hospitality</div>
+                                            <p>Enhancing Travel Experiences</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/realestate" class="dropdown-link">
+                                        <img src="/img/Industry/Realestate.png" alt="Real Estate" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Real Estate Industry</div>
+                                            <p>Property Management Solutions</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-grid-item bg-light-subtle radius-right-side">
+                                    <h6 class="drop-heading">Digital Solutions</h6>
+                                    <a href="/industry/fooddelivery" class="dropdown-link">
+                                        <img src="/img/Industry/Fooddelevary.png" alt="Food Delivery" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">Food Delivery</div>
+                                            <p>Restaurant & Delivery Apps</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/ecommerce" class="dropdown-link">
+                                        <img src="/img/Industry/Ecommrace.png" alt="E-Commerce" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">E-Commerce</div>
+                                            <p>Online Retail Solutions</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/bidevelopment" class="dropdown-link">
+                                        <img src="/img/Industry/Bi%20development.png" alt="BI Development" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">BI Development</div>
+                                            <p>Business Intelligence & Analytics</p>
+                                        </div>
+                                    </a>
+                                    <a href="/industry/ondemand" class="dropdown-link">
+                                        <img src="/img/Industry/Ondemand.png" alt="On-Demand Services" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="dropdown-info">
+                                            <div class="drop-title">On-Demand Services</div>
+                                            <p>App-Based Service Solutions</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="/career" class="nav-link">Careers</a></li>
+                </ul>
+            </div>
+            <div class="action-btns text-end me-5 me-lg-0 d-none d-md-block d-lg-block">
+                <button class="btn btn-icon btn-soft-primary rounded-circle tt-theme-toggle me-3" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill theme-icon-active" viewBox="0 0 16 16" style="display: none;">
+                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-brightness-high-fill theme-icon" viewBox="0 0 16 16">
+                        <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                    </svg>
+                </button>
+                <a href="/contactus" class="btn btn-primary">Contact us</a>
+            </div>
+        </div>
+    </nav>
+    <!--offcanvas menu start-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop">
+        <div class="offcanvas-header d-flex align-items-center mt-4">
+            <a href="/" class="d-flex align-items-center mb-md-0 text-decoration-none">
+                <img src="/img/logo-white.png" alt="logo" class="img-fluid ps-2" />
+            </a>
+            <button type="button" class="close-btn text-danger" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="flaticon-cancel"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/aboutus" class="nav-link">About Us</a></li>
+                
+                <!-- Services Dropdown for Mobile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-grid width-full-services">
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Database Development</h6>
+                                <a href="/lan?lan=sqlserver" class="dropdown-link">
+                                    <img src="/img/slide_img/MsSqlServer.png" alt="SQL Server" class="demo-list">
+                                    <div class="drop-title">SQL Server</div>
+                                </a>
+                                <a href="/lan?lan=mysql" class="dropdown-link">
+                                    <img src="/img/slide_img/MySQL.png" alt="MySQL" class="demo-list">
+                                    <div class="drop-title">My SQL</div>
+                                </a>
+                                <a href="/lan?lan=mongodb" class="dropdown-link">
+                                    <img src="/img/slide_img/MongoDB.png" alt="MongoDB" class="demo-list">
+                                    <div class="drop-title">Mongo DB</div>
+                                </a>
+                                <a href="/lan?lan=postgresql" class="dropdown-link">
+                                    <img src="/img/slide_img/PostgreSQL.png" alt="PostgreSQL" class="demo-list">
+                                    <div class="drop-title">Postegre SQL</div>
+                                </a>
+                                <a href="/lan?lan=powerbi" class="dropdown-link">
+                                    <img src="/img/slide_img/PowerBI.png" alt="Power BI" class="demo-list">
+                                    <div class="drop-title">Power Bi</div>
+                                </a>
+                                <a href="/lan?lan=ssrs" class="dropdown-link">
+                                    <img src="/img/slide_img/SSRS.png" alt="SSRS" class="demo-list">
+                                    <div class="drop-title">SSRS</div>
+                                </a>
+                                <a href="/lan?lan=ssis" class="dropdown-link">
+                                    <img src="/img/slide_img/SSIS.png" alt="SSIS" class="demo-list">
+                                    <div class="drop-title">SSIS</div>
+                                </a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Web Development</h6>
+                                <a href="/lan?lan=aspdotnet" class="dropdown-link">
+                                    <img src="/img/slide_img/AspDotNet.png" alt="ASP.NET" class="demo-list">
+                                    <div class="drop-title">ASP.net</div>
+                                </a>
+                                <a href="/lan?lan=aspdotnetcore" class="dropdown-link">
+                                    <img src="/img/slide_img/DotNetCore.png" alt=".NET Core" class="demo-list">
+                                    <div class="drop-title">.Net Core</div>
+                                </a>
+                                <a href="/lan?lan=angular" class="dropdown-link">
+                                    <img src="/img/slide_img/AngularJs.png" alt="Angular" class="demo-list">
+                                    <div class="drop-title">Angular</div>
+                                </a>
+                                <a href="/lan?lan=node" class="dropdown-link">
+                                    <img src="/img/slide_img/NodeJs.png" alt="Node.js" class="demo-list">
+                                    <div class="drop-title">Node</div>
+                                </a>
+                                <a href="/lan?lan=wordpress" class="dropdown-link">
+                                    <img src="/img/slide_img/Wordpress.png" alt="WordPress" class="demo-list">
+                                    <div class="drop-title">Wordpress</div>
+                                </a>
+                                <a href="/lan?lan=python" class="dropdown-link">
+                                    <img src="/img/python.png" alt="Python" class="demo-list">
+                                    <div class="drop-title">Python</div>
+                                </a>
+                                <a href="/lan?lan=java" class="dropdown-link">
+                                    <img src="/img/slide_img/Java.png" alt="Java" class="demo-list">
+                                    <div class="drop-title">Java</div>
+                                </a>
+                                <a href="/lan?lan=php" class="dropdown-link">
+                                    <img src="/img/slide_img/PHP.png" alt="PHP" class="demo-list">
+                                    <div class="drop-title">PHP</div>
+                                </a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Mobile App Dev.</h6>
+                                <a href="/lan?lan=android" class="dropdown-link">
+                                    <img src="/img/slide_img/Android.png" alt="Android" class="demo-list">
+                                    <div class="drop-title">Android</div>
+                                </a>
+                                <a href="/lan?lan=ios" class="dropdown-link">
+                                    <img src="/img/slide_img/ios.png" alt="iOS" class="demo-list">
+                                    <div class="drop-title">IOS</div>
+                                </a>
+                                <a href="/lan?lan=ionic" class="dropdown-link">
+                                    <img src="/img/slide_img/Ionic.png" alt="Ionic" class="demo-list">
+                                    <div class="drop-title">Ionic</div>
+                                </a>
+                                <a href="/lan?lan=react" class="dropdown-link">
+                                    <img src="/img/slide_img/ReactNative.png" alt="React" class="demo-list">
+                                    <div class="drop-title">React</div>
+                                </a>
+                                <a href="/lan?lan=flutter" class="dropdown-link">
+                                    <img src="/img/slide_img/Flutter.png" alt="Flutter" class="demo-list">
+                                    <div class="drop-title">Flutter</div>
+                                </a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">UI/UX & Cloud</h6>
+                                <a href="/lan?lan=uxui" class="dropdown-link">
+                                    <img src="/img/slide_img/UxUi.png" alt="UI/UX" class="demo-list">
+                                    <div class="drop-title">UI/UX</div>
+                                </a>
+                                <a href="/lan?lan=frontend" class="dropdown-link">
+                                    <img src="/img/slide_img/FrontEnd.png" alt="FrontEnd" class="demo-list">
+                                    <div class="drop-title">FrontEnd</div>
+                                </a>
+                                <a href="/lan?lan=azure" class="dropdown-link">
+                                    <img src="/img/Azure.png" alt="Azure" class="demo-list">
+                                    <div class="drop-title">Azure</div>
+                                </a>
+                                <a href="/lan?lan=aws" class="dropdown-link">
+                                    <img src="/img/AWS.png" alt="AWS" class="demo-list">
+                                    <div class="drop-title">AWS</div>
+                                </a>
+                                <a href="/lan?lan=googlecloud" class="dropdown-link">
+                                    <img src="/img/goog.png" alt="Google Cloud" class="demo-list">
+                                    <div class="drop-title">Google Cloud</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <!-- Industry Dropdown for Mobile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/industry" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Industry
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-grid width-full-2">
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Industries We Serve</h6>
+                                <a href="/industry/finance" class="dropdown-link">
+                                    <img src="/img/Industry/finance.png" alt="Finance" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">Finance Industry</div>
+                                        <p class="drop-heading">Banking & Financial Solutions</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/healthcare" class="dropdown-link">
+                                    <img src="/img/Industry/healthcare.png" alt="Healthcare" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">Healthcare Industry</div>
+                                        <p class="drop-heading">Transforming Health Tech</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/logistics" class="dropdown-link">
+                                    <img src="/img/Industry/Logistic.png" alt="Logistics" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">Logistics Industry</div>
+                                        <p class="drop-heading">Streamlining Supply Chains</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/travel" class="dropdown-link">
+                                    <img src="/img/Industry/Travel%26Hospitilaity.png" alt="Travel" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">Travel & Hospitality</div>
+                                        <p class="drop-heading">Enhancing Travel Experiences</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/realestate" class="dropdown-link">
+                                    <img src="/img/Industry/Realestate.png" alt="Real Estate" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">Real Estate Industry</div>
+                                        <p class="drop-heading">Property Management Solutions</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Digital Solutions</h6>
+                                <a href="/industry/fooddelivery" class="dropdown-link">
+                                    <img src="/img/Industry/Fooddelevary.png" alt="Food Delivery" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">Food Delivery</div>
+                                        <p class="drop-heading">Restaurant & Delivery Apps</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/ecommerce" class="dropdown-link">
+                                    <img src="/img/Industry/Ecommrace.png" alt="E-Commerce" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">E-Commerce</div>
+                                        <p class="drop-heading">Online Retail Solutions</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/bidevelopment" class="dropdown-link">
+                                    <img src="/img/Industry/Bi%20development.png" alt="BI Development" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">BI Development</div>
+                                        <p class="drop-heading">Business Intelligence & Analytics</p>
+                                    </div>
+                                </a>
+                                <a href="/industry/ondemand" class="dropdown-link">
+                                    <img src="/img/Industry/Ondemand.png" alt="On-Demand" class="demo-list">
+                                    <div class="dropdown-info">
+                                        <div class="drop-title">On-Demand Services</div>
+                                        <p class="drop-heading">App-Based Service Solutions</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li><a href="/career" class="nav-link">Career</a></li>
+                <li><a href="/contactus" class="nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--offcanvas menu end-->
+</header>

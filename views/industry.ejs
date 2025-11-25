@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/img/company/LogoICon.png" type="image/png" sizes="16x16">
+    <title>Industry Solutions - DataEvol</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="preloader" class="bg-light-subtle">
+        <div class="preloader-wrap">
+            <img src="/img/company/LogoICon.png" alt="logo" class="img-fluid preloader-icon">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <%- include("header")%>
+
+        <script>
+            // Show the appropriate industry section based on query parameter or clean URL slug
+            document.addEventListener('DOMContentLoaded', function () {
+                const pathMatch = window.location.pathname.match(/\/industry\/(\w+)/i);
+                const slugFromPath = pathMatch ? pathMatch[1].toLowerCase() : null;
+                const urlParams = new URLSearchParams(window.location.search);
+                const slugFromQuery = (urlParams.get('industry') || '').toLowerCase();
+                const fallback = 'healthcare';
+
+                const target = slugFromPath || slugFromQuery || fallback;
+                const section = document.getElementById(target);
+                if (section) {
+                    section.style.display = 'block';
+                } else {
+                    // If unknown slug, fall back gracefully
+                    const fb = document.getElementById(fallback);
+                    if (fb) fb.style.display = 'block';
+                }
+            });
+        </script>
+
+        <!-- Finance Industry -->
+        <div id="finance" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">Finance Industry</h1>
+                            <p class="lead text-white-50">Transforming Financial Services with Innovative IT Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-10 text-center">
+                            <h2 class="mb-4">OUR COMMITMENT</h2>
+                            <p class="lead">In the Finance industry, we understand the critical importance of security, compliance, and real-time data processing. Our team delivers cutting-edge IT solutions that empower financial institutions to streamline operations and enhance customer experiences.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-lg-12">
+                            <h3 class="text-center mb-5">WHY CHOOSE US FOR FINANCE IT SOLUTIONS</h3>
+                            <div class="row g-4">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                                        <h5>Security First</h5>
+                                        <p>Bank-grade security and compliance</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                                        <h5>Real-time Analytics</h5>
+                                        <p>Advanced data analytics</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                                        <h5>Digital Banking</h5>
+                                        <p>Modern banking solutions</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+                                        <h5>AI Integration</h5>
+                                        <p>Fraud detection & automation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6">
+                            <h3>Challenge</h3>
+                            <p>Financial institutions face critical challenges in maintaining secure, compliant operations while meeting evolving customer expectations. Real-time processing, fraud prevention, and seamless digital experiences require robust IT infrastructure.</p>
+                            <p>Typical pain points include legacy core platforms, siloed retail/wealth/corporate data, AML/KYC overhead, latency-sensitive fraud scoring, and delays in clearing and settlement that affect customer experience and risk.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/challange.png" alt="Challenge" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 order-lg-2">
+                            <h3>Our Solution</h3>
+                            <p>We deliver comprehensive financial technology solutions including secure payment gateways, blockchain integration, automated compliance systems, and AI-powered fraud detection for superior financial services.</p>
+                            <p>Our approach uses event-driven microservices, API gateways, KYC/AML screening pipelines, real-time streaming, a cloud lakehouse for analytics, and PCI-DSS aligned controls with full observability (logs, metrics, traces).</p>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <img src="/img/oursolution.png" alt="Solution" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h3>Results</h3>
+                            <p>Financial institutions using our solutions have experienced significant improvements in transaction speed, reduced fraud, enhanced customer satisfaction, and streamlined compliance reporting.</p>
+                            <p>Measured outcomes: 40% faster straight-through processing, 25% fewer fraud false-positives, same-day reconciliation, 99.9% uptime on critical services, and 15–30% lower per-transaction cost.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/results.png" alt="Results" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-lg-8 text-center">
+                            <div class="bg-light p-5 rounded">
+                                <img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                                <h4 class="mb-3">Testimonial</h4>
+                                <p class="lead">"DataEvol has been instrumental in advancing our digital banking capabilities. Their innovative solutions have empowered us to deliver exceptional services."</p>
+                                <p class="fw-bold">- Leading Financial Institution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Healthcare Industry -->
+        <div id="healthcare" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">Healthcare Industry</h1>
+                            <p class="lead text-white-50">Transforming Health Tech</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-10 text-center">
+                            <h2 class="mb-4">OUR COMMITMENT</h2>
+                            <p class="lead">We bring innovative IT solutions that empower healthcare providers to deliver exceptional patient care, streamline operations, and stay ahead in a rapidly evolving industry.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-lg-12">
+                            <h3 class="text-center mb-5">WHY CHOOSE US FOR HEALTHCARE IT SOLUTIONS</h3>
+                            <div class="row g-4">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-clipboard-check fa-3x text-primary mb-3"></i>
+                                        <h5>Proven Track Record</h5>
+                                        <p>Successful Healthcare IT projects</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-balance-scale fa-3x text-primary mb-3"></i>
+                                        <h5>Compliance Expertise</h5>
+                                        <p>Navigating healthcare regulations</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                                        <h5>Patient-Centric</h5>
+                                        <p>Understanding unique needs</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
+                                        <h5>Cutting-Edge Tech</h5>
+                                        <p>Industry-leading solutions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6">
+                            <h3>Challenge</h3>
+                            <p>Healthcare organizations face challenges in reducing hospital readmissions and managing medical spend. Lack of comprehensive care solutions hinders informed decision-making and patient-centric care.</p>
+                            <p>Key constraints include fragmented EHR/EMR platforms, limited interoperability (HL7/FHIR), manual care handoffs, strict privacy and compliance needs, and insufficient analytics at the point of care.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/challange.png" alt="Challenge" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 order-lg-2">
+                            <h3>Our Solution</h3>
+                            <p>We developed cutting-edge transitional care solutions with over 1000 reports, providing extensive data for informed decisions. Our solution focuses on patient-centric management, alerts, and robust reporting.</p>
+                            <p>We enable interoperable FHIR/HL7 APIs, care‑pathway automation, clinical dashboards, proactive alerts, and secure data exchange with full auditability—improving continuity from admission to discharge to follow‑up.</p>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <img src="/img/oursolution.png" alt="Solution" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h3>Results</h3>
+                            <p>Our solutions have successfully reduced unnecessary hospital readmissions and optimized medical spend. Healthcare professionals now have comprehensive tools for better decision-making.</p>
+                            <p>Observed impact: lower readmission rates, shorter average length of stay, faster clinical documentation, and improved compliance reporting with measurable gains in patient experience scores.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/results.png" alt="Results" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-lg-8 text-center">
+                            <div class="bg-light p-5 rounded">
+                                <img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                                <h4 class="mb-3">Testimonial</h4>
+                                <p class="lead">"DataEvol has been instrumental in advancing healthcare technology. Their innovative solutions have empowered our professionals to reduce readmissions and optimize spend."</p>
+                                <p class="fw-bold">- Healthcare Organization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Logistics Industry -->
+        <div id="logistics" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">Logistics Industry</h1>
+                            <p class="lead text-white-50">Streamlining Supply Chains</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-10 text-center">
+                            <h2 class="mb-4">OUR COMMITMENT</h2>
+                            <p class="lead">We optimize end-to-end logistics with real-time visibility, intelligent planning, and automated operations to reduce cost and deliver on time—every time.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-lg-12">
+                            <h3 class="text-center mb-5">WHY CHOOSE US FOR LOGISTICS IT SOLUTIONS</h3>
+                            <div class="row g-4">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-route fa-3x text-primary mb-3"></i>
+                                        <h5>Route Optimization</h5>
+                                        <p>Dynamic routing to cut miles and fuel</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-map-marked-alt fa-3x text-primary mb-3"></i>
+                                        <h5>Live Tracking</h5>
+                                        <p>GPS + geo-fencing for shipments</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-warehouse fa-3x text-primary mb-3"></i>
+                                        <h5>WMS</h5>
+                                        <p>Inventory and warehouse automations</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-chart-bar fa-3x text-primary mb-3"></i>
+                                        <h5>Analytics</h5>
+                                        <p>Operational dashboards & SLA KPIs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6">
+                            <h3>Challenge</h3>
+                            <p>Delayed deliveries, empty miles, and fragmented systems drive costs up. Lack of visibility across hubs and fleets hurts customer experience and planning.</p>
+                            <p>Common issues: manual dispatching, poor route planning, weak SLA tracking, limited hub/vehicle telemetry, and disconnected WMS/TMS leading to higher operating costs and missed ETAs.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/challange.png" alt="Logistics Challenge" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 order-lg-2">
+                            <h3>Our Solution</h3>
+                            <p>Integrated TMS + WMS with driver app, automated dispatch, POD capture, barcode/QR scanning, and AI-powered route planning. Open APIs connect ERPs and marketplaces.</p>
+                            <p>We add geo‑fencing, capacity‑aware routing, live dashboards, exception management, customer notifications, and analytics to reduce empty miles, boost utilization, and improve on‑time delivery.</p>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <img src="/img/oursolution.png" alt="Logistics Solution" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h3>Results</h3>
+                            <p>30% faster deliveries, 20% fewer empty miles, 25% lower ops cost, and higher on-time performance with clear ETA communication.</p>
+                            <p>Also achieved better first‑attempt delivery rates, improved driver productivity, and real‑time visibility for customers and control towers.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/results.png" alt="Logistics Results" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-lg-8 text-center">
+                            <div class="bg-light p-5 rounded">
+                                <img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                                <h4 class="mb-3">Testimonial</h4>
+                                <p class="lead">"With DataEvol's logistics stack we gained real-time visibility and slashed our delivery costs without adding fleet."</p>
+                                <p class="fw-bold">- 3PL Operations Director</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Travel & Hospitality -->
+        <div id="travel" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">Travel & Hospitality Industry</h1>
+                            <p class="lead text-white-50">Enhancing Travel Experiences</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-10 text-center">
+                            <h2 class="mb-4">OUR COMMITMENT</h2>
+                            <p class="lead">We unify bookings, inventory, payments, and CRM to deliver seamless guest journeys—from discovery to loyalty—across web and mobile.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-lg-12">
+                            <h3 class="text-center mb-5">WHY CHOOSE US FOR TRAVEL & HOSPITALITY</h3>
+                            <div class="row g-4">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
+                                        <h5>Booking Engine</h5>
+                                        <p>Direct bookings, dynamic pricing</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-concierge-bell fa-3x text-primary mb-3"></i>
+                                        <h5>Guest Experience</h5>
+                                        <p>Check‑in/out, upsell, feedback</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                                        <h5>Mobile Apps</h5>
+                                        <p>iOS/Android for guests & staff</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="text-center p-4 bg-light rounded">
+                                        <i class="fas fa-star fa-3x text-primary mb-3"></i>
+                                        <h5>Reputation</h5>
+                                        <p>Review & loyalty management</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6">
+                            <h3>Challenge</h3>
+                            <p>OTAs eat margins, fragmented systems cause over/under bookings, and manual operations impact service quality and guest loyalty.</p>
+                            <p>Hotels struggle with channel parity, rate management, upsell opportunities, brand loyalty programs, and end‑to‑end guest journey orchestration across devices.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/challange.png" alt="Travel Challenge" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 order-lg-2">
+                            <h3>Our Solution</h3>
+                            <p>PMS + Channel Manager + Booking Engine with payment gateway, POS, housekeeping, and CRM. Real-time sync across channels to avoid double bookings.</p>
+                            <p>We enable dynamic pricing, voucher/coupon flows, loyalty wallets, guest apps, and automated upsell/cross‑sell while keeping OTA feeds in sync to maximize direct bookings.</p>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <img src="/img/oursolution.png" alt="Travel Solution" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h3>Results</h3>
+                            <p>+40% direct bookings, higher RevPAR, better guest ratings, and faster front‑desk operations with self‑service options.</p>
+                            <p>Properties see reduced OTA dependency, fewer overbookings, streamlined housekeeping/FOH coordination, and improved loyalty engagement.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/img/results.png" alt="Travel Results" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-lg-8 text-center">
+                            <div class="bg-light p-5 rounded">
+                                <img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                                <h4 class="mb-3">Testimonial</h4>
+                                <p class="lead">“Switching to the new stack improved guest satisfaction and increased our direct reservations significantly.”</p>
+                                <p class="fw-bold">- Boutique Hotel GM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Real Estate -->
+        <div id="realestate" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">Real Estate Industry</h1>
+                            <p class="lead text-white-50">Property Management Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-10 text-center">
+                            <h2 class="mb-4">OUR COMMITMENT</h2>
+                            <p class="lead">We digitize real estate operations: listing to lease, prospect to payment, with transparent workflows for owners, tenants, and brokers.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-lg-12">
+                            <h3 class="text-center mb-5">WHY CHOOSE US FOR REAL ESTATE</h3>
+                            <div class="row g-4">
+                                <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-building fa-3x text-primary mb-3"></i><h5>Property CMS</h5><p>SEO listings, media & lead capture</p></div></div>
+                                <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-file-signature fa-3x text-primary mb-3"></i><h5>Digital Lease</h5><p>e‑KYC, e‑sign, payments</p></div></div>
+                                <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-users-cog fa-3x text-primary mb-3"></i><h5>Owner/Tenant Portals</h5><p>Tickets, dues, notices</p></div></div>
+                                <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-chart-pie fa-3x text-primary mb-3"></i><h5>BI Dashboards</h5><p>Occupancy, yield, AR aging</p></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6"><h3>Challenge</h3><p>Manual paperwork, scattered leads, and siloed accounting slow closures and reduce property yields.</p><p>Agencies and owners face fragmented lead sources, limited property media management, manual lease renewals, and inconsistent visibility into receivables and occupancy.</p></div>
+                        <div class="col-lg-6"><img src="/img/challange.png" alt="Real Estate Challenge" class="img-fluid rounded shadow"></div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 order-lg-2"><h3>Our Solution</h3><p>Unified CRM + listing CMS + lease workflow + payment gateway + accounting exports. Automations for reminders, renewals, and visits.</p><p>We provide SEO‑ready listings with media galleries, digital KYC/e‑sign, automated invoicing and settlements, owner/tenant portals, and analytics for yield optimization.</p></div>
+                        <div class="col-lg-6 order-lg-1"><img src="/img/oursolution.png" alt="Real Estate Solution" class="img-fluid rounded shadow"></div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6"><h3>Results</h3><p>Faster closures, higher occupancy, and reduced admin effort with precise financial visibility.</p><p>Customers report shorter TAT from lead to lease, improved tenant satisfaction, and accurate owner reporting with fewer manual reconciliations.</p></div>
+                        <div class="col-lg-6"><img src="/img/results.png" alt="Real Estate Results" class="img-fluid rounded shadow"></div>
+                    </div>
+                    <div class="row justify-content-center mt-5"><div class="col-lg-8 text-center"><div class="bg-light p-5 rounded"><img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;"><h4 class="mb-3">Testimonial</h4><p class="lead">“Leasing cycle time reduced dramatically while owner reporting improved.”</p><p class="fw-bold">- Property Portfolio Head</p></div></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Food Delivery -->
+        <div id="fooddelivery" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">Food Delivery Industry</h1>
+                            <p class="lead text-white-50">Restaurant & Delivery Apps</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5"><div class="col-lg-10 text-center"><h2 class="mb-4">OUR COMMITMENT</h2><p class="lead">Launch and scale on-demand food platforms with ordering, dispatch, and delivery tracking—owned by you, not marketplaces.</p></div></div>
+                    <div class="row mb-5"><div class="col-lg-12"><h3 class="text-center mb-5">WHY CHOOSE US FOR FOOD DELIVERY</h3><div class="row g-4">
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-utensils fa-3x text-primary mb-3"></i><h5>Ordering</h5><p>Menu, add‑ons, coupons</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-motorcycle fa-3x text-primary mb-3"></i><h5>Dispatch</h5><p>Driver app & auto‑assignment</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-map-location-dot fa-3x text-primary mb-3"></i><h5>Live Tracking</h5><p>ETA, geo‑fence, POD</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-wallet fa-3x text-primary mb-3"></i><h5>Payments</h5><p>Gateways & settlements</p></div></div>
+                    </div></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6"><h3>Challenge</h3><p>Marketplace commissions and limited access to customer data reduce margins and repeat orders.</p><p>Restaurants struggle with order batching, slot capacity, delivery radius, and building direct relationships beyond aggregator platforms.</p></div><div class="col-lg-6"><img src="/img/challange.png" alt="Food Challenge" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6 order-lg-2"><h3>Our Solution</h3><p>Branded web/app ordering with CRM, loyalty, wallet, and referral system. Smart batching reduces delivery time and costs.</p><p>We implement campaign tools, menu management, surge pricing, driver apps with auto‑assignment, and live order tracking with customer notifications.</p></div><div class="col-lg-6 order-lg-1"><img src="/img/oursolution.png" alt="Food Solution" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center"><div class="col-lg-6"><h3>Results</h3><p>Higher repeat rate, lower commission spend, faster deliveries, and better NPS.</p><p>Brands see increased AOV, improved delivery SLA adherence, and growth in owned customer segments through loyalty and referrals.</p></div><div class="col-lg-6"><img src="/img/results.png" alt="Food Results" class="img-fluid rounded shadow"></div></div>
+                    <div class="row justify-content-center mt-5"><div class="col-lg-8 text-center"><div class="bg-light p-5 rounded"><img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;"><h4 class="mb-3">Testimonial</h4><p class="lead">“Our own ordering system boosted margins and customer loyalty in months.”</p><p class="fw-bold">- Restaurant Group COO</p></div></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- E-Commerce -->
+        <div id="ecommerce" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">E-Commerce Industry</h1>
+                            <p class="lead text-white-50">Online Retail Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5"><div class="col-lg-10 text-center"><h2 class="mb-4">OUR COMMITMENT</h2><p class="lead">From catalog to checkout, we build high-converting storefronts with OMS/WMS integrations and analytics.</p></div></div>
+                    <div class="row mb-5"><div class="col-lg-12"><h3 class="text-center mb-5">WHY CHOOSE US FOR E‑COMMERCE</h3><div class="row g-4">
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-store fa-3x text-primary mb-3"></i><h5>Storefront</h5><p>SEO, filters, variants</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-shield-alt fa-3x text-primary mb-3"></i><h5>Payments</h5><p>Gateways & fraud checks</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-box-open fa-3x text-primary mb-3"></i><h5>OMS/WMS</h5><p>Inventory & fulfillment</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-bullhorn fa-3x text-primary mb-3"></i><h5>Growth</h5><p>Loyalty, referrals, campaigns</p></div></div>
+                    </div></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6"><h3>Challenge</h3><p>Cart abandonment, slow pages, and inventory sync issues lead to lost revenue.</p><p>Other gaps include poor Core Web Vitals, limited search/filters, fragmented OMS/WMS integration, and lack of personalization across channels.</p></div><div class="col-lg-6"><img src="/img/challange.png" alt="E‑Commerce Challenge" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6 order-lg-2"><h3>Our Solution</h3><p>Optimized storefront with headless options, one‑page checkout, and real‑time OMS/WMS connectors; analytics for funnels and cohorts.</p><p>We add advanced search, PIM integration, CDN and image optimization, A/B testing, and marketing automation to drive conversion and LTV.</p></div><div class="col-lg-6 order-lg-1"><img src="/img/oursolution.png" alt="E‑Commerce Solution" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center"><div class="col-lg-6"><h3>Results</h3><p>Higher conversion rate, fewer stockouts, faster fulfillment, and increased LTV.</p><p>Improvements typically include +10–25% conversion, better inventory accuracy, faster PDP/checkout loads, and higher repeat purchase rates.</p></div><div class="col-lg-6"><img src="/img/results.png" alt="E‑Commerce Results" class="img-fluid rounded shadow"></div></div>
+                    <div class="row justify-content-center mt-5"><div class="col-lg-8 text-center"><div class="bg-light p-5 rounded"><img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;"><h4 class="mb-3">Testimonial</h4><p class="lead">“Checkout speed and conversion improved significantly after the revamp.”</p><p class="fw-bold">- D2C Founder</p></div></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- BI Development -->
+        <div id="bidevelopment" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">BI Development</h1>
+                            <p class="lead text-white-50">Business Intelligence & Analytics</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5"><div class="col-lg-10 text-center"><h2 class="mb-4">OUR COMMITMENT</h2><p class="lead">We turn raw data into reliable decisions with governed models, interactive dashboards, and automated reporting.</p></div></div>
+                    <div class="row mb-5"><div class="col-lg-12"><h3 class="text-center mb-5">WHY CHOOSE US FOR BI</h3><div class="row g-4">
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-database fa-3x text-primary mb-3"></i><h5>Data Pipelines</h5><p>ETL/ELT with quality checks</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-project-diagram fa-3x text-primary mb-3"></i><h5>Semantic Layer</h5><p>Single source of truth</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-chart-line fa-3x text-primary mb-3"></i><h5>Dashboards</h5><p>Power BI/SSRS/Tableau</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-bell fa-3x text-primary mb-3"></i><h5>Alerts</h5><p>KPIs & anomaly detection</p></div></div>
+                    </div></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6"><h3>Challenge</h3><p>Disparate systems and manual spreadsheets cause slow and inconsistent reporting.</p><p>Analysts lack governed datasets, definitions vary across teams, and manual report distribution creates trust issues and delays.</p></div><div class="col-lg-6"><img src="/img/challange.png" alt="BI Challenge" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6 order-lg-2"><h3>Our Solution</h3><p>Central data warehouse with scheduled pipelines, curated datasets, and role-based dashboards; automated distribution.</p><p>We implement ELT/ETL with data quality checks, a semantic layer, row‑level security, alerting, and self‑service BI to standardize KPIs and accelerate decisions.</p></div><div class="col-lg-6 order-lg-1"><img src="/img/oursolution.png" alt="BI Solution" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center"><div class="col-lg-6"><h3>Results</h3><p>Hours-to-minutes reporting, trusted KPIs, and proactive decisions with alerts and forecasting.</p><p>Stakeholders get a single source of truth, automated distribution, and leading indicators that enable proactive interventions.</p></div><div class="col-lg-6"><img src="/img/results.png" alt="BI Results" class="img-fluid rounded shadow"></div></div>
+                    <div class="row justify-content-center mt-5"><div class="col-lg-8 text-center"><div class="bg-light p-5 rounded"><img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;"><h4 class="mb-3">Testimonial</h4><p class="lead">“Executives finally see one truth across sales and operations.”</p><p class="fw-bold">- VP Analytics</p></div></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- On-Demand Services -->
+        <div id="ondemand" style="display: none;">
+            <section class="page-header position-relative overflow-hidden ptb-120 bg-dark" style="background: url('img/page-header-bg.svg')no-repeat bottom left">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1 class="display-5 fw-bold text-white">On-Demand Services</h1>
+                            <p class="lead text-white-50">App-Based Service Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ptb-120">
+                <div class="container">
+                    <div class="row justify-content-center mb-5"><div class="col-lg-10 text-center"><h2 class="mb-4">OUR COMMITMENT</h2><p class="lead">Build your own marketplace for services—plumbing, salon, home care, and more—with real‑time booking and payments.</p></div></div>
+                    <div class="row mb-5"><div class="col-lg-12"><h3 class="text-center mb-5">WHY CHOOSE US FOR ON‑DEMAND</h3><div class="row g-4">
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-calendar-plus fa-3x text-primary mb-3"></i><h5>Booking</h5><p>Slots, pricing, reschedule</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-users fa-3x text-primary mb-3"></i><h5>Provider App</h5><p>Jobs, navigation, earnings</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-credit-card fa-3x text-primary mb-3"></i><h5>Payments</h5><p>Prepaid/COD, settlements</p></div></div>
+                        <div class="col-lg-3 col-md-6"><div class="text-center p-4 bg-light rounded"><i class="fas fa-star-half-alt fa-3x text-primary mb-3"></i><h5>Ratings</h5><p>Reviews, dispute flows</p></div></div>
+                    </div></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6"><h3>Challenge</h3><p>Scheduling conflicts, no‑shows, and cash reconciliation issues lead to poor experiences.</p><p>Marketplaces suffer from supply/demand imbalance, overlapping time slots, limited real‑time visibility, and opaque payout calculations.</p></div><div class="col-lg-6"><img src="/img/challange.png" alt="On‑Demand Challenge" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center mb-5"><div class="col-lg-6 order-lg-2"><h3>Our Solution</h3><p>Real‑time availability, OTP/POD verification, wallet/settlements, and automated notifications keep the marketplace reliable.</p><p>Provider and customer apps with slot management, intelligent dispatch, in‑app payments, dispute flows, and ratings build reliability and trust.</p></div><div class="col-lg-6 order-lg-1"><img src="/img/oursolution.png" alt="On‑Demand Solution" class="img-fluid rounded shadow"></div></div>
+                    <div class="row align-items-center"><div class="col-lg-6"><h3>Results</h3><p>Higher completion rate, lower cancellations, improved CSAT and earnings visibility.</p><p>Partners benefit from predictable ETAs, clearer settlement cycles, and improved repeat usage across categories.</p></div><div class="col-lg-6"><img src="/img/results.png" alt="On‑Demand Results" class="img-fluid rounded shadow"></div></div>
+                    <div class="row justify-content-center mt-5"><div class="col-lg-8 text-center"><div class="bg-light p-5 rounded"><img src="/img/testinomal.png" alt="Testimonial" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;"><h4 class="mb-3">Testimonial</h4><p class="lead">“The marketplace scaled to new cities smoothly with reliable scheduling and payments.”</p><p class="fw-bold">- Founder, Local Services App</p></div></div></div>
+                </div>
+            </section>
+        </div>
+
+        <%- include("footer")%>
+    </div>
+
+    <script src="/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/js/vendors/swiper-bundle.min.js"></script>
+    <script src="/js/vendors/jquery.magnific-popup.min.js"></script>
+    <script src="/js/vendors/parallax.min.js"></script>
+    <script src="/js/vendors/aos.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

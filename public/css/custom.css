@@ -1,0 +1,1352 @@
+/* Fix: Prevent header shift/shake when toggling dark mode */
+/* Override the default "transition: all" with specific properties only */
+.sticky-header {
+    transition: transform 0.3s ease-in-out, padding 0.3s ease-in-out !important;
+    -webkit-transition: transform 0.3s ease-in-out, padding 0.3s ease-in-out !important;
+}
+
+/* Prevent navbar and header elements from animating color/background changes */
+.main-header,
+.main-header *,
+.navbar,
+.navbar *,
+.navbar-brand,
+.navbar-brand img,
+.main-menu,
+.main-menu li,
+.main-menu li a,
+.action-btns,
+.action-btns .btn,
+.sticky-header.affix,
+.dropdown-menu,
+.dropdown-grid-item {
+    transition: none !important;
+    -webkit-transition: none !important;
+}
+
+/* Re-enable hover transitions for interactive elements only */
+.main-menu li a:hover,
+.action-btns .btn:hover,
+.dropdown-link:hover {
+    transition: color 0.2s ease-in-out !important;
+    -webkit-transition: color 0.2s ease-in-out !important;
+}
+
+/* Keep brand/logo width constant to avoid shift during theme toggle */
+.navbar-brand {
+    width: 270px;
+}
+.navbar-brand img {
+    width: 270px;
+    height: auto;
+    display: block;
+}
+
+/* Reserve scrollbar gutter to avoid page width shift */
+html {
+    scrollbar-gutter: stable both-edges;
+}
+
+/* Keep header fixed at the top on all pages */
+.navbar.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+/* Keep Services dropdown consistent across all pages by forcing light styling for the nav dropdown even in dark theme */
+[data-bs-theme=dark] .main-menu li.nav-item .dropdown-menu {
+  background-color: #fff !important;
+}
+[data-bs-theme=dark] .main-menu li.nav-item .dropdown-menu:before {
+  background-color: #fff !important;
+}
+[data-bs-theme=dark] .dropdown-menu .dropdown-grid-item.bg-white {
+  background-color: #fff !important;
+}
+[data-bs-theme=dark] .dropdown-menu .dropdown-grid-item.bg-light-subtle {
+  background-color: #f8f9fa !important;
+}
+[data-bs-theme=dark] .dropdown-menu .drop-heading {
+  color: #262626 !important;
+}
+[data-bs-theme=dark] .dropdown-menu .drop-title {
+  color: #737373 !important;
+}
+[data-bs-theme=dark] .dropdown-menu .dropdown-link {
+  color: #262626 !important;
+}
+[data-bs-theme=dark] .dropdown-menu .dropdown-link:hover .drop-title {
+  color: #0d6efd !important;
+}
+
+.dropdown-menu .dropdown-grid {
+  column-gap: 28px;
+  row-gap: 14px;
+}
+.dropdown-menu .dropdown-link {
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.dropdown-menu .dropdown-link .demo-list {
+  border-radius: 50%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.dropdown-menu .dropdown-link:hover {
+  background-color: rgba(13,110,253,0.06);
+  transform: translateX(4px);
+  box-shadow: 0 8px 22px rgba(13,110,253,0.08);
+}
+.dropdown-menu .dropdown-link:hover .demo-list {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 3px rgba(13,110,253,0.12);
+}
+.dropdown-menu .dropdown-link:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+.services-icon .single-article .article-title {
+  display: none;
+}
+
+.office-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.office-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform .4s ease;
+}
+.office-card:hover img {
+  transform: scale(1.03);
+}
+.office-card .office-overlay {
+  background: linear-gradient(transparent 20%, rgba(0,0,0,.8));
+  transform: translateY(100%);
+  transition: transform .35s ease;
+  color: #fff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.office-card:hover .office-overlay {
+  transform: translateY(0);
+}
+.office-card .office-address {
+  color: #fff;
+}
+
+/* Service split box layout */
+.service-box {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+}
+.service-box .content-pane {
+  background: #f3f6ff;
+}
+.service-box .image-pane {
+  min-height: 360px;
+}
+.service-box .image-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 991.98px) {
+  .service-box .image-pane { min-height: 280px; }
+}
+/* Dark theme adjustments */
+[data-bs-theme=dark] .service-box {
+  background: #111827;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+}
+[data-bs-theme=dark] .service-box .content-pane {
+  background: #0b1220;
+}
+
+/* Reserve safe space under fixed header for hero sections with .page-header */
+.page-header {
+  padding-top: 160px !important;
+}
+@media (max-width: 991.98px) {
+  .page-header { padding-top: 140px !important; }
+}
+
+/* Compact hero variant (reduce black area height on Services page) */
+.page-header.page-header--compact {
+  padding-top: 90px !important;
+  padding-bottom: 40px !important;
+}
+@media (max-width: 991.98px) {
+  .page-header.page-header--compact {
+    padding-top: 88px !important;
+    padding-bottom: 30px !important;
+  }
+}
+
+/* About header safe area */
+.about-header-section {
+  padding-top: 160px !important;
+}
+@media (max-width: 991.98px) {
+  .about-header-section { padding-top: 140px !important; }
+}
+
+/* Services dropdown: complete fix to override main.css conflicts */
+.nav-item.dropdown.position-static .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-top: 0.125rem !important;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000 !important;
+  display: none;
+}
+
+.nav-item.dropdown.position-static:hover .dropdown-menu,
+.nav-item.dropdown.position-static .dropdown-menu.show {
+  display: block !important;
+}
+
+.dropdown-menu .dropdown-grid.width-full-services {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  width: 1000px !important;
+  max-width: 95vw;
+  gap: 0;
+  background: #fff !important;
+}
+
+.dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item {
+  min-width: 0;
+  padding: 15px;
+  border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item:last-child {
+  border-right: none;
+}
+
+/* Make sure dropdown doesn't get cut off */
+.dropdown-menu {
+  overflow: visible !important;
+}
+
+/* Override main.css dropdown positioning conflicts */
+.main-menu li.nav-item .dropdown-menu {
+  right: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Perfect Services dropdown functionality */
+.nav-item.dropdown.position-static .dropdown-toggle-split {
+  padding-left: 0rem !important;   /* match Industry spacing */
+  padding-right: 0.5rem !important;
+  border-left: none !important;
+}
+
+.nav-item.dropdown.position-static .dropdown-toggle-split::after {
+  margin-left: .255em !important;  /* same caret gap as default dropdown-toggle */
+}
+
+/* Make Services text-and-caret spacing match Industry exactly */
+.nav-item.dropdown.position-static.d-flex > .nav-link:not(.dropdown-toggle) {
+  padding-right: .25rem !important; /* same small gap before caret */
+  margin-right: 0 !important;
+}
+
+/* Smooth hover transitions */
+.nav-item.dropdown.position-static .dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease !important;
+}
+
+.nav-item.dropdown.position-static:hover .dropdown-menu,
+.nav-item.dropdown.position-static .dropdown-menu.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* Industry dropdown: force exact two-column grid and remove right white area */
+.dropdown-menu .dropdown-grid.width-full-2 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  width: 720px !important;
+  max-width: 90vw;
+  column-gap: 0 !important;
+  row-gap: 0 !important;
+}
+
+.dropdown-menu .dropdown-grid.width-full-2 .dropdown-grid-item {
+  min-width: 0;
+}
+
+@media (max-width: 991.98px) {
+  .dropdown-menu .dropdown-grid.width-full-2 {
+    grid-template-columns: 1fr !important;
+    width: min(520px, 90vw) !important;
+  }
+  
+  .dropdown-menu .dropdown-grid.width-full-services {
+    grid-template-columns: 1fr !important;
+    width: min(520px, 90vw) !important;
+  }
+  
+  .dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item:last-child {
+    border-bottom: none;
+  }
+  
+  .nav-item.dropdown.position-static .dropdown-menu {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+.industry-illustration {
+  width: 70%;
+  max-width: 360px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+@media (max-width: 991.98px) {
+  .industry-illustration {
+    width: 65%;
+    max-width: 300px;
+  }
+}
+
+/* Ensure PNG industry illustrations never show a frame or shadow even if rounded/shadow classes are present */
+img[src$="/img/challange.png"],
+img[src$="/img/oursolution.png"],
+img[src$="/img/results.png"] {
+  width: 70%;
+  max-width: 360px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+@media (max-width: 991.98px) {
+  img[src$="/img/challange.png"],
+  img[src$="/img/oursolution.png"],
+  img[src$="/img/results.png"] {
+    width: 65%;
+    max-width: 300px;
+  }
+}
+
+/* Dark mode fixes for better visibility and consistency */
+
+/* Fix DataEvol Offers tabs section - make all text bright white */
+[data-bs-theme=dark] .nav-pills .nav-link {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .nav-pills .nav-link span {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .nav-pills .nav-link i {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .nav-pills .nav-link.active {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .nav-pills .nav-link.active span {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .nav-pills .nav-link.active i {
+  color: #ffffff !important;
+}
+
+/* Fix all headings to be bright white in dark mode */
+[data-bs-theme=dark] h1,
+[data-bs-theme=dark] h2,
+[data-bs-theme=dark] h3,
+[data-bs-theme=dark] h4,
+[data-bs-theme=dark] h5,
+[data-bs-theme=dark] h6,
+[data-bs-theme=dark] .h1,
+[data-bs-theme=dark] .h2,
+[data-bs-theme=dark] .h3,
+[data-bs-theme=dark] .h4,
+[data-bs-theme=dark] .h5,
+[data-bs-theme=dark] .h6 {
+  color: #ffffff !important;
+}
+
+/* Fix all paragraph text to be light grey in dark mode */
+[data-bs-theme=dark] p {
+  color: #d1d5db !important;
+}
+
+/* Fix all span text in dark mode */
+[data-bs-theme=dark] span {
+  color: #e5e7eb !important;
+}
+
+/* Fix all labels in dark mode */
+[data-bs-theme=dark] label {
+  color: #ffffff !important;
+}
+
+/* Fix "How We Work" section cards in dark mode */
+[data-bs-theme=dark] .work-process-single {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #e5e7eb !important;
+}
+
+[data-bs-theme=dark] .work-process-single h4,
+[data-bs-theme=dark] .work-process-single .h4 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .work-process-single p {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] .custom-btn.btn-16 {
+  background-color: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-bs-theme=dark] .custom-btn.btn-16 h1,
+[data-bs-theme=dark] .custom-btn.btn-16 .h1,
+[data-bs-theme=dark] .custom-btn.btn-16 h2,
+[data-bs-theme=dark] .custom-btn.btn-16 .h2,
+[data-bs-theme=dark] .custom-btn.btn-16 h3,
+[data-bs-theme=dark] .custom-btn.btn-16 .h3,
+[data-bs-theme=dark] .custom-btn.btn-16 h4,
+[data-bs-theme=dark] .custom-btn.btn-16 .h4,
+[data-bs-theme=dark] .custom-btn.btn-16 h5,
+[data-bs-theme=dark] .custom-btn.btn-16 .h5,
+[data-bs-theme=dark] .custom-btn.btn-16 h6,
+[data-bs-theme=dark] .custom-btn.btn-16 .h6 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .custom-btn.btn-16 p {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] .btn-16:after {
+  background: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: none !important;
+}
+
+[data-bs-theme=dark] .btn-16:hover {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .btn-16:hover:after {
+  background: rgba(59, 130, 246, 0.12) !important;
+}
+
+/* Fix team section in dark mode */
+[data-bs-theme=dark] .team-single-wrap {
+  background-color: transparent !important;
+}
+
+[data-bs-theme=dark] .team-info h5,
+[data-bs-theme=dark] .team-info .h5 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .team-info p {
+  color: #9ca3af !important;
+}
+
+/* Fix contact form in dark mode */
+[data-bs-theme=dark] .register-wrap {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .register-wrap h3,
+[data-bs-theme=dark] .register-wrap .h3 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .form-control {
+  background-color: #374151 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .form-control::placeholder {
+  color: #9ca3af !important;
+}
+
+[data-bs-theme=dark] .form-control:focus {
+  background-color: #374151 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Fix sidebar sections in dark mode */
+[data-bs-theme=dark] .job-overview-wrap {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .job-overview-wrap h4,
+[data-bs-theme=dark] .job-overview-wrap .h4,
+[data-bs-theme=dark] .job-overview-wrap h5,
+[data-bs-theme=dark] .job-overview-wrap .h5 {
+  color: #ffffff !important;
+}
+
+/* Fix blockquotes in dark mode */
+[data-bs-theme=dark] blockquote {
+  background-color: #1f2937 !important;
+  border-color: #3b82f6 !important;
+  color: #e5e7eb !important;
+}
+
+[data-bs-theme=dark] blockquote p {
+  color: #d1d5db !important;
+}
+
+/* Fix section headings in dark mode */
+[data-bs-theme=dark] .section-heading h2,
+[data-bs-theme=dark] .section-heading .h2,
+[data-bs-theme=dark] .section-heading h1,
+[data-bs-theme=dark] .section-heading .h1 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .section-heading p {
+  color: #d1d5db !important;
+}
+
+/* Fix preloader in dark mode */
+[data-bs-theme=dark] #preloader {
+  background-color: #111827 !important;
+}
+
+/* Fix footer in dark mode */
+[data-bs-theme=dark] .footer-section {
+  background-color: #111827 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .footer-section h5,
+[data-bs-theme=dark] .footer-section .h5 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .footer-section p,
+[data-bs-theme=dark] .footer-section li {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] .footer-section a {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] .footer-section a:hover {
+  color: #3b82f6 !important;
+}
+
+/* Fix cards and content boxes in dark mode */
+[data-bs-theme=dark] .bg-white {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+[data-bs-theme=dark] .bg-light-subtle {
+  background-color: #374151 !important;
+  color: #e5e7eb !important;
+}
+
+[data-bs-theme=dark] .bg-white h1,
+[data-bs-theme=dark] .bg-white .h1,
+[data-bs-theme=dark] .bg-white h2,
+[data-bs-theme=dark] .bg-white .h2,
+[data-bs-theme=dark] .bg-white h3,
+[data-bs-theme=dark] .bg-white .h3,
+[data-bs-theme=dark] .bg-white h4,
+[data-bs-theme=dark] .bg-white .h4,
+[data-bs-theme=dark] .bg-white h5,
+[data-bs-theme=dark] .bg-white .h5,
+[data-bs-theme=dark] .bg-white h6,
+[data-bs-theme=dark] .bg-white .h6 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .bg-white p,
+[data-bs-theme=dark] .bg-white li,
+[data-bs-theme=dark] .bg-white span {
+  color: #d1d5db !important;
+}
+
+/* Fix text colors in dark mode */
+[data-bs-theme=dark] .text-muted {
+  color: #9ca3af !important;
+}
+
+[data-bs-theme=dark] .text-dark {
+  color: #ffffff !important;
+}
+
+/* Fix integration details pages */
+[data-bs-theme=dark] .integration-details-wrap h2,
+[data-bs-theme=dark] .integration-details-wrap .h2,
+[data-bs-theme=dark] .integration-details-wrap h3,
+[data-bs-theme=dark] .integration-details-wrap .h3 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .integration-details-wrap p {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] .integration-details-wrap ul li {
+  color: #d1d5db !important;
+}
+
+/* Fix company overview text */
+[data-bs-theme=dark] .company-overview h1,
+[data-bs-theme=dark] .company-overview .h1 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .company-overview p {
+  color: #d1d5db !important;
+}
+
+/* Fix buttons in dark mode */
+[data-bs-theme=dark] .btn-outline-primary {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+
+[data-bs-theme=dark] .btn-outline-primary:hover {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* Fix list items and content lists */
+[data-bs-theme=dark] .content-list li {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] ul li {
+  color: #d1d5db !important;
+}
+
+/* Fix testimonial and quote sections */
+[data-bs-theme=dark] .testimonial-single {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .testimonial-single p {
+  color: #d1d5db !important;
+}
+
+/* Fix author info and small text */
+[data-bs-theme=dark] .author-info h6,
+[data-bs-theme=dark] .author-info .h6 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .author-info span,
+[data-bs-theme=dark] .author-info small {
+  color: #9ca3af !important;
+}
+
+/* Fix breadcrumb and navigation */
+[data-bs-theme=dark] .breadcrumb-item {
+  color: #d1d5db !important;
+}
+
+[data-bs-theme=dark] .breadcrumb-item.active {
+  color: #ffffff !important;
+}
+
+/* Fix table styles in dark mode */
+[data-bs-theme=dark] .table {
+  color: #e5e7eb !important;
+}
+
+[data-bs-theme=dark] .table th {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-bs-theme=dark] .table td {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix modal and popup styles */
+[data-bs-theme=dark] .modal-content {
+  background-color: #1f2937 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .modal-header {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .modal-footer {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix alert styles */
+[data-bs-theme=dark] .alert {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .alert-info {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  color: #93c5fd !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Fix pagination */
+[data-bs-theme=dark] .page-link {
+  background-color: #374151 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #e5e7eb !important;
+}
+
+[data-bs-theme=dark] .page-link:hover {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* Partner logo frames: Desktop - Bigger logos with wider cards */
+.brand-logo-grid {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.brand-logo-grid li {
+  width: 420px !important;          /* wider frame width */
+  flex: 0 0 420px;                  /* keep same width in flex layout */
+  padding: 20px 35px;               /* more padding for bigger look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.brand-logo-grid li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.brand-logo-grid li img {
+  height: 80px !important;          /* bigger logo size */
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 575.98px) {
+  .brand-logo-grid li {
+    width: 280px !important;
+    flex: 0 0 280px;
+    padding: 15px 20px;
+  }
+  
+  .brand-logo-grid li img {
+    height: 50px !important;
+  }
+}
+
+/* ========================================
+   HOVER EFFECTS FOR IT COMPANY WEBSITE
+   ======================================== */
+
+/* Primary Button Hover Effects */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.4);
+}
+
+/* Technology Logo Boxes Hover */
+.trending-box {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.trending-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(102, 126, 234, 0.1));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 0;
+}
+
+.trending-box:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(13, 110, 253, 0.25);
+  border-color: #0d6efd !important;
+}
+
+.trending-box:hover::after {
+  opacity: 1;
+}
+
+.trending-box img {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.trending-box:hover img {
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* Service Box Hover Effects */
+.service-box {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.service-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(180deg, #0d6efd, #667eea);
+  transition: height 0.4s ease;
+  border-radius: 18px 0 0 18px;
+}
+
+.service-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.15);
+}
+
+.service-box:hover::before {
+  height: 100%;
+}
+
+.service-box .image-pane img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-box:hover .image-pane img {
+  transform: scale(1.08);
+}
+
+/* About Icon Box Hover */
+.about-icon-box {
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.about-icon-box:hover {
+  background: rgba(13, 110, 253, 0.05);
+  transform: translateX(8px);
+}
+
+.about-icon-box img {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-icon-box:hover img {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Career Job Cards Hover */
+.single-open-job {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.single-open-job::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.single-open-job:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(13, 110, 253, 0.3);
+  background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
+}
+
+.single-open-job:hover::before {
+  left: 100%;
+}
+
+.single-open-job .btn {
+  transition: all 0.3s ease;
+}
+
+.single-open-job:hover .btn {
+  transform: translateX(5px);
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* Feature Cards Hover */
+.single-feature {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.single-feature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(13, 110, 253, 0.15);
+  border-color: rgba(13, 110, 253, 0.2);
+}
+
+.single-feature .fa-2x {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.single-feature:hover .fa-2x {
+  transform: scale(1.2) rotate(10deg);
+  color: #667eea !important;
+}
+
+/* Story Grid Items Hover */
+.story-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.story-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.2);
+  z-index: 10;
+}
+
+.story-item h3 {
+  transition: all 0.3s ease;
+}
+
+.story-item:hover h3 {
+  transform: scale(1.1);
+}
+
+/* Values List Icons Hover */
+.values-list .bg-white {
+  transition: all 0.35s ease;
+}
+
+.values-list .d-flex:hover .bg-white {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
+  background-color: #e7f1ff !important;
+}
+
+.values-list img {
+  transition: transform 0.3s ease;
+}
+
+.values-list .d-flex:hover img {
+  transform: scale(1.15);
+}
+
+/* Office Card Enhanced Hover */
+.office-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.office-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Team Member Cards Hover */
+.team-single-wrap {
+  transition: all 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-single-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(102, 126, 234, 0.1));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.team-single-wrap:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2);
+}
+
+.team-single-wrap:hover::before {
+  opacity: 1;
+}
+
+.team-single-wrap img {
+  transition: transform 0.5s ease;
+}
+
+.team-single-wrap:hover img {
+  transform: scale(1.1);
+}
+
+/* Work Process Cards Hover */
+.work-process-single {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.work-process-single:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2);
+}
+
+[data-bs-theme=dark] .work-process-single:hover {
+  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom Button Hover (btn-16) */
+.custom-btn.btn-16 {
+  transition: all 0.4s ease;
+}
+
+.custom-btn.btn-16:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Link with Icon Hover */
+.link-with-icon {
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.link-with-icon i {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.link-with-icon:hover {
+  gap: 12px;
+}
+
+.link-with-icon:hover i {
+  transform: translateX(5px);
+}
+
+/* Form Input Focus Effects */
+.form-control {
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15) !important;
+}
+
+/* Nav Pills Tab Hover */
+.nav-pills .nav-link {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-pills .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 3px;
+  background: #0d6efd;
+  transition: width 0.3s ease;
+}
+
+.nav-pills .nav-link:hover::after {
+  width: 80%;
+}
+
+.nav-pills .nav-link:hover {
+  transform: translateY(-3px);
+}
+
+/* Image Hover Effects */
+.rounded-custom img,
+.rounded-4 img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rounded-custom:hover img,
+.rounded-4:hover img {
+  transform: scale(1.05);
+}
+
+/* Badge Hover */
+.badge {
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+/* Testimonial Cards Hover */
+.testimonial-single {
+  transition: all 0.35s ease;
+}
+
+.testimonial-single:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(13, 110, 253, 0.15);
+}
+
+[data-bs-theme=dark] .testimonial-single:hover {
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25);
+}
+
+/* Dropdown Grid Item Enhanced Hover */
+.dropdown-grid-item {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-grid-item:hover {
+  background-color: rgba(13, 110, 253, 0.08) !important;
+}
+
+/* Hero Image Animations */
+.hero-img img {
+  transition: transform 0.6s ease;
+}
+
+.hero-img:hover img {
+  transform: scale(1.05);
+}
+
+.hero-img .dots img {
+  transition: transform 0.4s ease;
+}
+
+.hero-img:hover .dot-1 {
+  transform: translate(10px, -10px) rotate(15deg);
+}
+
+.hero-img:hover .dot-2 {
+  transform: translate(-10px, 10px) rotate(-15deg);
+}
+
+/* Bubble Animation on Hover */
+.bubble span {
+  transition: all 0.5s ease;
+}
+
+.hero-img:hover .bubble-1 {
+  transform: scale(1.2);
+}
+
+.hero-img:hover .bubble-2 {
+  transform: scale(1.3);
+}
+
+/* Social Icons Hover */
+.social-icons a,
+.footer-section a[href*="facebook"],
+.footer-section a[href*="twitter"],
+.footer-section a[href*="linkedin"] {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+}
+
+.social-icons a:hover,
+.footer-section a:hover {
+  transform: translateY(-5px) scale(1.15);
+  color: #0d6efd !important;
+}
+
+/* Pagination Hover */
+.page-link {
+  transition: all 0.3s ease;
+}
+
+.page-link:hover {
+  transform: translateY(-3px);
+}
+
+/* Alert Hover */
+.alert {
+  transition: all 0.3s ease;
+}
+
+.alert:hover {
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card Hover Global */
+.card {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* List Item Hover in Content */
+.list-unstyled li {
+  transition: all 0.2s ease;
+}
+
+.list-unstyled li:hover {
+  transform: translateX(5px);
+  color: #0d6efd !important;
+}
+
+/* Preloader Animation Enhancement */
+.preloader-icon {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Loading Bar Animation */
+.loading-bar {
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Fix images with embedded text in dark mode - add brightness/contrast filter */
+[data-bs-theme=dark] img[src="/img/bg.png"],
+[data-bs-theme=dark] img[src*="bg.png"] {
+  filter: brightness(1.3) contrast(1.1) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Alternative: Add white overlay container for images with text in dark mode */
+[data-bs-theme=dark] .feature-section-two img[src="/img/bg.png"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08)) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}

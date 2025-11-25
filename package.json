@@ -1,0 +1,29 @@
+{
+  "name": "dataevol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-email": "node test-email.js",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "production": "NODE_ENV=production node app.js",
+    "analyze-images": "node scripts/compress-images.js",
+    "quick-optimize": "node scripts/quick-optimize.js",
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "cron": "^4.3.4",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.9",
+    "nodemon": "^3.1.11",
+    "sharp": "^0.34.5"
+  }
+}
