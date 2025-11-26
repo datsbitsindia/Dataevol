@@ -462,10 +462,10 @@
         }
     }
     
-    /* Dropdown Grid Layout - Consistent padding with menu items */
+    /* Dropdown Grid Layout - Full Width Container */
     .offcanvas .dropdown-grid {
         display: block !important;
-        padding: 0.75rem 1.25rem 1rem 1.25rem !important;
+        padding: 0.75rem 1rem 1rem 1rem !important;
         width: 100% !important;
         background: #f8f9fa !important;
         max-height: none !important;
@@ -474,23 +474,33 @@
         border-top: 1px solid #e9ecef !important;
     }
     
-    /* Dropdown Grid Items (Sections) */
-    .offcanvas .dropdown-grid-item {
+    /* Dropdown Grid Items (Sections) - 3 Column Layout */
+    .offcanvas .dropdown-grid-item,
+    .offcanvas .dropdown-menu .dropdown-grid-item,
+    .offcanvas .mobile-dropdown-content .dropdown-grid-item {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
         padding: 0.75rem 0 !important;
         background: transparent !important;
         width: 100% !important;
         margin-bottom: 1rem !important;
         overflow: visible !important;
         height: auto !important;
+        border: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        min-width: 100% !important;
     }
     
     .offcanvas .dropdown-grid-item:last-child {
         margin-bottom: 0.5rem !important;
     }
     
-    /* Section Headings */
+    /* Section Headings - Full Width Across All 3 Columns */
     .offcanvas .dropdown-grid-item h6.drop-heading,
     .offcanvas .dropdown-grid-item > .drop-heading:first-child {
+        grid-column: 1 / -1 !important;
         font-size: 0.95rem !important;
         font-weight: 700 !important;
         color: #0d6efd !important;
@@ -503,58 +513,70 @@
         display: block !important;
     }
     
-    /* Dropdown Links */
-    .offcanvas .dropdown-link {
+    /* Dropdown Links - Vertical Layout in Grid */
+    .offcanvas .dropdown-link,
+    .offcanvas .dropdown-menu .dropdown-link,
+    .offcanvas .mobile-dropdown-content .dropdown-link {
         display: flex !important;
+        flex-direction: column !important;
         align-items: center !important;
-        gap: 0.75rem !important;
-        padding: 0.65rem 0.5rem !important;
+        justify-content: flex-start !important;
+        gap: 0.4rem !important;
+        padding: 0.6rem 0.15rem !important;
         text-decoration: none !important;
         color: #555 !important;
         transition: all 0.2s ease !important;
         width: 100% !important;
-        border-radius: 6px !important;
-        margin-bottom: 0.35rem !important;
+        border-radius: 8px !important;
+        margin-bottom: 0 !important;
+        text-align: center !important;
+        min-height: 85px !important;
     }
     
     .offcanvas .dropdown-link:hover,
-    .offcanvas .dropdown-link:active {
+    .offcanvas .dropdown-link:active,
+    .offcanvas .dropdown-menu .dropdown-link:hover,
+    .offcanvas .dropdown-menu .dropdown-link:active {
         color: #0d6efd !important;
         background: #f0f4ff !important;
-        transform: translateX(3px) !important;
+        transform: scale(1.02) !important;
+        box-shadow: none !important;
     }
     
     .offcanvas .dropdown-link:last-child {
         margin-bottom: 0 !important;
     }
     
-    /* Dropdown Icons */
+    /* Dropdown Icons - Centered in Grid */
     .offcanvas .demo-list,
     .offcanvas .dropdown-link > img {
-        width: 38px !important;
-        height: 38px !important;
-        min-width: 38px !important;
-        border-radius: 8px !important;
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        border-radius: 10px !important;
         display: block !important;
         flex-shrink: 0 !important;
         object-fit: contain !important;
         padding: 6px !important;
         background: #f0f4ff !important;
         border: 1px solid #e0e7ff !important;
+        margin: 0 auto !important;
     }
     
-    /* Dropdown Text */
+    /* Dropdown Text - Centered Below Icon */
     .offcanvas .drop-title {
-        font-size: 0.875rem !important;
+        font-size: 0.7rem !important;
         font-weight: 500 !important;
         color: #333 !important;
         margin: 0 !important;
-        line-height: 1.4 !important;
+        line-height: 1.2 !important;
         white-space: normal !important;
         overflow: visible !important;
         text-overflow: clip !important;
         display: block !important;
         word-wrap: break-word !important;
+        text-align: center !important;
+        max-width: 100% !important;
     }
     
     .offcanvas .dropdown-info {
@@ -563,15 +585,18 @@
         overflow: visible !important;
         display: flex !important;
         flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
     }
     
     .offcanvas .dropdown-info .drop-title {
-        font-size: 0.875rem !important;
+        font-size: 0.7rem !important;
         font-weight: 500 !important;
         color: #333 !important;
         margin: 0 !important;
-        line-height: 1.4 !important;
+        line-height: 1.2 !important;
         display: block !important;
+        text-align: center !important;
     }
     
     /* Hide descriptions on mobile */
@@ -580,20 +605,24 @@
         display: none !important;
     }
     
-    /* Industry Dropdown - Single Column */
+    /* Industry Dropdown - Keep Grid Items in 3 Columns */
     .offcanvas .dropdown-grid.width-full-2 {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 0 !important;
+        display: block !important;
         width: 100% !important;
     }
     
-    /* Services Dropdown - Single Column */
+    /* Services Dropdown - Keep Grid Items in 3 Columns */
     .offcanvas .dropdown-grid.width-full-services {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 0 !important;
+        display: block !important;
         width: 100% !important;
+    }
+    
+    /* Ensure grid items inside these containers maintain 3 column layout */
+    .offcanvas .dropdown-grid.width-full-2 .dropdown-grid-item,
+    .offcanvas .dropdown-grid.width-full-services .dropdown-grid-item {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
     }
 }
 
@@ -729,7 +758,7 @@
 @media (max-width: 991.98px) {
     /* Services Icon Section - DataEvol Tech Stacks */
     .services-icon {
-        padding: 60px 15px !important;
+        padding: 40px 15px !important;
         overflow: visible !important;
     }
     
@@ -754,20 +783,21 @@
     .services-icon .section-heading {
         text-align: center !important;
         padding: 0 20px !important;
-        margin-bottom: 40px !important;
+        margin-bottom: 20px !important;
     }
     
     .services-icon .section-heading h2 {
         font-size: 1.8rem !important;
         font-weight: 700 !important;
         color: #2d2d2d !important;
-        margin-bottom: 15px !important;
+        margin-bottom: 10px !important;
     }
     
     .services-icon .section-heading p {
         font-size: 1rem !important;
         color: #666 !important;
         line-height: 1.6 !important;
+        margin-bottom: 0 !important;
     }
     
     /* Swiper Container - Perfect Center - VISIBLE */
@@ -1533,21 +1563,21 @@
 @media (max-width: 991.98px) {
     /* Brand Logo Section - Desktop Copy */
     .brand-logo {
-        padding: 80px 20px !important;
+        padding: 50px 20px 30px 20px !important;
         background: #f8f9fa !important;
     }
     
     .brand-logo .section-heading {
         text-align: center !important;
-        margin-bottom: 50px !important;
+        margin-bottom: 15px !important;
     }
     
     .brand-logo .section-heading h2 {
         font-size: 1.8rem !important;
         font-weight: 700 !important;
         color: #2d2d2d !important;
-        line-height: 1.4 !important;
-        margin-bottom: 15px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
         text-align: center !important;
     }
     
