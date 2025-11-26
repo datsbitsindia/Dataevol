@@ -61,37 +61,44 @@ jQuery(function($) {
             prevEl: ".swiper-button-prev"
         }
     });
-    //swiper slide js
-    var swiper = new Swiper(".testimonialThreeSwiper", {
-        slidesPerView: 2,
-        speed: 700,
-        spaceBetween: 30,
-        slidesPerGroup: 2,
+    //Tech Stacks Card Carousel
+    var techStacksSwiper = new Swiper(".techStacksSwiper", {
+        slidesPerView: 1,
+        speed: 600,
+        spaceBetween: 24,
+        slidesPerGroup: 1,
         loop: true,
+        grabCursor: true,
+        centeredSlides: true,
         pagination: {
-            el: ".swiper-pagination",
+            el: ".tech-stacks-pagination",
             clickable: true
         },
         breakpoints: {
             320: {
                 slidesPerView: 1,
-                spaceBetween: 20,
+                spaceBetween: 0,
+                centeredSlides: true
+            },
+            576: {
+                slidesPerView: 1,
+                spaceBetween: 0,
                 centeredSlides: true
             },
             768: {
                 slidesPerView: 2,
-                spaceBetween: 30,
+                spaceBetween: 20,
                 centeredSlides: false
             },
-            991: {
+            992: {
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 24,
                 centeredSlides: false
             }
         },
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
+            nextEl: ".tech-carousel-next",
+            prevEl: ".tech-carousel-prev"
         }
     });
     //app two review slider

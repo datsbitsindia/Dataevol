@@ -1371,31 +1371,33 @@ html {
    SWIPER SLIDER - Center Single Card Fix
    ======================================== */
 
-/* Desktop Slider - Center Single Card */
+/* Desktop Slider - Proper Swiper Behavior */
 .testimonialThreeSwiper,
 .services-icon .swiper {
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .testimonialThreeSwiper .swiper-wrapper,
 .services-icon .swiper-wrapper {
   display: flex !important;
   align-items: stretch !important;
+  flex-wrap: nowrap !important;
 }
 
 .testimonialThreeSwiper .swiper-slide,
 .services-icon .swiper-slide {
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
+  align-items: stretch !important;
+  height: auto !important;
 }
 
-/* Single Article Card - Centered */
+/* Single Article Card - Full Width in Slide */
 .services-icon .single-article,
 .testimonialThreeSwiper .single-article {
   width: 100% !important;
-  max-width: 380px !important;
-  margin: 0 auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
   border-radius: 16px !important;
   overflow: hidden !important;
   box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
@@ -1410,4 +1412,216 @@ html {
 .services-icon .single-article .article-content,
 .testimonialThreeSwiper .single-article .article-content {
   border-radius: 0 0 16px 16px !important;
+}
+
+
+/* ========================================
+   DataEvol Tech Stacks Section - Card Carousel
+   ======================================== */
+
+/* Section Container */
+.tech-stacks-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+/* Carousel Wrapper with arrows outside */
+.tech-stacks-carousel-wrapper {
+    position: relative;
+    padding: 0 60px;
+}
+
+/* Swiper Container */
+.techStacksSwiper {
+    overflow: hidden;
+    padding: 10px 0 50px 0;
+}
+
+/* Navigation Arrows */
+.tech-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tech-carousel-arrow:hover {
+    background: #0d6efd;
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.3);
+}
+
+.tech-carousel-arrow:hover i {
+    color: #ffffff;
+}
+
+.tech-carousel-arrow i {
+    font-size: 16px;
+    color: #0d6efd;
+    transition: color 0.3s ease;
+}
+
+.tech-carousel-prev {
+    left: 0;
+}
+
+.tech-carousel-next {
+    right: 0;
+}
+
+/* Tech Card Styling */
+.tech-card {
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Image */
+.tech-card-img-link {
+    display: block;
+    overflow: hidden;
+    border-radius: 24px 24px 0 0;
+}
+
+.tech-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.tech-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Card Body */
+.tech-card-body {
+    padding: 20px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Pill Badge Title */
+.tech-card-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #e8f4fd 0%, #d4e9f7 100%);
+    color: #0d6efd;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-bottom: 16px;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.tech-card-badge:hover {
+    background: #0d6efd;
+    color: #ffffff;
+}
+
+/* Card Description */
+.tech-card-desc {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Pagination Dots */
+.tech-stacks-pagination {
+    margin-top: 20px;
+}
+
+.tech-stacks-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #dee2e6;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.tech-stacks-pagination .swiper-pagination-bullet-active {
+    background: #0d6efd;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 991.98px) {
+    .tech-stacks-carousel-wrapper {
+        padding: 0 50px;
+    }
+    
+    .tech-carousel-arrow {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .tech-card img {
+        height: 200px;
+    }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 767.98px) {
+    .tech-stacks-section {
+        padding: 60px 0;
+    }
+    
+    .tech-stacks-carousel-wrapper {
+        padding: 0 40px;
+    }
+    
+    .tech-carousel-arrow {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .tech-carousel-arrow i {
+        font-size: 14px;
+    }
+    
+    .tech-card img {
+        height: 180px;
+    }
+    
+    .tech-card-body {
+        padding: 16px 20px 20px;
+    }
+    
+    .tech-card-badge {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+    
+    .tech-card-desc {
+        font-size: 0.9rem;
+    }
 }
