@@ -3,6 +3,8 @@
 <title>Simple Node.js Project</title>
 <!-- Add the Font Awesome CSS link -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Mobile Responsive CSS -->
+<link rel="stylesheet" href="/css/mobile-responsive.css">
 
 
 
@@ -14,11 +16,12 @@
                 <img src="/img/logo-white.png" alt="logo" class="img-fluid logo-white" width="270" />
                 <img src="/img/Logo 2.png" alt="logo" class="img-fluid logo-color" width="270" />
             </a>
-            <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop" role="button">
-                <i class="flaticon-menu"
-                   data-bs-toggle="offcanvas"
-                   data-bs-target="#offcanvasWithBackdrop"
-                   aria-controls="offcanvasWithBackdrop"></i>
+            <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop" role="button"
+               data-bs-toggle="offcanvas"
+               data-bs-target="#offcanvasWithBackdrop"
+               aria-controls="offcanvasWithBackdrop">
+                <i class="fas fa-bars menu-icon-open"></i>
+                <i class="fas fa-times menu-icon-close"></i>
             </a>
             <div class="clearfix"></div>
             <div class="collapse navbar-collapse justify-content-center">
@@ -328,12 +331,12 @@
     </nav>
     <!--offcanvas menu start-->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop">
-        <div class="offcanvas-header d-flex align-items-center mt-4">
+        <div class="offcanvas-header d-flex align-items-center">
             <a href="/" class="d-flex align-items-center mb-md-0 text-decoration-none">
-                <img src="/img/logo-white.png" alt="logo" class="img-fluid ps-2" />
+                <img src="/img/Logo 2.png" alt="logo" class="img-fluid ps-2" />
             </a>
             <button type="button" class="close-btn text-danger" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="flaticon-cancel"></i>
+                <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="offcanvas-body">

@@ -114,38 +114,44 @@
             }
         },
 
-        // Fix mobile technology icons
+        // Fix mobile technology icons - Brand Logos (Business on Trust section)
         fixMobileTechIcons: function() {
-            if (this.isMobile()) {
+            if (this.isMobile() || this.isTablet()) {
                 const brandLogoGrid = document.querySelector('.brand-logo-grid');
                 if (brandLogoGrid) {
                     brandLogoGrid.style.display = 'flex';
+                    brandLogoGrid.style.flexDirection = 'row';
                     brandLogoGrid.style.flexWrap = 'wrap';
                     brandLogoGrid.style.justifyContent = 'center';
                     brandLogoGrid.style.alignItems = 'center';
-                    brandLogoGrid.style.gap = '0.5rem';
-                    brandLogoGrid.style.padding = '0 10px';
+                    brandLogoGrid.style.gap = '20px';
+                    brandLogoGrid.style.padding = '0';
+                    brandLogoGrid.style.listStyle = 'none';
                     
                     const logoItems = brandLogoGrid.querySelectorAll('li');
                     logoItems.forEach(item => {
-                        item.style.width = '100px';
-                        item.style.height = '80px';
-                        item.style.flex = '0 0 100px';
+                        item.style.width = 'auto';
+                        item.style.minWidth = '150px';
+                        item.style.height = 'auto';
+                        item.style.minHeight = '90px';
+                        item.style.flex = '0 0 auto';
                         item.style.display = 'flex';
                         item.style.alignItems = 'center';
                         item.style.justifyContent = 'center';
-                        item.style.padding = '8px';
-                        item.style.margin = '0.25rem';
+                        item.style.padding = '25px 30px';
+                        item.style.margin = '0';
                         item.style.background = '#fff';
-                        item.style.borderRadius = '8px';
-                        item.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                        item.style.borderRadius = '16px';
+                        item.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
                         
                         const img = item.querySelector('img');
                         if (img) {
                             img.style.width = 'auto';
-                            img.style.height = '35px';
-                            img.style.maxWidth = '80px';
+                            img.style.height = 'auto';
+                            img.style.maxHeight = '65px';
+                            img.style.maxWidth = '140px';
                             img.style.objectFit = 'contain';
+                            img.style.display = 'block';
                         }
                     });
                 }
@@ -244,12 +250,83 @@
             }
         },
 
+        // Fix Tech Stacks Swiper Slider visibility
+        fixTechStacksSlider: function() {
+            if (this.isMobile() || this.isTablet()) {
+                // Make sure swiper and its content is visible
+                const swiperContainer = document.querySelector('.testimonialThreeSwiper');
+                if (swiperContainer) {
+                    swiperContainer.style.display = 'block';
+                    swiperContainer.style.visibility = 'visible';
+                    swiperContainer.style.opacity = '1';
+                    swiperContainer.style.overflow = 'visible';
+                    
+                    const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+                    if (swiperWrapper) {
+                        swiperWrapper.style.display = 'flex';
+                        swiperWrapper.style.visibility = 'visible';
+                        swiperWrapper.style.opacity = '1';
+                    }
+                    
+                    const slides = swiperContainer.querySelectorAll('.swiper-slide');
+                    slides.forEach(slide => {
+                        slide.style.display = 'block';
+                        slide.style.visibility = 'visible';
+                        slide.style.opacity = '1';
+                    });
+                    
+                    // Make article cards visible
+                    const articles = swiperContainer.querySelectorAll('.single-article');
+                    articles.forEach(article => {
+                        article.style.display = 'block';
+                        article.style.visibility = 'visible';
+                        article.style.opacity = '1';
+                        article.style.background = '#fff';
+                        article.style.borderRadius = '16px';
+                        article.style.overflow = 'hidden';
+                        article.style.boxShadow = '0 4px 25px rgba(0,0,0,0.1)';
+                    });
+                    
+                    // Make article images visible
+                    const articleImgs = swiperContainer.querySelectorAll('.article-img');
+                    articleImgs.forEach(imgContainer => {
+                        imgContainer.style.display = 'block';
+                        imgContainer.style.visibility = 'visible';
+                        imgContainer.style.opacity = '1';
+                        imgContainer.style.height = '200px';
+                        imgContainer.style.overflow = 'hidden';
+                        
+                        const img = imgContainer.querySelector('img');
+                        if (img) {
+                            img.style.width = '100%';
+                            img.style.height = '100%';
+                            img.style.objectFit = 'cover';
+                            img.style.display = 'block';
+                            img.style.visibility = 'visible';
+                            img.style.opacity = '1';
+                        }
+                    });
+                    
+                    // Make article content visible
+                    const articleContents = swiperContainer.querySelectorAll('.article-content');
+                    articleContents.forEach(content => {
+                        content.style.display = 'block';
+                        content.style.visibility = 'visible';
+                        content.style.opacity = '1';
+                        content.style.padding = '20px';
+                        content.style.textAlign = 'center';
+                    });
+                }
+            }
+        },
+
         // Handle window resize
         handleResize: function() {
             this.fixMobileNavigation();
             this.fixMobileHero();
             this.fixMobileServiceBoxes();
             this.fixMobileTechIcons();
+            this.fixTechStacksSlider();
             this.fixMobileFooter();
             this.fixMobileForms();
             this.fixMobileButtons();

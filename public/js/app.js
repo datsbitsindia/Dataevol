@@ -7,12 +7,9 @@ jQuery(function($) {
         $("#preloader").delay(100).fadeOut("fade");
     });
 
-    //dropdown menu hover js
-    $("ul.nav li.dropdown").hover(function() {
-        $(this).find(".dropdown-menu").stop(true, true).delay(100).fadeIn(200);
-    }, function() {
-        $(this).find(".dropdown-menu").stop(true, true).delay(100).fadeOut(200);
-    });
+    //dropdown menu hover js - DISABLED (using dropdown-fix.js instead)
+    // Desktop dropdown hover is now handled by dropdown-fix.js
+    // Mobile dropdown click is now handled by dropdown-fix.js
 
     //sticky header
     $(window).on("scroll", function() {
@@ -78,15 +75,18 @@ jQuery(function($) {
         breakpoints: {
             320: {
                 slidesPerView: 1,
-                spaceBetween: 30
+                spaceBetween: 20,
+                centeredSlides: true
             },
             768: {
                 slidesPerView: 2,
-                spaceBetween: 30
+                spaceBetween: 30,
+                centeredSlides: false
             },
             991: {
                 slidesPerView: 3,
-                spaceBetween: 30
+                spaceBetween: 30,
+                centeredSlides: false
             }
         },
         navigation: {

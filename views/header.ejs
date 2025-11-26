@@ -25,11 +25,12 @@
                 <img src="/img/logo-white.png" alt="logo" class="img-fluid logo-white" width="270" />
                 <img src="/img/Logo 2.png" alt="logo" class="img-fluid logo-color" width="270" />
             </a>
-            <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop" role="button">
-                <i class="flaticon-menu"
-                   data-bs-toggle="offcanvas"
-                   data-bs-target="#offcanvasWithBackdrop"
-                   aria-controls="offcanvasWithBackdrop"></i>
+            <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop" role="button"
+               data-bs-toggle="offcanvas"
+               data-bs-target="#offcanvasWithBackdrop"
+               aria-controls="offcanvasWithBackdrop">
+                <i class="fas fa-bars menu-icon-open"></i>
+                <i class="fas fa-times menu-icon-close"></i>
             </a>
             <div class="clearfix"></div>
             <div class="collapse navbar-collapse justify-content-center">
@@ -338,12 +339,12 @@
     </nav>
     <!--offcanvas menu start-->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop">
-        <div class="offcanvas-header d-flex align-items-center mt-4">
+        <div class="offcanvas-header d-flex align-items-center">
             <a href="/" class="d-flex align-items-center mb-md-0 text-decoration-none">
-                <img src="/img/logo-white.png" alt="logo" class="img-fluid ps-2" />
+                <img src="/img/Logo 2.png" alt="logo" class="img-fluid ps-2" />
             </a>
             <button type="button" class="close-btn text-danger" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="flaticon-cancel"></i>
+                <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="offcanvas-body">
@@ -353,10 +354,13 @@
                 
                 <!-- Services Dropdown for Mobile -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                    </a>
-                    <div class="dropdown-menu">
+                    <div class="mobile-dropdown-header">
+                        <a class="nav-link mobile-nav-link" href="/services">Services</a>
+                        <span class="mobile-dropdown-toggle" data-target="services-dropdown" aria-expanded="false">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu mobile-dropdown-content" id="services-dropdown">
                         <div class="dropdown-grid width-full-services">
                             <div class="dropdown-grid-item">
                                 <h6 class="drop-heading">Database Development</h6>
@@ -476,10 +480,13 @@
                 
                 <!-- Industry Dropdown for Mobile -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/industry" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Industry
-                    </a>
-                    <div class="dropdown-menu">
+                    <div class="mobile-dropdown-header">
+                        <a class="nav-link mobile-nav-link" href="/industry">Industry</a>
+                        <span class="mobile-dropdown-toggle" data-target="industry-dropdown" aria-expanded="false">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu mobile-dropdown-content" id="industry-dropdown">
                         <div class="dropdown-grid width-full-2">
                             <div class="dropdown-grid-item">
                                 <h6 class="drop-heading">Industries We Serve</h6>

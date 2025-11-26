@@ -786,8 +786,8 @@ img[src$="/img/results.png"] {
 }
 
 .brand-logo-grid li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .brand-logo-grid li img {
@@ -1349,4 +1349,65 @@ html {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08)) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* ========================================
+   TECHNOLOGY BOXES - Border Radius & Border Bottom Fix
+   ======================================== */
+
+/* Technology Icon Boxes - Desktop & Mobile */
+.trending-box {
+  border-radius: 15% !important;
+  border-bottom: 3px inset rgba(13, 110, 253, 0.3) !important;
+  background: #fff !important;
+}
+
+.trending-box:hover {
+  border-bottom: 3px inset rgba(13, 110, 253, 0.6) !important;
+}
+
+/* ========================================
+   SWIPER SLIDER - Center Single Card Fix
+   ======================================== */
+
+/* Desktop Slider - Center Single Card */
+.testimonialThreeSwiper,
+.services-icon .swiper {
+  overflow: visible !important;
+}
+
+.testimonialThreeSwiper .swiper-wrapper,
+.services-icon .swiper-wrapper {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.testimonialThreeSwiper .swiper-slide,
+.services-icon .swiper-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Single Article Card - Centered */
+.services-icon .single-article,
+.testimonialThreeSwiper .single-article {
+  width: 100% !important;
+  max-width: 380px !important;
+  margin: 0 auto !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
+}
+
+.services-icon .single-article .article-img,
+.testimonialThreeSwiper .single-article .article-img {
+  border-radius: 16px 16px 0 0 !important;
+  overflow: hidden !important;
+}
+
+.services-icon .single-article .article-content,
+.testimonialThreeSwiper .single-article .article-content {
+  border-radius: 0 0 16px 16px !important;
 }

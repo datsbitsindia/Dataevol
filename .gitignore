@@ -127,3 +127,18 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Kiro IDE files
+.kiro/
+
+# Shell scripts
+*.sh
+
+# Examples and documentation
+examples/
+DROPDOWN_FIX_COMPLETE.md
+MOBILE_DROPDOWN_FIX.md
+REVERT_COMPLETE.md
+
+# Backup folders
+public/img-backup/
