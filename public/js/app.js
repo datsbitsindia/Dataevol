@@ -768,38 +768,62 @@ jQuery(function($) {
         });
     });
 
-    //    dark light mood
-    var setDarkMode = (active = false) => {
-        var wrapper = document.querySelector(":root");
-        var themeIconActive = document.querySelector(".theme-icon-active");
-        var themeIcon = document.querySelector(".theme-icon");
+    // ========================================
+    // FOOTER TAB NAVIGATION - SINGLE CLICK FIX
+    // ========================================
+    
+    // Handle tab navigation from footer links (single click)
+    $(document).ready(function() {
+        // Check if there's a hash in the URL on page load
+        if (window.location.hash) {
+            var hash = window.location.hash;
+            
+            // Check if it's a tab hash
+            if (hash.includes('pills-')) {
+                setTimeout(function() {
+                    // Find and activate the corresponding tab
+                    var tabTrigger = document.querySelector('[data-bs-target="' + hash + '"]');
+                    if (tabTrigger) {
+                        var tab = new bootstrap.Tab(tabTrigger);
+                        tab.show();
+                        
+                        // Scroll to the tab section smoothly
+                        var tabSection = document.querySelector(hash);
+                        if (tabSection) {
+                            setTimeout(function() {
+                                tabSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 100);
+                        }
+                    }
+                }, 100);
+            }
+        }
         
-        if (active) {
-            wrapper.setAttribute("data-bs-theme", "dark");
-            localStorage.setItem("theme", "dark");
-            if (themeIconActive) themeIconActive.style.display = "block";
-            if (themeIcon) themeIcon.style.display = "none";
-        } else {
-            wrapper.setAttribute("data-bs-theme", "light");
-            localStorage.setItem("theme", "light");
-            if (themeIconActive) themeIconActive.style.display = "none";
-            if (themeIcon) themeIcon.style.display = "block";
-        }
-    };
-    var toggleDarkMode = () => {
-        var theme = document.querySelector(":root").getAttribute("data-bs-theme");
-        // If the current theme is "light", we want to activate dark
-        setDarkMode(theme === "light");
-    };
-    var initDarkMode = () => {
-        var theme = localStorage.getItem("theme");
-        if (theme == "dark") {
-            setDarkMode(true);
-        } else {
-            setDarkMode(false);
-        }
-        var toggleButton = document.querySelector(".tt-theme-toggle");
-        toggleButton && toggleButton.addEventListener("click", toggleDarkMode);
-    };
-    initDarkMode();
+        // Handle clicks on footer links with tab hashes
+        $('a[href*="#pills-"]').on('click', function(e) {
+            var href = $(this).attr('href');
+            var hash = href.substring(href.indexOf('#'));
+            
+            // If we're on the homepage
+            if (window.location.pathname === '/' || window.location.pathname === '/index') {
+                e.preventDefault();
+                
+                // Find and activate the tab
+                var tabTrigger = document.querySelector('[data-bs-target="' + hash + '"]');
+                if (tabTrigger) {
+                    var tab = new bootstrap.Tab(tabTrigger);
+                    tab.show();
+                    
+                    // Scroll to the tab section
+                    var tabSection = document.querySelector(hash);
+                    if (tabSection) {
+                        setTimeout(function() {
+                            tabSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                }
+            }
+            // If we're on another page, let the link navigate normally
+        });
+    });
 });

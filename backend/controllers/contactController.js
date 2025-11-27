@@ -7,6 +7,13 @@ const sendContactMessage = async (req, res) => {
         console.log('📨 Contact form submission received');
         console.log('Request body:', JSON.stringify(req.body, null, 2));
         
+        // Log validation attempt
+        console.log('🔍 Starting validation for contact form submission:', {
+            timestamp: new Date().toISOString(),
+            messageLength: message ? message.length : 0,
+            hasAllFields: !!(firstName && lastName && email && countryCode && phone && message)
+        });
+        
         // Validation removed: previously used contactValidator.validateContactForm
         // Extract form data directly
         const {
@@ -18,7 +25,10 @@ const sendContactMessage = async (req, res) => {
             message
         } = req.body;
 
-        // Basic fallback validation to ensure required fields exist
+        // Comprehensive validation
+        const validationErrors = [];
+
+        // Check required fields
         if (!firstName || !lastName || !email || !countryCode || !phone || !message) {
             console.error('❌ Missing required fields');
             return res.status(400).json({
@@ -28,18 +38,78 @@ const sendContactMessage = async (req, res) => {
             });
         }
 
+        // Validate message length
+        if (message.length < 10) {
+            validationErrors.push({
+                field: 'message',
+                message: 'Message must be at least 10 characters long'
+            });
+        }
+
+        if (message.length > 500) {
+            validationErrors.push({
+                field: 'message',
+                message: 'Message must be 500 characters or less'
+            });
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            validationErrors.push({
+                field: 'email',
+                message: 'Please enter a valid email address'
+            });
+        }
+
+        // Validate name lengths
+        if (firstName.length > 50) {
+            validationErrors.push({
+                field: 'firstName',
+                message: 'First name must be 50 characters or less'
+            });
+        }
+
+        if (lastName.length > 50) {
+            validationErrors.push({
+                field: 'lastName',
+                message: 'Last name must be 50 characters or less'
+            });
+        }
+
+        // Return validation errors if any
+        if (validationErrors.length > 0) {
+            console.error('❌ Validation failed:', {
+                timestamp: new Date().toISOString(),
+                errors: validationErrors,
+                messageLength: message ? message.length : 0,
+                ipAddress: req.ip || 'Unknown'
+            });
+            return res.status(400).json({
+                success: false,
+                message: 'Validation failed',
+                errors: validationErrors
+            });
+        }
+
+        console.log('✅ Validation passed successfully:', {
+            timestamp: new Date().toISOString(),
+            messageLength: contactData.message.length,
+            fieldsCount: Object.keys(contactData).length
+        });
+
         // Normalize phone number (combine country code + phone)
         const fullPhone = `${countryCode}${phone}`.replace(/\s+/g, '');
 
-        // Prepare contact data for email
+        // Sanitize and prepare contact data for email
         const contactData = {
-            firstName: String(firstName).trim(),
-            lastName: String(lastName).trim(),
+            firstName: String(firstName).trim().replace(/[<>]/g, ''),
+            lastName: String(lastName).trim().replace(/[<>]/g, ''),
             email: String(email).toLowerCase().trim(),
             countryCode: String(countryCode).trim(),
-            phone: String(phone).trim(),
+            phone: String(phone).trim().replace(/[^\d\s\-\+\(\)]/g, ''),
             fullPhone: fullPhone,
-            message: String(message).trim(),
+            message: String(message).trim().replace(/[<>]/g, ''),
             submittedAt: new Date().toISOString(),
             userAgent: req.get('User-Agent') || 'Unknown',
             ipAddress: req.ip || req.connection.remoteAddress || 'Unknown'

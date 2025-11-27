@@ -74,7 +74,7 @@
 
         <!--register section start-->
         <section class="sign-up-in-section bg-dark ptb-120" style="background: url('/img/page-header-bg.svg')no-repeat bottom right">
-            <div class="container" style="padding-top: 100px;">
+            <div class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-5 col-lg-5 col-md-12 order-1 order-lg-0">
                         <div class="testimonial-tab-slider-wrap mt-5">
@@ -141,63 +141,63 @@
                             <h3 class="fw-medium h4">Fill out the form and we'll be in touch as soon as possible.</h3>
 
                             <!-- Success/Error Message Container -->
-                            <div id="form-message" class="alert" style="display: none; margin-bottom: 20px;"></div>
+                            <div id="form-message" class="alert" style="display: none;"></div>
 
-                            <form class="mt-4 register-form">
+                            <form class="mt-4 register-form" novalidate>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="position" class="form-control" placeholder="Position" aria-label="position" readonly>
+                                            <input type="text" id="position" class="form-control" placeholder="Position *" aria-label="position" readonly>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="name" class="form-control" placeholder="Name" aria-label="name">
+                                            <input type="text" id="name" class="form-control" placeholder="Name *" aria-label="name">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 ">
                                         <div class="input-group mb-3">
-                                            <input type="email" id="email" class="form-control" placeholder="Email" aria-label="email">
+                                            <input type="email" id="email" class="form-control" placeholder="Email *" aria-label="email">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="mobile" class="form-control" placeholder="Mobile No." aria-label="mobile-no">
+                                            <input type="text" id="mobile" class="form-control" placeholder="Mobile No. *" aria-label="mobile-no">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="experience" class="form-control" placeholder="Experience" aria-label="experience">
+                                            <input type="text" id="experience" class="form-control" placeholder="Experience *" aria-label="experience">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="cur_com" class="form-control" placeholder="Current Company" aria-label="cur-job-loc">
+                                            <input type="text" id="cur_com" class="form-control" placeholder="Current Company *" aria-label="cur-job-loc">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="cur_job_loc" class="form-control" placeholder="Current Job Location" aria-label="cur-job-loc">
+                                            <input type="text" id="cur_job_loc" class="form-control" placeholder="Current Job Location *" aria-label="cur-job-loc">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="cur_ctc" class="form-control" placeholder="Current CTC" aria-label="cur-ctc">
+                                            <input type="text" id="cur_ctc" class="form-control" placeholder="Current CTC *" aria-label="cur-ctc">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="exp_ctc" class="form-control" placeholder="Expected CTC" aria-label="exp-ctc">
+                                            <input type="text" id="exp_ctc" class="form-control" placeholder="Expected CTC *" aria-label="exp-ctc">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <input type="text" id="notice_period" class="form-control" placeholder="Notice Period" aria-label="notice-period">
+                                            <input type="text" id="notice_period" class="form-control" placeholder="Notice Period *" aria-label="notice-period">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-3">
-                                            <select class="form-control form-select" name="country" id="country" required="" data-msg="Please select your country.">
+                                            <select class="form-control form-select" name="country" id="country" data-msg="Please select your country.">
                                                 <option value="" selected="" disabled="">Country</option>
                                                 <option value="AF">Afghanistan</option>
                                                 <option value="AX">Åland Islands</option>
@@ -453,7 +453,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="input-group mb-3">
-                                            <textarea id="about" class="form-control" placeholder="Tell us more about your journey." style="height: 120px"></textarea>
+                                            <textarea id="about" class="form-control" placeholder="Tell us more about your journey. *" style="height: 120px"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -555,16 +555,27 @@
             // Hide any previous messages
             $('#form-message').hide();
             
-            // Basic validation
+            // Basic validation - check empty fields
             if (!name || !email || !mobile || !position) {
                 showMessage('Please fill in Name, Email, Mobile, and Position fields', 'error');
                 return;
             }
 
-            // Validate email format
+            // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.includes('@')) {
+                showMessage('Please include "@" in the email address', 'error');
+                return;
+            }
             if (!emailRegex.test(email)) {
-                showMessage('Please enter a valid email address', 'error');
+                showMessage('Please enter a valid email address (e.g., name@example.com)', 'error');
+                return;
+            }
+
+            // Mobile validation - at least 10 digits
+            const mobileDigits = mobile.replace(/\D/g, '');
+            if (mobileDigits.length < 10) {
+                showMessage('Please enter a valid mobile number (at least 10 digits)', 'error');
                 return;
             }
 
