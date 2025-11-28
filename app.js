@@ -1,6 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const path = require('path');
+const compression = require('compression');
 require('dotenv').config();
 const { startCronJobs } = require('./utils/keepLive');
 const imageOptimization = require('./middleware/imageOptimization');
@@ -14,9 +15,37 @@ app.set('view engine', 'ejs');
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
 
+// Enable GZIP compression for all responses
+app.use(compression({
+    level: 6, // Compression level (0-9)
+    threshold: 1024, // Only compress responses larger than 1KB
+    filter: (req, res) => {
+        if (req.headers['x-no-compression']) {
+            return false;
+        }
+        return compression.filter(req, res);
+    }
+}));
+
 // Add image optimization middleware before static files
 app.use(imageOptimization);
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static files with caching headers
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '1y', // Cache static assets for 1 year
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, path) => {
+        // Set cache control based on file type
+        if (path.endsWith('.html')) {
+            res.setHeader('Cache-Control', 'public, max-age=3600'); // 1 hour for HTML
+        } else if (path.endsWith('.css') || path.endsWith('.js')) {
+            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable'); // 1 year for CSS/JS
+        } else if (path.match(/\.(jpg|jpeg|png|gif|ico|svg|webp)$/)) {
+            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable'); // 1 year for images
+        }
+    }
+}));
 
 // Define a route
 app.get('/', (req, res) => {
@@ -32,13 +61,7 @@ app.get('/contactus', (req, res) => {
   res.render('contactus');
 });
 
-app.get('/portfolio_single', (req, res) => {
-  res.render('portfolio_single');
-});
 
-app.get('/blog_single', (req, res) => {
-  res.render('blog_single');
-});
 
 app.get('/career', (req, res) => {
   res.render('career');

@@ -1,4 +1,77 @@
 /* ========================================
+   HEADER REFRESH FIX - PREVENT HEADER ISSUES ON PAGE REFRESH
+   ======================================== */
+
+/* Ensure header is always visible and properly positioned on page load */
+.main-header,
+header.main-header {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Ensure navbar is always visible */
+.navbar,
+.navbar.sticky-header,
+nav.sticky-header {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+/* Ensure navbar collapse is properly displayed on desktop */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        flex-basis: auto !important;
+        flex-grow: 0 !important;
+    }
+    
+    .navbar-collapse.collapse:not(.show) {
+        display: flex !important;
+    }
+    
+    /* Override Bootstrap collapse transition on desktop */
+    .navbar-collapse.collapse,
+    .navbar-collapse.collapsing {
+        display: flex !important;
+        height: auto !important;
+        overflow: visible !important;
+        transition: none !important;
+    }
+}
+
+/* Ensure logo is always visible */
+.navbar-brand,
+.navbar-brand img {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure main menu is always visible on desktop */
+@media (min-width: 992px) {
+    .main-menu {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+/* ========================================
+   SCROLL OFFSET FIX - PREVENT CONTENT HIDING UNDER FIXED HEADER
+   ======================================== */
+
+/* Add scroll margin to tab sections so they don't hide under fixed header */
+[id^="pills-"],
+.tab-pane,
+section[id],
+div[id^="pills-"] {
+    scroll-margin-top: 100px;
+}
+
+/* ========================================
    AOS (ANIMATE ON SCROLL) FIX - PREVENT BLANK CONTENT
    ======================================== */
 
@@ -100,8 +173,52 @@ html.aos-initialized [data-aos].aos-animate {
 /* Fix: Prevent header shift/shake when toggling dark mode */
 /* Override the default "transition: all" with specific properties only */
 .sticky-header {
-    transition: transform 0.3s ease-in-out, padding 0.3s ease-in-out !important;
-    -webkit-transition: transform 0.3s ease-in-out, padding 0.3s ease-in-out !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease !important;
+    -webkit-transition: transform 0.3s ease-in-out, background-color 0.3s ease !important;
+}
+
+/* ========================================
+   HEADER BACKGROUND FIX - Prevent content showing behind header
+   ======================================== */
+
+/* Header should ALWAYS have solid white background */
+.main-header,
+header.main-header {
+    background-color: #ffffff !important;
+}
+
+.navbar.sticky-header,
+nav.sticky-header,
+.sticky-header {
+    background-color: #ffffff !important;
+}
+
+/* When scrolled (affix class), ensure solid background */
+.sticky-header.affix,
+.navbar.sticky-header.affix,
+nav.sticky-header.affix {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix: Keep header size constant - prevent resize on scroll */
+.sticky-header,
+.sticky-header.affix,
+.sticky-header.afeix,
+.sticky-header1,
+.sticky-header1.afeix,
+.navbar.sticky-header,
+.navbar.sticky-header.affix,
+.navbar.sticky-header.afeix,
+nav.sticky-header,
+nav.sticky-header.affix,
+nav.sticky-header.afeix,
+nav.sticky-header1,
+nav.sticky-header1.afeix {
+    padding: 20px 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+    background-color: #ffffff !important;
 }
 
 /* Prevent navbar and header elements from animating color/background changes */
@@ -152,7 +269,77 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9;
+    z-index: 99999 !important;
+}
+
+/* Ensure header stays on top of all content */
+.main-header {
+    position: relative !important;
+    z-index: 99999 !important;
+}
+
+header {
+    position: relative !important;
+    z-index: 99999 !important;
+}
+
+nav.sticky-header,
+.navbar.sticky-header {
+    z-index: 99999 !important;
+}
+
+/* CRITICAL: Dropdown menus must be above everything */
+.dropdown-menu {
+    z-index: 999999 !important;
+    position: absolute !important;
+}
+
+/* Ensure navbar-collapse allows dropdown to overflow */
+.navbar-collapse {
+    position: static !important;
+    overflow: visible !important;
+}
+
+/* Nav item dropdown positioning */
+.nav-item.dropdown {
+    position: relative !important;
+}
+
+.nav-item.dropdown.position-static {
+    position: static !important;
+}
+
+/* ========================================
+   DROPDOWN Z-INDEX FIX - PREVENT CONTENT OVERLAP
+   This ensures dropdown always appears above page content
+   ======================================== */
+
+/* Force dropdown to be above all page content */
+.navbar .dropdown-menu,
+.navbar-collapse .dropdown-menu,
+.main-menu .dropdown-menu,
+nav .dropdown-menu {
+    z-index: 999999 !important;
+}
+
+/* Dropdown when shown */
+.dropdown-menu.show {
+    z-index: 999999 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure dropdown grid items are visible */
+.dropdown-grid,
+.dropdown-grid-item {
+    position: relative;
+    z-index: inherit;
+}
+
+/* Fix for position-static dropdown (Services) */
+.nav-item.dropdown.position-static .dropdown-menu {
+    z-index: 999999 !important;
 }
 
 /* ========================================
@@ -163,6 +350,8 @@ html {
 /* Main wrapper should have padding-top for fixed header */
 .main-wrapper {
     padding-top: 80px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Sign up / Contact sections */
@@ -170,10 +359,50 @@ html {
     padding-top: 120px !important;
 }
 
-/* Hero sections on homepage */
+/* Hero sections on homepage - MUST be below header/dropdown */
 .hero-it-solution,
 .hero-section {
     padding-top: 100px !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Hero images and elements - keep below dropdown */
+.hero-it-solution .hero-img,
+.hero-section .hero-img,
+.hero-it-solution img,
+.hero-section img,
+.hero-it-solution .dots,
+.hero-section .dots,
+.hero-it-solution .bubble,
+.hero-section .bubble {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Page content sections - all below header */
+.ptb-120,
+.pt-120,
+.pb-120,
+.ptb-60,
+.pt-60,
+.pb-60 {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure all page sections stay below header */
+.main-wrapper section,
+.main-wrapper .container,
+.main-wrapper .row {
+    position: relative;
+    z-index: inherit;
+}
+
+/* All page sections should be below header */
+section {
+    position: relative;
+    z-index: 1;
 }
 
 /* All sections that come right after header */
@@ -192,6 +421,25 @@ html {
 }
 
 @media (max-width: 991.98px) {
+    /* Fix: Keep header size constant on mobile - prevent resize on scroll */
+    .sticky-header,
+    .sticky-header.affix,
+    .sticky-header.afeix,
+    .sticky-header1,
+    .sticky-header1.afeix,
+    .navbar.sticky-header,
+    .navbar.sticky-header.affix,
+    .navbar.sticky-header.afeix,
+    nav.sticky-header,
+    nav.sticky-header.affix,
+    nav.sticky-header.afeix,
+    nav.sticky-header1,
+    nav.sticky-header1.afeix {
+        padding: 20px 0 !important;
+        min-height: auto !important;
+        height: auto !important;
+    }
+    
     .main-wrapper {
         padding-top: 70px;
     }
@@ -224,21 +472,24 @@ html {
   row-gap: 14px;
 }
 .dropdown-menu .dropdown-link {
-  border-radius: 8px;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: all 0.25s ease !important;
 }
 .dropdown-menu .dropdown-link .demo-list {
   border-radius: 50%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  transition: all 0.25s ease !important;
 }
 .dropdown-menu .dropdown-link:hover {
-  background-color: rgba(13,110,253,0.06);
-  transform: translateX(4px);
-  box-shadow: 0 8px 22px rgba(13,110,253,0.08);
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .dropdown-menu .dropdown-link:hover .demo-list {
-  transform: scale(1.06);
-  box-shadow: 0 0 0 3px rgba(13,110,253,0.12);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 .dropdown-menu .dropdown-link:focus-visible {
   outline: 2px solid #0d6efd;
@@ -315,6 +566,8 @@ html {
 /* Reserve safe space under fixed header for hero sections with .page-header */
 .page-header {
   padding-top: 160px !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 @media (max-width: 991.98px) {
   .page-header { padding-top: 140px !important; }
@@ -335,88 +588,266 @@ html {
 /* About header safe area */
 .about-header-section {
   padding-top: 160px !important;
+  overflow: visible !important;
 }
 @media (max-width: 991.98px) {
   .about-header-section { padding-top: 140px !important; }
 }
 
-/* Services dropdown: complete fix to override main.css conflicts */
-.nav-item.dropdown.position-static .dropdown-menu {
-  position: absolute !important;
-  top: 100% !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  margin-top: 0.125rem !important;
-  max-height: 80vh;
-  overflow-y: auto;
-  z-index: 1000 !important;
-  display: none;
+/* ========================================
+   ABOUT PAGE - DESKTOP CONTENT VISIBILITY FIX
+   ======================================== */
+
+/* About Header - Ensure content is visible */
+.about-header-section .section-heading-wrap {
+  position: relative !important;
+  z-index: 10 !important;
 }
 
-.nav-item.dropdown.position-static:hover .dropdown-menu,
-.nav-item.dropdown.position-static .dropdown-menu.show {
+/* White overlay at bottom - Reduce height to not cover content */
+.about-header-section .bg-white.position-absolute.bottom-0.h-25 {
+  height: 15% !important;
+  z-index: 1 !important;
+}
+
+/* About Content - Ensure visibility */
+.about-content-left,
+.about-content-right {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* About Images - Proper display */
+.about-img-first,
+.about-img-last {
   display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
 }
 
-.dropdown-menu .dropdown-grid.width-full-services {
-  display: grid !important;
-  grid-template-columns: repeat(5, 1fr) !important;
-  width: 1000px !important;
-  max-width: 95vw;
-  gap: 0;
-  background: #fff !important;
+/* Our Story Section - Sticky sidebar fix */
+.our-story-section .sticky-sidebar {
+  position: relative !important;
 }
 
-.dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item {
-  min-width: 0;
-  padding: 15px;
-  border-right: 1px solid rgba(0,0,0,0.05);
+@media (min-width: 992px) {
+  .our-story-section .sticky-sidebar {
+    position: sticky !important;
+    top: 100px !important;
+  }
 }
 
-.dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item:last-child {
-  border-right: none;
+/* Values Section - Content visible */
+.feature-section-two .values-list {
+  position: relative !important;
 }
 
-/* Make sure dropdown doesn't get cut off */
-.dropdown-menu {
-  overflow: visible !important;
+.feature-section-two .values-list .d-flex {
+  margin-bottom: 1.5rem !important;
 }
 
-/* Override main.css dropdown positioning conflicts */
-.main-menu li.nav-item .dropdown-menu {
-  right: auto !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+/* Team Section - Proper grid */
+.team-section .row.justify-content-center {
+  gap: 20px !important;
 }
 
-/* Perfect Services dropdown functionality */
-.nav-item.dropdown.position-static .dropdown-toggle-split {
-  padding-left: 0rem !important;   /* match Industry spacing */
-  padding-right: 0.5rem !important;
-  border-left: none !important;
+.team-single-wrap {
+  text-align: center !important;
 }
 
-.nav-item.dropdown.position-static .dropdown-toggle-split::after {
-  margin-left: .255em !important;  /* same caret gap as default dropdown-toggle */
-}
+/* ========================================
+   DESKTOP DROPDOWN - PERFECT FUNCTIONALITY
+   Services & Industry Dropdowns
+   ======================================== */
 
-/* Make Services text-and-caret spacing match Industry exactly */
-.nav-item.dropdown.position-static.d-flex > .nav-link:not(.dropdown-toggle) {
-  padding-right: .25rem !important; /* same small gap before caret */
-  margin-right: 0 !important;
-}
-
-/* Smooth hover transitions */
-.nav-item.dropdown.position-static .dropdown-menu {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease !important;
-}
-
-.nav-item.dropdown.position-static:hover .dropdown-menu,
-.nav-item.dropdown.position-static .dropdown-menu.show {
-  opacity: 1 !important;
-  visibility: visible !important;
+/* Desktop Navigation - Show dropdowns on hover and click */
+@media (min-width: 992px) {
+  /* Dropdown Container - Position Static for Full Width */
+  .navbar-collapse .nav-item.dropdown {
+    position: relative !important;
+  }
+  
+  .navbar-collapse .nav-item.dropdown.position-static {
+    position: static !important;
+  }
+  
+  /* Dropdown Menu - Centered Below Nav Item - HIGHEST Z-INDEX */
+  .navbar-collapse .nav-item.dropdown .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0.125rem !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    z-index: 999999 !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+  }
+  
+  /* Show Dropdown on Hover or when .show class is added */
+  .navbar-collapse .nav-item.dropdown:hover .dropdown-menu,
+  .navbar-collapse .nav-item.dropdown .dropdown-menu.show {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Services Dropdown Grid - 5 Columns */
+  .dropdown-menu .dropdown-grid.width-full-services {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    width: 1000px !important;
+    max-width: 95vw !important;
+    gap: 0 !important;
+    background: #fff !important;
+    padding: 0 !important;
+  }
+  
+  .dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item {
+    min-width: 0 !important;
+    padding: 15px !important;
+    border-right: 1px solid rgba(0,0,0,0.05) !important;
+  }
+  
+  .dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item:last-child {
+    border-right: none !important;
+  }
+  
+  /* Industry Dropdown Grid - 2 Columns */
+  .dropdown-menu .dropdown-grid.width-full-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 720px !important;
+    max-width: 90vw !important;
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+    background: #fff !important;
+    padding: 0 !important;
+  }
+  
+  .dropdown-menu .dropdown-grid.width-full-2 .dropdown-grid-item {
+    min-width: 0 !important;
+    padding: 15px !important;
+  }
+  
+  /* Dropdown Toggle Styling */
+  .navbar-collapse .nav-item.dropdown .dropdown-toggle,
+  .navbar-collapse .nav-item.dropdown .dropdown-toggle-split {
+    cursor: pointer !important;
+    user-select: none !important;
+  }
+  
+  /* Services Split Button Spacing */
+  .nav-item.dropdown.position-static .dropdown-toggle-split {
+    padding-left: 0rem !important;
+    padding-right: 0.5rem !important;
+    border-left: none !important;
+  }
+  
+  .nav-item.dropdown.position-static .dropdown-toggle-split::after {
+    margin-left: .255em !important;
+  }
+  
+  /* Services Text Link Spacing */
+  .nav-item.dropdown.position-static.d-flex > .nav-link:not(.dropdown-toggle) {
+    padding-right: .25rem !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Dropdown Link Hover Effects - Only Show on Hover */
+  .dropdown-menu .dropdown-link {
+    transition: all 0.25s ease !important;
+    cursor: pointer !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 10px !important;
+  }
+  
+  .dropdown-menu .dropdown-link:hover {
+    background-color: #e9ecef !important;
+    border-color: #ced4da !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Keep text colors same on hover */
+  .dropdown-menu .dropdown-link:hover .drop-title,
+  .dropdown-menu .dropdown-link:hover .dropdown-info .drop-title {
+    color: #1a1a1a !important;
+  }
+  
+  .dropdown-menu .dropdown-link:hover .dropdown-info p {
+    color: #495057 !important;
+  }
+  
+  /* Icon stays same on hover */
+  .dropdown-menu .dropdown-link:hover .service-icon-wrapper i,
+  .dropdown-menu .dropdown-link:hover .industry-icon-wrapper i {
+    color: #0d6efd !important;
+  }
+  
+  /* Force override any other hover effects */
+  .navbar-collapse .dropdown-menu .dropdown-link:hover,
+  .main-menu .dropdown-menu .dropdown-link:hover {
+    background-color: #e9ecef !important;
+    border-color: #ced4da !important;
+  }
+  
+  /* Prevent dropdown from being cut off */
+  .navbar-collapse {
+    overflow: visible !important;
+  }
+  
+  .main-header {
+    overflow: visible !important;
+  }
+  
+  /* Dark Mode Dropdown Styling */
+  [data-bs-theme=dark] .navbar-collapse .nav-item.dropdown .dropdown-menu {
+    background: #1f2937 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .dropdown-grid.width-full-services,
+  [data-bs-theme=dark] .dropdown-menu .dropdown-grid.width-full-2 {
+    background: #1f2937 !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .dropdown-grid-item {
+    background: #1f2937 !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .dropdown-link {
+    background-color: transparent !important;
+    border-color: transparent !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .dropdown-link:hover {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .drop-heading {
+    color: #ffffff !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .drop-title {
+    color: #e5e7eb !important;
+  }
+  
+  [data-bs-theme=dark] .dropdown-menu .dropdown-info p {
+    color: #9ca3af !important;
+  }
 }
 
 
@@ -441,16 +872,21 @@ html {
 /* Industry dropdown subtitle - Unique & Beautiful */
 .dropdown-menu .dropdown-info p {
   display: block !important;
-  font-size: 13.5px !important;
+  font-size: 13px !important;
   color: #6c757d !important;
-  margin-bottom: 0 !important;
-  margin-top: 5px !important;
-  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
   opacity: 0.95 !important;
   visibility: visible !important;
   font-weight: 400 !important;
   letter-spacing: 0.2px !important;
   transition: all 0.3s ease !important;
+}
+
+/* Hide subtitle in Services dropdown (only show in Industry) */
+.dropdown-grid.width-full-services .dropdown-info p {
+  display: none !important;
 }
 
 /* Enhanced subtitle on hover */
@@ -462,16 +898,63 @@ html {
 
 /* Title styling for better contrast */
 .dropdown-menu .dropdown-info .drop-title {
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   color: #262626 !important;
-  margin-bottom: 2px !important;
-  line-height: 1.4 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
   transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .dropdown-menu .dropdown-link:hover .dropdown-info .drop-title {
   color: #0d6efd !important;
+}
+
+/* Fix spacing between title and subtitle */
+.dropdown-menu .dropdown-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+/* Align dropdown link items properly - Perfect horizontal baseline */
+.dropdown-menu .dropdown-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 15px !important;
+  min-height: 40px !important;
+  height: 40px !important;
+}
+
+/* Ensure icon wrapper stays centered and fixed size */
+.dropdown-menu .dropdown-link .service-icon-wrapper,
+.dropdown-menu .dropdown-link .industry-icon-wrapper {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Ensure text content aligns on same baseline */
+.dropdown-menu .dropdown-link .dropdown-info {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  flex: 1 !important;
+  line-height: 1 !important;
+}
+
+/* Force all dropdown links to same height */
+.dropdown-menu .dropdown-grid-item .dropdown-link {
+  box-sizing: border-box !important;
 }
 
 
@@ -647,7 +1130,37 @@ img[src$="/img/results.png"] {
 [data-bs-theme=dark] .section-heading h2,
 [data-bs-theme=dark] .section-heading .h2,
 [data-bs-theme=dark] .section-heading h1,
-[data-bs-theme=dark] .section-heading .h1 {
+[data-bs-theme=dark] .section-heading {
+  color: #ffffff !important;
+}
+
+/* ========================================
+   FOOTER LINK SPACING FIX - REDUCE EXCESSIVE SPACE
+   ======================================== */
+
+/* Footer navigation list - Reduce spacing between links */
+.footer-nav-list li {
+  margin-bottom: 8px !important;
+  line-height: 1.4 !important;
+}
+
+.footer-nav-list li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Footer links - Proper spacing */
+.footer-nav-list li a {
+  display: inline-block !important;
+  padding: 2px 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Mobile responsive - Even tighter spacing */
+@media (max-width: 767.98px) {
+  .footer-nav-list li {
+    margin-bottom: 6px !important;
+  }
+}ng .h1 {
   color: #ffffff !important;
 }
 
@@ -707,17 +1220,55 @@ img[src$="/img/results.png"] {
 
 /* Footer list items */
 .footer-nav-list li {
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 0 !important;
   position: relative !important;
   z-index: 10 !important;
+}
+
+/* Footer contact icons styling */
+.footer-nav-list a i {
+  color: #3b82f6 !important;
+  font-size: 16px !important;
+  transition: all 0.3s ease !important;
+  vertical-align: middle !important;
+}
+
+.footer-nav-list a:hover i {
+  color: #60a5fa !important;
+  transform: scale(1.1) !important;
+}
+
+/* Phone icon specific styling */
+.footer-nav-list a i.fa-phone-alt {
+  color: #10b981 !important;
+}
+
+.footer-nav-list a:hover i.fa-phone-alt {
+  color: #34d399 !important;
+}
+
+/* Email icon specific styling */
+.footer-nav-list a i.fa-envelope {
+  color: #f59e0b !important;
+}
+
+.footer-nav-list a:hover i.fa-envelope {
+  color: #fbbf24 !important;
+}
+
+/* Address/Location icon specific styling */
+.footer-nav-list li i.fa-map-marker-alt {
+  color: #ef4444 !important;
+  font-size: 16px !important;
+  margin-right: 8px !important;
 }
 
 /* Footer headings */
 .footer-section h3 {
   color: #ffffff !important;
-  font-size: 1.25rem !important;
+  font-size: 1.1rem !important;
   font-weight: 600 !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 /* Copyright link */
@@ -738,6 +1289,32 @@ img[src$="/img/results.png"] {
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* Premium footer background enhancement */
+.footer-section {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.footer-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.03) 0%, transparent 50%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.footer-section .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
 [data-bs-theme=dark] .footer-section h5,
 [data-bs-theme=dark] .footer-section .h5,
 [data-bs-theme=dark] .footer-section h3 {
@@ -756,6 +1333,253 @@ img[src$="/img/results.png"] {
 [data-bs-theme=dark] .footer-section a:hover {
   color: #d1d5db !important;
   opacity: 0.8 !important;
+}
+
+/* Footer contact icons in dark mode */
+[data-bs-theme=dark] .footer-nav-list a i.fa-phone-alt {
+  color: #34d399 !important;
+}
+
+[data-bs-theme=dark] .footer-nav-list a:hover i.fa-phone-alt {
+  color: #6ee7b7 !important;
+}
+
+[data-bs-theme=dark] .footer-nav-list a i.fa-envelope {
+  color: #fbbf24 !important;
+}
+
+[data-bs-theme=dark] .footer-nav-list a:hover i.fa-envelope {
+  color: #fcd34d !important;
+}
+
+/* ========================================
+   PREMIUM FOOTER HOVER EFFECTS - GLASSMORPHISM & NEON GLOW
+   ======================================== */
+
+/* Footer link base styling - Premium glassmorphism */
+.footer-nav-list li a {
+  position: relative !important;
+  display: inline-block !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden !important;
+  letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+}
+
+/* Neon underline that grows from left to right */
+.footer-nav-list li a::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899) !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3) !important;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ripple pulse background effect */
+.footer-nav-list li a::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent) !important;
+  transform: translate(-50%, -50%) !important;
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hover state - Premium effects */
+.footer-nav-list li a:hover {
+  background: rgba(59, 130, 246, 0.08) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 
+    0 4px 20px rgba(59, 130, 246, 0.2),
+    0 0 30px rgba(139, 92, 246, 0.15),
+    inset 0 0 20px rgba(59, 130, 246, 0.05) !important;
+  transform: translateY(-3px) !important;
+  
+  /* Gradient text glow - keep text visible */
+  color: #e5e7eb !important;
+  text-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.5),
+    0 0 20px rgba(139, 92, 246, 0.3),
+    0 0 30px rgba(236, 72, 153, 0.2) !important;
+}
+
+/* Neon underline grows on hover */
+.footer-nav-list li a:hover::before {
+  width: 100% !important;
+}
+
+/* Ripple pulse on hover */
+.footer-nav-list li a:hover::after {
+  width: 200% !important;
+  height: 200% !important;
+  opacity: 1 !important;
+}
+
+/* Active/Focus state */
+.footer-nav-list li a:active,
+.footer-nav-list li a:focus {
+  transform: translateY(-1px) scale(0.98) !important;
+  box-shadow: 
+    0 2px 10px rgba(59, 130, 246, 0.3),
+    inset 0 0 15px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Different hover variations for each column */
+
+/* Primary Pages - Blue to Cyan gradient */
+.footer-single-col:nth-child(1) .footer-nav-list li a:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+  box-shadow: 
+    0 4px 20px rgba(59, 130, 246, 0.3),
+    0 0 30px rgba(6, 182, 212, 0.2) !important;
+  text-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.6),
+    0 0 20px rgba(6, 182, 212, 0.4) !important;
+}
+
+.footer-single-col:nth-child(1) .footer-nav-list li a::before {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Our Services - Purple to Pink gradient */
+.footer-single-col:nth-child(2) .footer-nav-list li a:hover {
+  background: rgba(139, 92, 246, 0.1) !important;
+  box-shadow: 
+    0 4px 20px rgba(139, 92, 246, 0.3),
+    0 0 30px rgba(236, 72, 153, 0.2) !important;
+  text-shadow: 
+    0 0 10px rgba(139, 92, 246, 0.6),
+    0 0 20px rgba(236, 72, 153, 0.4) !important;
+}
+
+.footer-single-col:nth-child(2) .footer-nav-list li a::before {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899) !important;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.6), 0 0 20px rgba(236, 72, 153, 0.4) !important;
+}
+
+/* Sales Inquiry - Green to Emerald gradient */
+.footer-single-col:nth-child(3) .footer-nav-list li a:hover {
+  background: rgba(16, 185, 129, 0.1) !important;
+  box-shadow: 
+    0 4px 20px rgba(16, 185, 129, 0.3),
+    0 0 30px rgba(20, 184, 166, 0.2) !important;
+  text-shadow: 
+    0 0 10px rgba(16, 185, 129, 0.6),
+    0 0 20px rgba(20, 184, 166, 0.4) !important;
+}
+
+.footer-single-col:nth-child(3) .footer-nav-list li a::before {
+  background: linear-gradient(90deg, #10b981, #14b8a6) !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6), 0 0 20px rgba(20, 184, 166, 0.4) !important;
+}
+
+/* Icon animation on hover */
+.footer-nav-list li a:hover i {
+  animation: iconPulse 0.6s ease-in-out !important;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+/* Smooth entrance animation for footer items */
+.footer-nav-list li {
+  animation: fadeInUp 0.6s ease-out backwards !important;
+}
+
+.footer-nav-list li:nth-child(1) { animation-delay: 0.1s !important; }
+.footer-nav-list li:nth-child(2) { animation-delay: 0.2s !important; }
+.footer-nav-list li:nth-child(3) { animation-delay: 0.3s !important; }
+.footer-nav-list li:nth-child(4) { animation-delay: 0.4s !important; }
+.footer-nav-list li:nth-child(5) { animation-delay: 0.5s !important; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium glow effect on footer headings */
+.footer-single-col h3 {
+  position: relative !important;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3) !important;
+  animation: headingGlow 3s ease-in-out infinite !important;
+}
+
+@keyframes headingGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* Dark mode adjustments for premium effects */
+[data-bs-theme=dark] .footer-nav-list li a {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .footer-nav-list li a:hover {
+  background: rgba(59, 130, 246, 0.12) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 
+    0 4px 25px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.2),
+    inset 0 0 25px rgba(59, 130, 246, 0.08) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991.98px) {
+  .footer-top {
+    padding: 40px 0 30px 0 !important;
+  }
+  
+  .footer-nav-list li {
+    margin-bottom: 0.4rem !important;
+  }
+  
+  .footer-nav-list li a {
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+  }
+  
+  .footer-nav-list li a:hover {
+    transform: translateY(-2px) !important;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.8rem !important;
+  }
 }
 
 /* Fix cards and content boxes in dark mode */
@@ -2233,4 +3057,1404 @@ ul.brand-logo-grid li.logo-card {
 /* Team cards */
 .team-single-wrap {
   cursor: pointer !important;
+}
+
+
+/* ========================================
+   SERVICES DROPDOWN - PERFECT LAYOUT (IMAGE REFERENCE)
+   ======================================== */
+
+/* Services dropdown grid - 5 equal columns */
+.dropdown-menu .dropdown-grid.width-full-services {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(160px, 1fr)) !important;
+    width: 950px !important;
+    max-width: 95vw !important;
+    gap: 0 !important;
+    background: #fff !important;
+}
+
+/* Each column */
+.dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item {
+    padding: 20px 12px !important;
+    border-right: 1px solid #f0f0f0 !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+}
+
+.dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item:last-child {
+    border-right: none !important;
+}
+
+/* Column headings */
+.dropdown-grid-item .drop-heading {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    display: block !important;
+}
+
+/* Dropdown links */
+.dropdown-grid-item .dropdown-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 0 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.dropdown-grid-item .dropdown-link:hover {
+    background: transparent !important;
+}
+
+.dropdown-grid-item .dropdown-link:hover .drop-title {
+    color: #0d6efd !important;
+}
+
+/* Icon wrapper */
+.dropdown-grid-item .service-icon-wrapper {
+    flex-shrink: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Dropdown title */
+.dropdown-grid-item .dropdown-info .drop-title {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word !important;
+}
+
+/* Hide subtitle in services */
+.dropdown-grid.width-full-services .dropdown-info p {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .dropdown-menu .dropdown-grid.width-full-services {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    .dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item {
+        border-right: none !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        padding: 15px !important;
+    }
+    
+    .dropdown-menu .dropdown-grid.width-full-services .dropdown-grid-item:last-child {
+        border-bottom: none !important;
+    }
+}
+
+/* ========================================
+   LAN.EJS PAGE - HIDE LEFT SIDE COMPANY LOGO
+   Technology detail pages - Remove left side image
+   ======================================== */
+
+/* Hide the company-logo div in page header sections */
+.page-header .company-info-wrap .company-logo {
+    display: none !important;
+}
+
+/* Adjust company-overview to take full width when logo is hidden */
+.page-header .company-info-wrap .company-overview {
+    flex: 1 !important;
+}
+
+/* Style for Connect Dataevol button in header */
+.page-header .connect-dataevol-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #0d6efd;
+    color: #fff !important;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.page-header .connect-dataevol-btn:hover {
+    background: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+}
+
+
+/* ========================================
+   PAGE HEADER CENTER ALIGNMENT - LIKE MAGNUSMINDS EXAMPLE
+   All lan.ejs pages - Heading, Text & Button Centered
+   COMPACT HEIGHT - Reduced padding
+   ======================================== */
+
+/* Reduce page header height - COMPACT */
+.page-header.ptb-120 {
+  padding-top: 100px !important;
+  padding-bottom: 50px !important;
+}
+
+/* Center the entire page header content */
+.page-header .container .row {
+  justify-content: center !important;
+}
+
+.page-header .company-info-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+/* Hide the logo box on left side */
+.page-header .company-logo {
+  display: none !important;
+}
+
+/* Center the company overview content */
+.page-header .company-overview {
+  text-align: center !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+}
+
+/* Center the heading - smaller margin */
+.page-header .company-overview h1,
+.page-header .company-overview .display-5 {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+  font-size: 2.2rem !important;
+}
+
+/* Center the description text - compact */
+.page-header .company-overview p,
+.page-header .company-overview .lead {
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  max-width: 650px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Center the Connect Dataevol button */
+.page-header .connect-dataevol-btn {
+  display: inline-block !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  padding: 10px 28px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+.page-header .connect-dataevol-btn:hover {
+  background: #2563eb !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Make the column full width for centering */
+.page-header .col-lg-8 {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  text-align: center !important;
+}
+
+/* Hide decorative circles if needed */
+.page-header .bg-circle {
+  display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .page-header.ptb-120 {
+    padding-top: 90px !important;
+    padding-bottom: 40px !important;
+  }
+  
+  .page-header .company-overview {
+    max-width: 100% !important;
+    padding: 0 15px !important;
+  }
+  
+  .page-header .company-overview p,
+  .page-header .company-overview .lead {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .page-header.ptb-120 {
+    padding-top: 80px !important;
+    padding-bottom: 35px !important;
+  }
+  
+  .page-header .company-overview h1,
+  .page-header .company-overview .display-5 {
+    font-size: 1.6rem !important;
+  }
+  
+  .page-header .connect-dataevol-btn {
+    padding: 10px 25px !important;
+    font-size: 13px !important;
+  }
+}
+
+
+/* ========================================
+   HERO IMAGE - DESKTOP DOTS & BUBBLES FIX
+   Proper positioning for decorative elements
+   ======================================== */
+
+/* Hero Image Container - Proper positioning */
+.hero-img {
+    position: relative !important;
+}
+
+/* Dots Container */
+.hero-img .dots {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Dot 1 - Bottom Left Blue Dots Pattern */
+.hero-img .dots .dot-1 {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 65px !important;
+    z-index: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* Dot 2 - Top Right Blue Dots Pattern */
+.hero-img .dots .dot-2 {
+    position: absolute !important;
+    top: 115px !important;
+    right: 25px !important;
+    z-index: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* Bubble Container */
+.hero-img .bubble {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Bubble 1 - Large Blue Circle - Bottom Left */
+.hero-img .bubble .bubble-1 {
+    position: absolute !important;
+    height: 160px !important;
+    width: 160px !important;
+    background-color: #175cff !important;
+    border-radius: 50% !important;
+    left: 0 !important;
+    bottom: 10% !important;
+    z-index: 0 !important;
+}
+
+/* Bubble 2 - White Circle - Top Right */
+.hero-img .bubble .bubble-2 {
+    position: absolute !important;
+    height: 85px !important;
+    width: 85px !important;
+    background-color: #fff !important;
+    border-radius: 50% !important;
+    right: 0 !important;
+    top: 30% !important;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1) !important;
+    z-index: 0 !important;
+}
+
+/* Main Hero Image - Above decorations */
+.hero-img > img.img-fluid {
+    position: relative !important;
+    z-index: 1 !important;
+    border-radius: 20px !important;
+}
+
+
+/* ========================================
+   ABOUT PAGE - DESKTOP LAYOUT FIX
+   Content cut issue fix, proper spacing
+   ======================================== */
+
+/* About Header Section - Full visibility */
+.about-header-section {
+    padding-top: 140px !important;
+    padding-bottom: 80px !important;
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* Section Heading Wrap - Proper flex layout */
+.about-header-section .section-heading-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+}
+
+/* About Content Left - Text and first image */
+.about-header-section .about-content-left {
+    flex: 1 !important;
+    min-width: 300px !important;
+    max-width: 55% !important;
+}
+
+/* About Content Right - Two images stacked */
+.about-header-section .about-content-right {
+    flex: 0 0 40% !important;
+    max-width: 40% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
+
+/* About Images - Proper sizing */
+.about-header-section .about-img-first,
+.about-header-section .about-img-last {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+}
+
+/* White overlay at bottom - Reduce height */
+.about-header-section .bg-white.position-absolute.bottom-0 {
+    height: 10% !important;
+    max-height: 80px !important;
+}
+
+/* About Info Section */
+.about-header-section .about-info {
+    margin-bottom: 30px !important;
+}
+
+.about-header-section .about-info h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 20px !important;
+}
+
+.about-header-section .about-info p {
+    font-size: 1.1rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 20px !important;
+}
+
+/* Our Story Section - Proper layout */
+.our-story-section {
+    padding-top: 60px !important;
+    padding-bottom: 100px !important;
+}
+
+.our-story-section .sticky-sidebar {
+    position: relative !important;
+}
+
+@media (min-width: 992px) {
+    .our-story-section .sticky-sidebar {
+        position: sticky !important;
+        top: 120px !important;
+    }
+}
+
+/* Story Grid - Stats boxes */
+.story-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0 !important;
+}
+
+.story-item {
+    padding: 30px 20px !important;
+    text-align: center !important;
+}
+
+/* Feature Section Two - Values */
+.feature-section-two {
+    padding: 80px 0 !important;
+}
+
+.feature-section-two .values-list .d-flex {
+    margin-bottom: 25px !important;
+}
+
+/* Team Section */
+.team-section {
+    padding: 80px 0 !important;
+}
+
+.team-section .row.justify-content-center {
+    gap: 20px !important;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 991.98px) {
+    .about-header-section {
+        padding-top: 120px !important;
+        padding-bottom: 60px !important;
+    }
+    
+    .about-header-section .section-heading-wrap {
+        flex-direction: column !important;
+    }
+    
+    .about-header-section .about-content-left,
+    .about-header-section .about-content-right {
+        max-width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+    
+    .about-header-section .about-content-right {
+        flex-direction: row !important;
+        gap: 15px !important;
+    }
+    
+    .about-header-section .about-img-first,
+    .about-header-section .about-img-last {
+        max-height: 200px !important;
+    }
+    
+    .about-header-section .about-info h1 {
+        font-size: 2rem !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 767.98px) {
+    .about-header-section {
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    .about-header-section .about-content-right {
+        flex-direction: column !important;
+    }
+    
+    .about-header-section .about-img-first,
+    .about-header-section .about-img-last {
+        max-height: 180px !important;
+    }
+    
+    .about-header-section .about-info h1 {
+        font-size: 1.6rem !important;
+        text-align: center !important;
+    }
+    
+    .about-header-section .about-info p {
+        text-align: center !important;
+        font-size: 1rem !important;
+    }
+    
+    .about-header-section .about-info .btn {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .our-story-section {
+        padding-top: 40px !important;
+        padding-bottom: 60px !important;
+    }
+    
+    .feature-section-two {
+        padding: 50px 0 !important;
+    }
+    
+    .team-section {
+        padding: 50px 0 !important;
+    }
+}
+
+/* ========================================
+   PAGE LOAD OPTIMIZATION - Reduce animations
+   ======================================== */
+
+/* Disable heavy animations for faster load */
+.about-header-section [data-aos],
+.our-story-section [data-aos],
+.feature-section-two [data-aos],
+.team-section [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Optimize image loading */
+.about-header-section img,
+.our-story-section img,
+.feature-section-two img,
+.team-section img {
+    will-change: auto !important;
+}
+
+/* ========================================
+   FOOTER - PROPER DISPLAY FIX
+   ======================================== */
+
+/* Footer Section - Ensure visibility */
+.footer-section {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 0 !important;
+}
+
+/* Footer Top */
+.footer-top {
+    padding: 35px 0 25px 0 !important;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    padding: 15px 0 !important;
+}
+
+/* Footer Nav List - Proper spacing */
+.footer-nav-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-nav-list li {
+    margin-bottom: 8px !important;
+    line-height: 1.6 !important;
+}
+
+/* Footer Headings */
+.footer-section h3 {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 15px !important;
+    color: #fff !important;
+}
+
+/* Footer Links */
+.footer-nav-list a {
+    color: #e5e7eb !important;
+    text-decoration: none !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.footer-nav-list a:hover {
+    opacity: 0.8 !important;
+}
+
+/* Footer Logo */
+.footer-section .logo-white {
+    max-width: 200px !important;
+    height: auto !important;
+}
+
+.footer-section .logo-color {
+    display: none !important;
+}
+
+/* Copyright */
+.copyright-text {
+    font-size: 14px !important;
+    color: #e5e7eb !important;
+}
+
+.copyright-text a {
+    color: #e5e7eb !important;
+}
+
+/* Mobile Footer */
+@media (max-width: 991.98px) {
+    .footer-top {
+        padding: 30px 0 20px 0 !important;
+    }
+    
+    .footer-section .col-md-8,
+    .footer-section .col-lg-4,
+    .footer-section .col-lg-7 {
+        margin-bottom: 25px !important;
+    }
+    
+    .footer-section h3 {
+        font-size: 1rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .footer-nav-list li {
+        margin-bottom: 6px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .footer-top {
+        padding: 25px 0 15px 0 !important;
+        text-align: center !important;
+    }
+    
+    .footer-section .footer-single-col {
+        margin-bottom: 20px !important;
+    }
+    
+    .footer-section .logo-white {
+        max-width: 160px !important;
+        margin: 0 auto 15px auto !important;
+        display: block !important;
+    }
+    
+    .copyright-text {
+        text-align: center !important;
+    }
+}
+
+
+/* ========================================
+   ABOUT PAGE - MOBILE PERFECT FIX
+   Images not cut, proper layout
+   ======================================== */
+
+/* Mobile - All screens below 768px */
+@media (max-width: 767.98px) {
+    /* About Header Section - Mobile */
+    .about-header-section {
+        padding: 85px 15px 25px 15px !important;
+        overflow: visible !important;
+    }
+    
+    .about-header-section .container {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    .about-header-section .row {
+        margin: 0 !important;
+    }
+    
+    .about-header-section .col-12 {
+        padding: 0 !important;
+    }
+    
+    /* Section Heading Wrap - Stack vertically */
+    .about-header-section .section-heading-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+    
+    /* About Content Left - Full width */
+    .about-header-section .about-content-left {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+    
+    /* About Info - Centered text */
+    .about-header-section .about-info {
+        text-align: center !important;
+        margin-bottom: 20px !important;
+        padding: 0 10px !important;
+    }
+    
+    .about-header-section .about-info h1 {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 12px !important;
+        color: #fff !important;
+    }
+    
+    .about-header-section .about-info p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    /* Buttons - Full width, centered */
+    .about-header-section .about-info .btn {
+        display: block !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 8px auto !important;
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    /* First Image - Full width, no cut */
+    .about-header-section .about-img-first {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+        margin-top: 15px !important;
+        display: block !important;
+    }
+    
+    /* About Content Right - Full width */
+    .about-header-section .about-content-right {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 1 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    
+    /* Right side images - Full width, no cut */
+    .about-header-section .about-content-right img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+        display: block !important;
+        margin: 0 !important;
+    }
+    
+    /* Hide white overlay on mobile */
+    .about-header-section .bg-white.position-absolute.bottom-0 {
+        display: none !important;
+    }
+    
+    /* Our Story Section - Mobile */
+    .our-story-section {
+        padding: 40px 15px 60px 15px !important;
+    }
+    
+    .our-story-section .section-heading {
+        text-align: center !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .our-story-section .section-heading h4,
+    .our-story-section .section-heading h2,
+    .our-story-section .section-heading p {
+        text-align: center !important;
+    }
+    
+    /* Story Grid - 2 columns */
+    .story-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0 !important;
+    }
+    
+    .story-item {
+        padding: 15px 10px !important;
+        text-align: center !important;
+    }
+    
+    .story-item h3 {
+        font-size: 1.6rem !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .story-item h6 {
+        font-size: 0.75rem !important;
+    }
+    
+    /* Feature Section - Values - Mobile */
+    .feature-section-two {
+        padding: 50px 15px !important;
+    }
+    
+    .feature-section-two .section-heading {
+        text-align: center !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .feature-section-two .values-list .d-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .feature-section-two .values-list .bg-white {
+        margin-bottom: 12px !important;
+        margin-right: 0 !important;
+    }
+    
+    .feature-section-two .values-list h5 {
+        text-align: center !important;
+    }
+    
+    .feature-section-two .values-list p {
+        text-align: center !important;
+    }
+    
+    .feature-section-two img[src="/img/bg.png"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin-top: 25px !important;
+    }
+    
+    /* Team Section - Mobile */
+    .team-section {
+        padding: 50px 15px !important;
+    }
+    
+    .team-section .section-heading {
+        text-align: center !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .team-section .row.justify-content-center {
+        gap: 15px !important;
+        justify-content: center !important;
+    }
+    
+    .team-section .col-auto {
+        width: 100% !important;
+        max-width: 280px !important;
+    }
+    
+    .team-single-wrap {
+        margin-bottom: 20px !important;
+        text-align: center !important;
+    }
+    
+    .team-single-wrap .team-img {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .team-single-wrap .team-img img {
+        width: 200px !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+    }
+    
+    .team-single-wrap .team-info {
+        text-align: center !important;
+    }
+}
+
+/* Extra Small Mobile - Below 576px */
+@media (max-width: 575.98px) {
+    .about-header-section {
+        padding: 80px 12px 20px 12px !important;
+    }
+    
+    .about-header-section .about-info h1 {
+        font-size: 1.3rem !important;
+    }
+    
+    .about-header-section .about-info p {
+        font-size: 0.9rem !important;
+    }
+    
+    .about-header-section .about-info .btn {
+        font-size: 13px !important;
+        padding: 9px 18px !important;
+        max-width: 260px !important;
+    }
+    
+    .story-item {
+        padding: 12px 8px !important;
+    }
+    
+    .story-item h3 {
+        font-size: 1.4rem !important;
+    }
+    
+    .story-item h6 {
+        font-size: 0.7rem !important;
+    }
+    
+    .team-single-wrap .team-img img {
+        width: 180px !important;
+        height: 180px !important;
+    }
+}
+
+/* Very Small Mobile - Below 400px */
+@media (max-width: 399.98px) {
+    .about-header-section .about-info h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    .about-header-section .about-info p {
+        font-size: 0.85rem !important;
+    }
+    
+    .story-item h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .team-single-wrap .team-img img {
+        width: 160px !important;
+        height: 160px !important;
+    }
+}
+
+
+/* ========================================
+   TEAM SECTION - RESPONSIVE IMAGES
+   Desktop & Mobile Perfect Display
+   ======================================== */
+
+/* Team Section Container */
+.team-section {
+    padding: 80px 20px !important;
+}
+
+.team-section .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Team Grid - Centered Layout */
+.team-section .row {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+}
+
+/* Team Card Wrapper */
+.team-single-wrap {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    transition: transform 0.3s ease !important;
+}
+
+.team-single-wrap:hover {
+    transform: translateY(-10px) !important;
+}
+
+/* Team Image Container */
+.team-img {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    background: #f8f9fa !important;
+}
+
+/* Desktop - Default size */
+.team-member-img {
+    width: 300px !important;
+    height: 300px !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 20px !important;
+    display: block !important;
+    margin: 0 auto !important;
+    transition: transform 0.3s ease !important;
+}
+
+.team-single-wrap:hover .team-member-img {
+    transform: scale(1.05) !important;
+}
+
+/* Team Info - Name & Title */
+.team-info {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 20px 10px 0 10px !important;
+}
+
+.team-info h5 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #2d2d2d !important;
+    margin-bottom: 8px !important;
+}
+
+.team-info p {
+    font-size: 0.95rem !important;
+    color: #666 !important;
+    margin: 0 !important;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablet - Medium Screens */
+@media (max-width: 991.98px) {
+    .team-section {
+        padding: 60px 20px !important;
+    }
+    
+    .team-section .row {
+        gap: 30px !important;
+    }
+    
+    .team-member-img {
+        width: 280px !important;
+        height: 280px !important;
+    }
+    
+    .team-info h5 {
+        font-size: 1.15rem !important;
+    }
+    
+    .team-info p {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Mobile - Small Screens */
+@media (max-width: 767.98px) {
+    .team-section {
+        padding: 50px 15px !important;
+    }
+    
+    .team-section .row {
+        gap: 25px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .team-single-wrap {
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+    
+    .team-member-img {
+        width: 250px !important;
+        height: 250px !important;
+    }
+    
+    .team-info h5 {
+        font-size: 1.1rem !important;
+    }
+    
+    .team-info p {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 575.98px) {
+    .team-section {
+        padding: 40px 15px !important;
+    }
+    
+    .team-section .row {
+        gap: 20px !important;
+    }
+    
+    .team-single-wrap {
+        max-width: 300px !important;
+    }
+    
+    .team-member-img {
+        width: 220px !important;
+        height: 220px !important;
+        border-radius: 16px !important;
+    }
+    
+    .team-img {
+        border-radius: 16px !important;
+    }
+    
+    .team-info h5 {
+        font-size: 1rem !important;
+    }
+    
+    .team-info p {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Very Small Mobile */
+@media (max-width: 399.98px) {
+    .team-section {
+        padding: 30px 10px !important;
+    }
+    
+    .team-single-wrap {
+        max-width: 280px !important;
+    }
+    
+    .team-member-img {
+        width: 200px !important;
+        height: 200px !important;
+        border-radius: 14px !important;
+    }
+    
+    .team-img {
+        border-radius: 14px !important;
+    }
+    
+    .team-info h5 {
+        font-size: 0.95rem !important;
+    }
+    
+    .team-info p {
+        font-size: 0.75rem !important;
+    }
+}
+
+
+/* ========================================
+   TEAM SECTION - EQUAL SIZE IMAGES (EXACT MATCH)
+   ======================================== */
+
+/* Team section row - center with gap */
+.team-section .row.justify-content-center {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+}
+
+/* Team member card wrapper - fixed equal width */
+.team-single-wrap {
+    width: 260px !important;
+    max-width: 260px !important;
+    min-width: 260px !important;
+    text-align: center !important;
+    flex: 0 0 260px !important;
+}
+
+/* Team image container - fixed exact size for both */
+.team-img {
+    width: 260px !important;
+    height: 300px !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+    background: #f0f0f0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Team member image - Reduced width for better layout */
+.team-img img,
+img.team-member-img {
+    width: 220px !important;
+    height: 260px !important;
+    min-width: 220px !important;
+    min-height: 260px !important;
+    max-width: 220px !important;
+    max-height: 260px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    display: block !important;
+}
+
+/* Team info section */
+.team-info {
+    padding: 15px 0 !important;
+    text-align: center !important;
+}
+
+.team-info h5 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+}
+
+.team-info p {
+    font-size: 14px !important;
+    color: #6c757d !important;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 767.98px) {
+    .team-section .row.justify-content-center {
+        gap: 30px !important;
+    }
+    
+    .team-single-wrap {
+        width: 180px !important;
+        max-width: 180px !important;
+        min-width: 180px !important;
+        flex: 0 0 180px !important;
+    }
+    
+    .team-img {
+        width: 180px !important;
+        height: 220px !important;
+    }
+    
+    .team-img img,
+    img.team-member-img {
+        width: 180px !important;
+        height: 220px !important;
+        min-width: 180px !important;
+        min-height: 220px !important;
+        max-width: 180px !important;
+        max-height: 220px !important;
+    }
+}
+
+/* ========================================
+   FOOTER LINK SPACING FIX - REDUCE VERTICAL SPACE
+   ======================================== */
+
+/* Reduce line-height and margin on all footer links */
+.footer-nav-list a,
+.footer-nav-list li {
+  margin: 3px 0 !important;
+  padding: 3px 0 !important;
+  line-height: 1.1 !important;
+}
+
+/* Reduce column spacing between items */
+.footer-single-col {
+  gap: 4px !important;
+}
+
+/* Ensure no extra padding exists in the parent container */
+.footer-section {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+/* If using flexbox or grid, reduce the row gap */
+.footer-top .row,
+.footer-wrapper {
+  row-gap: 6px !important;
+}
+
+/* Remove extra bottom margin from list */
+.footer-nav-list {
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+.footer-nav-list li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Reduce heading spacing in footer */
+.footer-single-col h3 {
+  margin-bottom: 8px !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 767.98px) {
+  .footer-nav-list a,
+  .footer-nav-list li {
+    margin: 3px 0 !important;
+    padding: 3px 0 !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* ========================================
+   CONNECT DATAEVOL BUTTON - Industry Pages
+   ======================================== */
+
+.connect-dataevol-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #175cff 0%, #0d4ed8 100%);
+  color: #ffffff !important;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(23, 92, 255, 0.4);
+  border: none;
+  cursor: pointer;
+}
+
+.connect-dataevol-btn:hover {
+  background: linear-gradient(135deg, #0d4ed8 0%, #0a3eb0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(23, 92, 255, 0.5);
+  color: #ffffff !important;
+}
+
+.connect-dataevol-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(23, 92, 255, 0.4);
+}
+
+/* Mobile responsive */
+@media (max-width: 767.98px) {
+  .connect-dataevol-btn {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}
+
+/* ========================================
+   PHONE INPUT FIX - Prevent placeholder cutoff
+   ======================================== */
+
+/* Ensure phone input has proper width */
+.iti {
+    width: 100% !important;
+    display: block !important;
+}
+
+.iti__flag-container {
+    z-index: 10 !important;
+}
+
+.iti input[type="tel"],
+.iti .form-control {
+    width: 100% !important;
+    padding-left: 90px !important;
+}
+
+/* Placeholder text - ensure it doesn't get cut */
+.register-form input::placeholder {
+    font-size: 14px !important;
+    color: #6c757d !important;
+    opacity: 1 !important;
+}
+
+/* Phone input specific */
+#phone::placeholder {
+    font-size: 14px !important;
 }

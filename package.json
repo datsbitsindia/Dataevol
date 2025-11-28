@@ -11,13 +11,16 @@
     "production": "NODE_ENV=production node app.js",
     "analyze-images": "node scripts/compress-images.js",
     "quick-optimize": "node scripts/quick-optimize.js",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "pre-deploy": "node scripts/pre-deployment-check.js",
+    "deploy": "npm run pre-deploy && npm run production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.13.2",
+    "compression": "^1.7.4",
     "cron": "^4.3.4",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",

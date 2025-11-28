@@ -1,16 +1,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simple Node.js Project</title>
+
+<!-- Critical Header CSS - Prevents FOUC (Flash of Unstyled Content) on refresh -->
+<style>
+    /* Ensure header is visible immediately on page load with solid background */
+    .main-header, header.main-header {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        position: absolute !important;
+        width: 100% !important;
+        z-index: 99999 !important;
+        background-color: #ffffff !important;
+    }
+    .navbar, .navbar.sticky-header, nav.sticky-header {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        z-index: 99999 !important;
+        background-color: #ffffff !important;
+    }
+    /* Scrolled header with shadow */
+    .sticky-header.affix, .navbar.sticky-header.affix {
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+    @media (min-width: 992px) {
+        .navbar-collapse, .navbar-collapse.collapse:not(.show) {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        .main-menu {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    }
+    .navbar-brand, .navbar-brand img {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    /* Dropdown menu z-index fix */
+    .dropdown-menu {
+        z-index: 999999 !important;
+    }
+</style>
+
 <!-- Add the Font Awesome CSS link -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- Mobile Responsive CSS -->
 <link rel="stylesheet" href="/css/mobile-responsive.css">
+<!-- Service & Industry Icons CSS -->
+<link rel="stylesheet" href="/css/service-icons.css">
+<link rel="stylesheet" href="/css/industry-icons.css">
 
 
 
 
-<header class="main-header position-absolute w-100">
-    <nav class="navbar navbar-expand-xl navbar-light sticky-header">
+<header class="main-header position-absolute w-100" style="z-index: 99999 !important; background-color: #ffffff !important;">
+    <nav class="navbar navbar-expand-xl navbar-light sticky-header" style="z-index: 99999 !important; background-color: #ffffff !important;">
         <div class="container d-flex align-items-center justify-content-lg-between position-relative">
             <a href="/" class="navbar-brand d-flex align-items-center mb-md-0 text-decoration-none img-fluid logo-color">
                 <img src="/img/logo-white.png" alt="logo" class="img-fluid logo-white" width="270" />
@@ -31,48 +81,62 @@
                     <li class="nav-item dropdown position-static d-flex align-items-center">
                         <a class="nav-link" href="/services">Services</a>
                         <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle Services" style="margin-left: 0;"></a>
-                        <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white">
+                        <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white" style="z-index: 999999 !important;">
                             <div class="dropdown-grid rounded-custom width-full-services">
                                 <div class="dropdown-grid-item bg-light-subtle radius-left-side">
                                     <h6 class="drop-heading">Database Development</h6>
                                     <a href="/lan?lan=sqlserver" class="dropdown-link">
-                                        <img src="/img/slide_img/MsSqlServer.png" alt="SQL Server" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon sqlserver-icon fas fa-server"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">SQL Server</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=mysql" class="dropdown-link">
-                                        <img src="/img/slide_img/MySQL.png" alt="MySQL" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon mysql-icon fas fa-database"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">My SQL</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=mongodb" class="dropdown-link">
-                                        <img src="/img/slide_img/MongoDB.png" alt="MongoDB" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon mongodb-icon fas fa-leaf"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Mongo DB</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=postgresql" class="dropdown-link">
-                                        <img src="/img/slide_img/PostgreSQL.png" alt="PostgreSQL" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon postgresql-icon fas fa-table"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Postegre SQL</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=powerbi" class="dropdown-link">
-                                        <img src="/img/slide_img/PowerBI.png" alt="Power BI" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon powerbi-icon fas fa-chart-bar"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Power Bi</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=ssrs" class="dropdown-link">
-                                        <img src="/img/slide_img/SSRS.png" alt="SSRS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon ssrs-icon fas fa-file-alt"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">SSRS</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=ssis" class="dropdown-link">
-                                        <img src="/img/slide_img/SSIS.png" alt="SSIS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon ssis-icon fas fa-exchange-alt"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">SSIS</div>
                                         </div>
@@ -81,155 +145,200 @@
                                 <div class="dropdown-grid-item  bg-light-subtle">
                                     <h6 class="drop-heading">Web Development</h6>
                                     <a href="/lan?lan=aspdotnet" class="dropdown-link">
-                                        <img src="/img/slide_img/AspDotNet.png" alt="ASP.NET" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon aspnet-icon fas fa-code"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">ASP.net</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=aspdotnetcore" class="dropdown-link">
-                                        <img src="/img/slide_img/DotNetCore.png" alt=".NET Core" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon netcore-icon fas fa-circle-notch"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">.Net Core</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=angular" class="dropdown-link">
-                                        <img src="/img/slide_img/AngularJs.png" alt="Angular" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon angular-icon fab fa-angular"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Angular</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=node" class="dropdown-link">
-                                        <img src="/img/slide_img/NodeJs.png" alt="Node.js" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon node-icon fab fa-node-js"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Node</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=magento" class="dropdown-link">
-                                        <img src="/img/slide_img/Magento.png" alt="Magento" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon magento-icon fab fa-magento"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Magento</div>
-                                        </div> 
+                                        </div>
                                     </a>
-                                    <a href="/lan?lan=wordpress" class="dropdown-link">
-                                        <img src="/img/slide_img/Wordpress.png" alt="WordPress" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                    <a href="/lan?lan=wordpress" class="dropdown-link">  
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon wordpress-icon fab fa-wordpress"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Wordpress</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=ecommerce" class="dropdown-link">
-                                        <img src="/img/slide_img/eCommerce.png" alt="eCommerce" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon ecommerce-icon fas fa-shopping-cart"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">eCommerce</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=python" class="dropdown-link">
-                                        <img src="/img/python.png" alt="Python" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon python-icon fab fa-python"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Python</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=java" class="dropdown-link">
-                                        <img src="/img/slide_img/Java.png" alt="Java" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon java-icon fab fa-java"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Java</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=php" class="dropdown-link">
-                                        <img src="/img/slide_img/PHP.png" alt="PHP" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon php-icon fab fa-php"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">PHP</div>
                                         </div>
                                     </a>
                                 </div>
-                                    
                                 <div class="dropdown-grid-item radius-right-side bg-light-subtle">
                                     <h6 class="drop-heading">Mobile App Dev.</h6>
                                     <a href="/lan?lan=android" class="dropdown-link">
-                                        <img src="/img/slide_img/Android.png" alt="Android" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon android-icon fab fa-android"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Android</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=ios" class="dropdown-link">
-                                        <img src="/img/slide_img/ios.png" alt="iOS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon ios-icon fab fa-apple"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">IOS</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=ionic" class="dropdown-link">
-                                        <img src="/img/slide_img/Ionic.png" alt="Ionic" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <img src="/img/contentimg/ionicim.png" alt="Ionic" class="service-icon-img">
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Ionic</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=xamarin" class="dropdown-link">
-                                        <img src="/img/slide_img/Xamarin.png" alt="Xamarin" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <img src="/img/contentimg/xarmin.png" alt="Xamarin" class="service-icon-img">
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Xamarin</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=react" class="dropdown-link">
-                                        <img src="/img/slide_img/ReactNative.png" alt="React" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon react-icon fab fa-react"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">React</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=kotlin" class="dropdown-link">
-                                        <img src="/img/slide_img/Kotlin.png" alt="Kotlin" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon kotlin-icon fas fa-cube"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Kotlin</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=flutter" class="dropdown-link">
-                                        <img src="/img/slide_img/Flutter.png" alt="Flutter" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <img src="/img/contentimg/flutter.png" alt="Flutter" class="service-icon-img">
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Flutter</div>
                                         </div>
                                     </a>
-                                </div> 
+                                </div>
                                 <div class="dropdown-grid-item bg-light-subtle">
                                     <h6 class="drop-heading">UI/UX Design</h6>
                                     <a href="/lan?lan=uxui" class="dropdown-link">
-                                        <img src="/img/slide_img/UxUi.png" alt="UI/UX" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon uxui-icon fas fa-palette"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">UI/UX</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=frontend" class="dropdown-link">
-                                        <img src="/img/slide_img/FrontEnd.png" alt="FrontEnd" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon frontend-icon fas fa-laptop-code"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">FrontEnd</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=responsiveweb" class="dropdown-link">
-                                        <img src="/img/slide_img/ResponsiveWebDesign.png" alt="Responsive Web" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon responsiveweb-icon fas fa-desktop"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Responsiv Web</div>
                                         </div>
                                     </a>
-                               
+                                
                                 </div>
                                 <div class="dropdown-grid-item bg-light-subtle">
                                     <h6 class="drop-heading">Cloud Development</h6>
                                     <a href="/lan?lan=azure" class="dropdown-link">
-                                        <img src="/img/Azure.png" alt="Azure" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon azure-icon fas fa-cloud"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Azure</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=aws" class="dropdown-link">
-                                        <img src="/img/AWS.png" alt="AWS" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon aws-icon fab fa-aws"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">AWS</div>
                                         </div>
                                     </a>
                                     <a href="/lan?lan=googlecloud" class="dropdown-link">
-                                        <img src="/img/goog.png" alt="Google Cloud" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="service-icon-wrapper">
+                                            <i class="service-icon googlecloud-icon fab fa-google"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Google Cloud</div>
                                         </div>
                                     </a>
-                               
+                                
                                 </div>                               
                             </div>
                         </div>
@@ -237,40 +346,50 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle Industry">Industry</a>
-                        <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white">
+                        <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white" style="z-index: 999999 !important;">
                             <div class="dropdown-grid rounded-custom width-full-2">
                                 <div class="dropdown-grid-item bg-light-subtle radius-left-side">
                                     <h6 class="drop-heading">Industries We Serve</h6>
                                     <a href="/industry/finance" class="dropdown-link">
-                                        <img src="/img/Industry/finance.png" alt="Finance" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon finance-icon fas fa-university"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Finance Industry</div>
                                             <p>Banking & Financial Solutions</p>
                                         </div>
                                     </a>
                                     <a href="/industry/healthcare" class="dropdown-link">
-                                        <img src="/img/Industry/healthcare.png" alt="Healthcare" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon healthcare-icon fas fa-heartbeat"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Healthcare Industry</div>
                                             <p>Transforming Health Tech</p>
                                         </div>
                                     </a>
                                     <a href="/industry/logistics" class="dropdown-link">
-                                        <img src="/img/Industry/Logistic.png" alt="Logistics" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon logistics-icon fas fa-truck"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Logistics Industry</div>
                                             <p>Streamlining Supply Chains</p>
                                         </div>
                                     </a>
                                     <a href="/industry/travel" class="dropdown-link">
-                                        <img src="/img/Industry/Travel%26Hospitilaity.png" alt="Travel & Hospitality" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon travel-icon fas fa-plane"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Travel & Hospitality</div>
                                             <p>Enhancing Travel Experiences</p>
                                         </div>
                                     </a>
                                     <a href="/industry/realestate" class="dropdown-link">
-                                        <img src="/img/Industry/Realestate.png" alt="Real Estate" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon realestate-icon fas fa-building"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Real Estate Industry</div>
                                             <p>Property Management Solutions</p>
@@ -280,28 +399,36 @@
                                 <div class="dropdown-grid-item bg-light-subtle radius-right-side">
                                     <h6 class="drop-heading">Digital Solutions</h6>
                                     <a href="/industry/fooddelivery" class="dropdown-link">
-                                        <img src="/img/Industry/Fooddelevary.png" alt="Food Delivery" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon food-icon fas fa-utensils"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">Food Delivery</div>
                                             <p>Restaurant & Delivery Apps</p>
                                         </div>
                                     </a>
                                     <a href="/industry/ecommerce" class="dropdown-link">
-                                        <img src="/img/Industry/Ecommrace.png" alt="E-Commerce" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon ecommerce-icon fas fa-shopping-cart"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">E-Commerce</div>
                                             <p>Online Retail Solutions</p>
                                         </div>
                                     </a>
                                     <a href="/industry/bidevelopment" class="dropdown-link">
-                                        <img src="/img/Industry/Bi%20development.png" alt="BI Development" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon bi-icon fas fa-chart-line"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">BI Development</div>
                                             <p>Business Intelligence & Analytics</p>
                                         </div>
                                     </a>
                                     <a href="/industry/ondemand" class="dropdown-link">
-                                        <img src="/img/Industry/Ondemand.png" alt="On-Demand Services" class="demo-list" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <div class="industry-icon-wrapper">
+                                            <i class="industry-icon ondemand-icon fas fa-mobile-alt"></i>
+                                        </div>
                                         <div class="dropdown-info">
                                             <div class="drop-title">On-Demand Services</div>
                                             <p>App-Based Service Solutions</p>
@@ -334,8 +461,95 @@
             <ul class="nav col-12 col-md-auto justify-content-center main-menu">
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="/aboutus" class="nav-link">About Us</a></li>
-                <li><a href="/services" class="nav-link">Services</a></li>
-                <li><a href="/industry" class="nav-link">Industry</a></li>
+                
+                <!-- Services Dropdown for Mobile -->
+                <li class="nav-item dropdown">
+                    <div class="mobile-dropdown-header">
+                        <a class="nav-link mobile-nav-link" href="/services">Services</a>
+                        <span class="mobile-dropdown-toggle" data-target="services-dropdown-white" aria-expanded="false">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu mobile-dropdown-content" id="services-dropdown-white">
+                        <div class="dropdown-grid width-full-services">
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Database Development</h6>
+                                <a href="/lan?lan=sqlserver" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon sqlserver-icon fas fa-server"></i></div><div class="dropdown-info"><div class="drop-title">SQL Server</div></div></a>
+                                <a href="/lan?lan=mysql" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon mysql-icon fas fa-database"></i></div><div class="dropdown-info"><div class="drop-title">My SQL</div></div></a>
+                                <a href="/lan?lan=mongodb" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon mongodb-icon fas fa-leaf"></i></div><div class="dropdown-info"><div class="drop-title">Mongo DB</div></div></a>
+                                <a href="/lan?lan=postgresql" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon postgresql-icon fas fa-table"></i></div><div class="dropdown-info"><div class="drop-title">PostgreSQL</div></div></a>
+                                <a href="/lan?lan=powerbi" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon powerbi-icon fas fa-chart-bar"></i></div><div class="dropdown-info"><div class="drop-title">Power BI</div></div></a>
+                                <a href="/lan?lan=ssrs" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon ssrs-icon fas fa-file-alt"></i></div><div class="dropdown-info"><div class="drop-title">SSRS</div></div></a>
+                                <a href="/lan?lan=ssis" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon ssis-icon fas fa-exchange-alt"></i></div><div class="dropdown-info"><div class="drop-title">SSIS</div></div></a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Web Development</h6>
+                                <a href="/lan?lan=aspdotnet" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon aspnet-icon fas fa-code"></i></div><div class="dropdown-info"><div class="drop-title">ASP.net</div></div></a>
+                                <a href="/lan?lan=aspdotnetcore" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon netcore-icon fas fa-circle-notch"></i></div><div class="dropdown-info"><div class="drop-title">.Net Core</div></div></a>
+                                <a href="/lan?lan=angular" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon angular-icon fab fa-angular"></i></div><div class="dropdown-info"><div class="drop-title">Angular</div></div></a>
+                                <a href="/lan?lan=node" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon node-icon fab fa-node-js"></i></div><div class="dropdown-info"><div class="drop-title">Node</div></div></a>
+                                <a href="/lan?lan=magento" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon magento-icon fab fa-magento"></i></div><div class="dropdown-info"><div class="drop-title">Magento</div></div></a>
+                                <a href="/lan?lan=wordpress" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon wordpress-icon fab fa-wordpress"></i></div><div class="dropdown-info"><div class="drop-title">Wordpress</div></div></a>
+                                <a href="/lan?lan=ecommerce" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon ecommerce-icon fas fa-shopping-cart"></i></div><div class="dropdown-info"><div class="drop-title">eCommerce</div></div></a>
+                                <a href="/lan?lan=python" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon python-icon fab fa-python"></i></div><div class="dropdown-info"><div class="drop-title">Python</div></div></a>
+                                <a href="/lan?lan=java" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon java-icon fab fa-java"></i></div><div class="dropdown-info"><div class="drop-title">Java</div></div></a>
+                                <a href="/lan?lan=php" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon php-icon fab fa-php"></i></div><div class="dropdown-info"><div class="drop-title">PHP</div></div></a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Mobile App Dev.</h6>
+                                <a href="/lan?lan=android" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon android-icon fab fa-android"></i></div><div class="dropdown-info"><div class="drop-title">Android</div></div></a>
+                                <a href="/lan?lan=ios" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon ios-icon fab fa-apple"></i></div><div class="dropdown-info"><div class="drop-title">IOS</div></div></a>
+                                <a href="/lan?lan=ionic" class="dropdown-link"><div class="service-icon-wrapper"><img src="/img/contentimg/ionicim.png" alt="Ionic" class="service-icon-img"></div><div class="dropdown-info"><div class="drop-title">Ionic</div></div></a>
+                                <a href="/lan?lan=xamarin" class="dropdown-link"><div class="service-icon-wrapper"><img src="/img/contentimg/xarmin.png" alt="Xamarin" class="service-icon-img"></div><div class="dropdown-info"><div class="drop-title">Xamarin</div></div></a>
+                                <a href="/lan?lan=react" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon react-icon fab fa-react"></i></div><div class="dropdown-info"><div class="drop-title">React</div></div></a>
+                                <a href="/lan?lan=kotlin" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon kotlin-icon fas fa-cube"></i></div><div class="dropdown-info"><div class="drop-title">Kotlin</div></div></a>
+                                <a href="/lan?lan=flutter" class="dropdown-link"><div class="service-icon-wrapper"><img src="/img/contentimg/flutter.png" alt="Flutter" class="service-icon-img"></div><div class="dropdown-info"><div class="drop-title">Flutter</div></div></a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">UI/UX Design</h6>
+                                <a href="/lan?lan=uxui" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon uxui-icon fas fa-palette"></i></div><div class="dropdown-info"><div class="drop-title">UI/UX</div></div></a>
+                                <a href="/lan?lan=frontend" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon frontend-icon fas fa-laptop-code"></i></div><div class="dropdown-info"><div class="drop-title">FrontEnd</div></div></a>
+                                <a href="/lan?lan=responsiveweb" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon responsiveweb-icon fas fa-desktop"></i></div><div class="dropdown-info"><div class="drop-title">Responsive Web</div></div></a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Cloud Development</h6>
+                                <a href="/lan?lan=azure" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon azure-icon fas fa-cloud"></i></div><div class="dropdown-info"><div class="drop-title">Azure</div></div></a>
+                                <a href="/lan?lan=aws" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon aws-icon fab fa-aws"></i></div><div class="dropdown-info"><div class="drop-title">AWS</div></div></a>
+                                <a href="/lan?lan=googlecloud" class="dropdown-link"><div class="service-icon-wrapper"><i class="service-icon googlecloud-icon fab fa-google"></i></div><div class="dropdown-info"><div class="drop-title">Google Cloud</div></div></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <!-- Industry Dropdown for Mobile -->
+                <li class="nav-item dropdown">
+                    <div class="mobile-dropdown-header">
+                        <a class="nav-link mobile-nav-link" href="/industry">Industry</a>
+                        <span class="mobile-dropdown-toggle" data-target="industry-dropdown-white" aria-expanded="false">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu mobile-dropdown-content" id="industry-dropdown-white">
+                        <div class="dropdown-grid width-full-2">
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Industries We Serve</h6>
+                                <a href="/industry/finance" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon finance-icon fas fa-university"></i></div><div class="dropdown-info"><div class="drop-title">Finance Industry</div></div></a>
+                                <a href="/industry/healthcare" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon healthcare-icon fas fa-heartbeat"></i></div><div class="dropdown-info"><div class="drop-title">Healthcare Industry</div></div></a>
+                                <a href="/industry/logistics" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon logistics-icon fas fa-truck"></i></div><div class="dropdown-info"><div class="drop-title">Logistics Industry</div></div></a>
+                                <a href="/industry/travel" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon travel-icon fas fa-plane"></i></div><div class="dropdown-info"><div class="drop-title">Travel & Hospitality</div></div></a>
+                                <a href="/industry/realestate" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon realestate-icon fas fa-building"></i></div><div class="dropdown-info"><div class="drop-title">Real Estate Industry</div></div></a>
+                            </div>
+                            <div class="dropdown-grid-item">
+                                <h6 class="drop-heading">Digital Solutions</h6>
+                                <a href="/industry/fooddelivery" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon food-icon fas fa-utensils"></i></div><div class="dropdown-info"><div class="drop-title">Food Delivery</div></div></a>
+                                <a href="/industry/ecommerce" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon ecommerce-icon fas fa-shopping-cart"></i></div><div class="dropdown-info"><div class="drop-title">E-Commerce</div></div></a>
+                                <a href="/industry/bidevelopment" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon bi-icon fas fa-chart-line"></i></div><div class="dropdown-info"><div class="drop-title">BI Development</div></div></a>
+                                <a href="/industry/ondemand" class="dropdown-link"><div class="industry-icon-wrapper"><i class="industry-icon ondemand-icon fas fa-mobile-alt"></i></div><div class="dropdown-info"><div class="drop-title">On-Demand Services</div></div></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
                 <li><a href="/career" class="nav-link">Career</a></li>
                 <li><a href="/contactus" class="nav-link">Contact Us</a></li>
             </ul>

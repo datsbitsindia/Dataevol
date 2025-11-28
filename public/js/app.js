@@ -2,9 +2,48 @@ var THEMETAGS = THEMETAGS || {};
 jQuery(function($) {
     "use strict";
 
-    //preloader
+    // ========================================
+    // HEADER INITIALIZATION - Fix for page refresh issues
+    // ========================================
+    
+    // Ensure header is visible immediately
+    function initializeHeader() {
+        // Make sure navbar collapse is visible on desktop
+        if ($(window).width() >= 992) {
+            $('.navbar-collapse').addClass('show').css({
+                'display': 'flex',
+                'opacity': '1',
+                'visibility': 'visible'
+            });
+        }
+        
+        // Ensure main menu is visible
+        $('.main-menu').css({
+            'display': 'flex',
+            'opacity': '1',
+            'visibility': 'visible'
+        });
+        
+        // Ensure header is visible
+        $('.main-header, .navbar, .sticky-header').css({
+            'opacity': '1',
+            'visibility': 'visible'
+        });
+    }
+    
+    // Initialize header immediately
+    initializeHeader();
+    
+    // Also initialize on window load
+    $(window).on('load', function() {
+        initializeHeader();
+    });
+
+    //preloader - Fast fade out
     $(window).ready(function() {
-        $("#preloader").delay(100).fadeOut("fade");
+        $("#preloader").delay(50).fadeOut(200);
+        // Re-initialize header after preloader
+        initializeHeader();
     });
 
     //dropdown menu hover js - DISABLED (using dropdown-fix.js instead)
@@ -738,13 +777,13 @@ jQuery(function($) {
         $('[data-bs-toggle="tooltip"]').tooltip();
     });
 
-    //animated js
+    //animated js - Optimized for faster load
     AOS.init({
-        easing: "ease-in-out",
-        // default easing for AOS animations
+        easing: "ease-out",
         once: true,
-        // whether animation should happen only once - while scrolling down
-        duration: 500 // values from 0 to 3000, with step 50ms
+        duration: 400,
+        delay: 0,
+        disable: window.innerWidth < 768 // Disable on mobile for faster load
     });
 
     //magnific popup js
@@ -769,11 +808,27 @@ jQuery(function($) {
     });
 
     // ========================================
-    // FOOTER TAB NAVIGATION - SINGLE CLICK FIX
+    // FOOTER TAB NAVIGATION - PERFECT SCROLL WITH HEADER OFFSET
     // ========================================
+    
+    // Helper function to scroll with header offset
+    function scrollToElementWithOffset(element, offset) {
+        if (!element) return;
+        
+        var elementPosition = element.getBoundingClientRect().top;
+        var offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
     
     // Handle tab navigation from footer links (single click)
     $(document).ready(function() {
+        // Get header height for offset (fixed header is 20px padding + content height, approximately 80-100px total)
+        var headerOffset = 100; // Adjust this value if needed
+        
         // Check if there's a hash in the URL on page load
         if (window.location.hash) {
             var hash = window.location.hash;
@@ -787,11 +842,11 @@ jQuery(function($) {
                         var tab = new bootstrap.Tab(tabTrigger);
                         tab.show();
                         
-                        // Scroll to the tab section smoothly
+                        // Scroll to the tab section with header offset
                         var tabSection = document.querySelector(hash);
                         if (tabSection) {
                             setTimeout(function() {
-                                tabSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                scrollToElementWithOffset(tabSection, headerOffset);
                             }, 100);
                         }
                     }
@@ -814,11 +869,11 @@ jQuery(function($) {
                     var tab = new bootstrap.Tab(tabTrigger);
                     tab.show();
                     
-                    // Scroll to the tab section
+                    // Scroll to the tab section with header offset
                     var tabSection = document.querySelector(hash);
                     if (tabSection) {
                         setTimeout(function() {
-                            tabSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            scrollToElementWithOffset(tabSection, headerOffset);
                         }, 100);
                     }
                 }
@@ -826,4 +881,6 @@ jQuery(function($) {
             // If we're on another page, let the link navigate normally
         });
     });
+
+
 });

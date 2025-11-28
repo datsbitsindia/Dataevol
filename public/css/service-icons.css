@@ -1,0 +1,374 @@
+/* ========================================
+   SERVICE/TECHNOLOGY ICONS - MODERN CSS DESIGN
+   Updated: 2025-01-27 - Circular Dotted Border Style (Like Industry)
+   ======================================== */
+
+/* ========================================
+   DROPDOWN LINK HOVER EFFECTS - PREMIUM STYLE
+   ======================================== */
+
+/* Base dropdown link styling */
+.dropdown-grid-item .dropdown-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+  position: relative !important;
+  margin: 2px 0 !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+}
+
+/* Hover effect - Light gray background with border and frame */
+.dropdown-grid-item .dropdown-link:hover {
+  background-color: #e9ecef !important;
+  border-color: #ced4da !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove left border accent */
+.dropdown-grid-item .dropdown-link::before {
+  display: none !important;
+}
+
+/* Service dropdown title - Bold like industry */
+.dropdown-grid-item .dropdown-link .drop-title {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #1a1a2e !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Title color stays same on hover */
+.dropdown-grid-item .dropdown-link:hover .drop-title {
+  color: #1a1a2e !important;
+}
+
+/* Service icon wrapper - Circular frame with dotted border (SAME AS INDUSTRY) */
+.service-icon-wrapper {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: #f5f9ff !important;
+  border: 2px dotted #b8d4f0 !important;
+  position: relative !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  flex-shrink: 0 !important;
+}
+
+/* Hover state - Subtle icon wrapper */
+.dropdown-link:hover .service-icon-wrapper {
+  background: #f5f9ff !important;
+  border-color: #3b82f6 !important;
+  border-style: solid !important;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Base service icon styling - All blue */
+.service-icon {
+  font-size: 16px !important;
+  color: #3b82f6 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Hover state - Icon stays same */
+.dropdown-link:hover .service-icon {
+  color: #3b82f6 !important;
+  transform: scale(1.05) !important;
+}
+
+/* Service icon image styling - For custom PNG icons */
+.service-icon-img {
+  width: 22px !important;
+  height: 22px !important;
+  object-fit: contain !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Hover state - Image icon scale */
+.dropdown-link:hover .service-icon-img {
+  transform: scale(1.1) !important;
+}
+
+/* Image-based icons - no color change on hover */
+.dropdown-link:hover .mysql-icon,
+.dropdown-link:hover .postgresql-icon {
+  color: transparent !important;
+  filter: brightness(1.1) !important;
+}
+
+/* ========================================
+   DATABASE DEVELOPMENT ICONS
+   ======================================== */
+
+/* SQL Server - Use MySQL icon (fa-database) */
+.sqlserver-icon::before {
+  content: "\f1c0";
+}
+
+/* MySQL - Use custom image */
+.mysql-icon {
+  font-family: inherit !important;
+}
+.mysql-icon::before {
+  content: '' !important;
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  background-image: url('/img/contentimg/sqlmy.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* MongoDB - fa-leaf (represents Mongo's leaf logo) */
+.mongodb-icon::before {
+  content: "\f06c";
+}
+
+/* PostgreSQL - Use custom image */
+.postgresql-icon {
+  font-family: inherit !important;
+}
+.postgresql-icon::before {
+  content: '' !important;
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  background-image: url('/img/contentimg/postgre.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* Power BI - fa-chart-bar */
+.powerbi-icon::before {
+  content: "\f080";
+}
+
+/* SSRS - fa-file-alt */
+.ssrs-icon::before {
+  content: "\f15c";
+}
+
+/* SSIS - fa-exchange-alt */
+.ssis-icon::before {
+  content: "\f362";
+}
+
+/* ========================================
+   WEB DEVELOPMENT ICONS
+   ======================================== */
+
+/* ASP.NET - fa-code */
+.aspnet-icon::before {
+  content: "\f121";
+}
+
+/* .NET Core - fa-circle-notch */
+.netcore-icon::before {
+  content: "\f1ce";
+}
+
+/* Angular - fa-angular (brand icon) */
+.angular-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.angular-icon::before {
+  content: "\f420";
+}
+
+/* Node.js - fa-node-js (brand icon) */
+.node-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.node-icon::before {
+  content: "\f419";
+}
+
+/* Magento - fa-magento (brand icon) */
+.magento-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.magento-icon::before {
+  content: "\f3c4";
+}
+
+/* WordPress - fa-wordpress (brand icon) */
+.wordpress-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.wordpress-icon::before {
+  content: "\f19a";
+}
+
+/* eCommerce - fa-shopping-cart */
+.ecommerce-icon::before {
+  content: "\f07a";
+}
+
+/* Python - fa-python (brand icon) */
+.python-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.python-icon::before {
+  content: "\f3e2";
+}
+
+/* Java - fa-java (brand icon) */
+.java-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.java-icon::before {
+  content: "\f4e4";
+}
+
+/* PHP - fa-php (brand icon) */
+.php-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.php-icon::before {
+  content: "\f457";
+}
+
+/* ========================================
+   MOBILE APP DEVELOPMENT ICONS
+   ======================================== */
+
+/* Android - fa-android (brand icon) */
+.android-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.android-icon::before {
+  content: "\f17b";
+}
+
+/* iOS - fa-apple (brand icon) */
+.ios-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.ios-icon::before {
+  content: "\f179";
+}
+
+/* Ionic - fa-bolt (lightning fast) */
+.ionic-icon::before {
+  content: "\f0e7";
+}
+
+/* Xamarin - fa-layer-group (cross-platform layers) */
+.xamarin-icon::before {
+  content: "\f5fd";
+}
+
+/* React Native - fa-react (brand icon) */
+.react-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.react-icon::before {
+  content: "\f41b";
+}
+
+/* Kotlin - fa-cube (modern/modular) */
+.kotlin-icon::before {
+  content: "\f1b2";
+}
+
+/* Flutter - fa-feather-alt (light/fast) */
+.flutter-icon::before {
+  content: "\f56b";
+}
+
+/* ========================================
+   UI/UX DESIGN ICONS
+   ======================================== */
+
+/* UI/UX - fa-palette */
+.uxui-icon::before {
+  content: "\f53f";
+}
+
+/* FrontEnd - fa-laptop-code */
+.frontend-icon::before {
+  content: "\f5fc";
+}
+
+/* Responsive Web - fa-desktop (responsive design) */
+.responsiveweb-icon::before {
+  content: "\f108";
+}
+
+/* ========================================
+   CLOUD DEVELOPMENT ICONS
+   ======================================== */
+
+/* Azure - fa-cloud */
+.azure-icon::before {
+  content: "\f0c2";
+}
+
+/* AWS - fa-aws (brand icon) */
+.aws-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.aws-icon::before {
+  content: "\f375";
+}
+
+/* Google Cloud - fa-google (brand icon) */
+.googlecloud-icon {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+.googlecloud-icon::before {
+  content: "\f1a0";
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 991.98px) {
+  .service-icon-wrapper {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+  }
+  
+  .service-icon {
+    font-size: 14px !important;
+  }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+[data-bs-theme=dark] .service-icon-wrapper {
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+[data-bs-theme=dark] .dropdown-link:hover .service-icon-wrapper {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2) !important;
+}
+
+[data-bs-theme=dark] .service-icon {
+  color: #60a5fa !important;
+}
+
+[data-bs-theme=dark] .dropdown-link:hover .service-icon {
+  color: #3b82f6 !important;
+}

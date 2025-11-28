@@ -27572,7 +27572,7 @@ h4 {
     -webkit-animation: 300ms ease-in-out fadeInDown;
     animation: 300ms ease-in-out fadeInDown;
     background: #111827;
-    padding: 10px 0;
+    padding: 20px 0;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
@@ -27895,7 +27895,7 @@ h4 {
 
 @media(min-width: 320px)and (max-width: 767px) {
     .sticky-header.affix {
-        padding: 15px 0 !important
+        padding: 20px 0 !important
     }
 }
 
