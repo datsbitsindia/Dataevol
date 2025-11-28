@@ -8425,3 +8425,778 @@ img.team-member-img {
         border-radius: 0 !important;
     }
 }
+
+/* ========================================
+   FIX: TEAM SECTION - CENTER IMAGES
+   Images were showing left, now perfectly centered
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Team Section Row - Perfect Center */
+    .team-section .row.justify-content-center {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Team Column - Center */
+    .team-section .col-auto {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto 25px auto !important;
+    }
+    
+    /* Team Card Wrapper - Center */
+    .team-section .team-single-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 280px !important;
+    }
+    
+    /* Team Image Container - Center */
+    .team-section .team-img {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Team Image - Center */
+    .team-section .team-img img,
+    .team-section .team-member-img {
+        display: block !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Team Info - Center */
+    .team-section .team-info {
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* ========================================
+   FIX: MOBILE DROPDOWN TOGGLE - UNIQUE HOVER EFFECT
+   Cool animation effect like desktop
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Mobile Dropdown Toggle - Enhanced Hover Effect */
+    .offcanvas .mobile-dropdown-toggle,
+    .offcanvas-body .mobile-dropdown-toggle,
+    .mobile-dropdown-toggle {
+        position: relative !important;
+        overflow: hidden !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    /* Ripple Effect Background */
+    .offcanvas .mobile-dropdown-toggle::before,
+    .mobile-dropdown-toggle::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 0 !important;
+        height: 0 !important;
+        background: radial-gradient(circle, rgba(13, 110, 253, 0.3) 0%, rgba(13, 110, 253, 0.1) 70%, transparent 100%) !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        transition: width 0.4s ease, height 0.4s ease !important;
+        z-index: 0 !important;
+    }
+    
+    /* Hover - Ripple Expand */
+    .offcanvas .mobile-dropdown-toggle:hover::before,
+    .offcanvas .mobile-dropdown-toggle:active::before,
+    .mobile-dropdown-toggle:hover::before,
+    .mobile-dropdown-toggle:active::before {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    /* Hover State - Glow Effect */
+    .offcanvas .mobile-dropdown-toggle:hover,
+    .offcanvas .mobile-dropdown-toggle:active,
+    .mobile-dropdown-toggle:hover,
+    .mobile-dropdown-toggle:active {
+        background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 100%) !important;
+        box-shadow: 0 4px 15px rgba(13, 110, 253, 0.25), inset 0 0 20px rgba(13, 110, 253, 0.1) !important;
+        transform: scale(1.05) !important;
+    }
+    
+    /* Icon Animation on Hover */
+    .offcanvas .mobile-dropdown-toggle:hover i,
+    .offcanvas .mobile-dropdown-toggle:active i,
+    .mobile-dropdown-toggle:hover i,
+    .mobile-dropdown-toggle:active i {
+        transform: scale(1.2) rotate(90deg) !important;
+        color: #0d6efd !important;
+        text-shadow: 0 0 10px rgba(13, 110, 253, 0.5) !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* When Expanded - Different Effect */
+    .offcanvas .mobile-dropdown-toggle[aria-expanded="true"],
+    .mobile-dropdown-toggle[aria-expanded="true"] {
+        background: linear-gradient(135deg, #dbeafe 0%, #c7d2fe 100%) !important;
+        box-shadow: 0 4px 20px rgba(13, 110, 253, 0.3), inset 0 2px 10px rgba(13, 110, 253, 0.15) !important;
+    }
+    
+    .offcanvas .mobile-dropdown-toggle[aria-expanded="true"] i,
+    .mobile-dropdown-toggle[aria-expanded="true"] i {
+        transform: rotate(45deg) scale(1.1) !important;
+        color: #dc3545 !important;
+        text-shadow: 0 0 8px rgba(220, 53, 69, 0.4) !important;
+    }
+    
+    /* Touch Feedback - Instant Response */
+    @media (hover: none) and (pointer: coarse) {
+        .mobile-dropdown-toggle:active {
+            transform: scale(0.95) !important;
+            transition: transform 0.1s ease !important;
+        }
+        
+        .mobile-dropdown-toggle:active i {
+            transform: scale(1.3) rotate(180deg) !important;
+            transition: transform 0.2s ease !important;
+        }
+    }
+    
+    /* Pulse Animation on Focus */
+    .mobile-dropdown-toggle:focus {
+        outline: none !important;
+        animation: dropdownPulse 0.6s ease !important;
+    }
+    
+    @keyframes dropdownPulse {
+        0% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4); }
+        50% { box-shadow: 0 0 0 10px rgba(13, 110, 253, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0); }
+    }
+}
+
+
+/* ========================================
+   FIX: MOBILE DROPDOWN - FULL WHITE BACKGROUND
+   Services & Industry dropdown 100% white
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Full dropdown container - 100% white */
+    .mobile-dropdown,
+    .mobile-submenu,
+    .mobile-menu-content,
+    .mobile-dropdown-content,
+    .offcanvas .dropdown-menu,
+    .offcanvas-body .dropdown-menu,
+    .offcanvas .mobile-dropdown-content,
+    .offcanvas-body .mobile-dropdown-content {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        width: 100% !important;
+        padding: 15px !important;
+        position: relative !important;
+        z-index: 9999 !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Inner items - icons + text on white background */
+    .mobile-dropdown li,
+    .mobile-submenu li,
+    .mobile-dropdown-item,
+    .offcanvas .dropdown-grid-item,
+    .offcanvas-body .dropdown-grid-item,
+    .offcanvas .dropdown-link,
+    .offcanvas-body .dropdown-link {
+        background-color: #ffffff !important;
+    }
+    
+    /* Dropdown grid container - white */
+    .offcanvas .dropdown-grid,
+    .offcanvas-body .dropdown-grid,
+    .dropdown-grid.width-full-2,
+    .dropdown-grid.width-full-services {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Parent menu wrapper - white background */
+    .mobile-menu,
+    .mobile-nav-wrapper,
+    .offcanvas,
+    .offcanvas-body,
+    #offcanvasWithBackdrop,
+    #offcanvasWithBackdrop .offcanvas-body {
+        background-color: #ffffff !important;
+    }
+    
+    /* Nav item dropdown container - white */
+    .offcanvas .nav-item.dropdown,
+    .offcanvas-body .nav-item.dropdown {
+        background-color: #ffffff !important;
+    }
+    
+    /* Mobile dropdown header - white */
+    .offcanvas .mobile-dropdown-header,
+    .offcanvas-body .mobile-dropdown-header {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Dropdown content when shown - full white */
+    .offcanvas .dropdown-menu.show,
+    .offcanvas .mobile-dropdown-content.show,
+    .offcanvas-body .dropdown-menu.show,
+    .offcanvas-body .mobile-dropdown-content.show {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        width: 100% !important;
+        padding: 15px !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Icon wrappers - ensure white or light background */
+    .offcanvas .service-icon-wrapper,
+    .offcanvas .industry-icon-wrapper,
+    .offcanvas-body .service-icon-wrapper,
+    .offcanvas-body .industry-icon-wrapper {
+        background: linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 100%) !important;
+    }
+    
+    /* Dropdown link cards - white with border */
+    .offcanvas .dropdown-link,
+    .offcanvas-body .dropdown-link {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        border: 1px solid #e9ecef !important;
+    }
+    
+    /* Section headings in dropdown - white background */
+    .offcanvas .dropdown-grid-item h6.drop-heading,
+    .offcanvas-body .dropdown-grid-item h6.drop-heading,
+    .offcanvas .drop-heading,
+    .offcanvas-body .drop-heading {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Remove any transparency from all dropdown elements */
+    .offcanvas .dropdown-menu *,
+    .offcanvas .mobile-dropdown-content *,
+    .offcanvas-body .dropdown-menu *,
+    .offcanvas-body .mobile-dropdown-content * {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Main menu list - white */
+    .offcanvas .main-menu,
+    .offcanvas-body .main-menu {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* All list items in offcanvas - white */
+    .offcanvas .main-menu > li,
+    .offcanvas-body .main-menu > li {
+        background-color: #ffffff !important;
+    }
+}
+
+
+/* ========================================
+   CRITICAL FIX: MOBILE DROPDOWN - PURE WHITE BACKGROUND
+   Override bg-light-subtle and all gray/blue backgrounds
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* FORCE PURE WHITE on ALL dropdown elements */
+    
+    /* Override bg-light-subtle class */
+    .offcanvas .bg-light-subtle,
+    .offcanvas-body .bg-light-subtle,
+    #offcanvasWithBackdrop .bg-light-subtle,
+    .offcanvas .dropdown-grid-item.bg-light-subtle,
+    .offcanvas-body .dropdown-grid-item.bg-light-subtle {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Dropdown Menu Container - PURE WHITE */
+    .offcanvas .dropdown-menu,
+    .offcanvas-body .dropdown-menu,
+    .offcanvas .mobile-dropdown-content,
+    .offcanvas-body .mobile-dropdown-content,
+    #offcanvasWithBackdrop .dropdown-menu,
+    #offcanvasWithBackdrop .mobile-dropdown-content,
+    #services-dropdown,
+    #industry-dropdown {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Dropdown Grid - PURE WHITE */
+    .offcanvas .dropdown-grid,
+    .offcanvas-body .dropdown-grid,
+    .offcanvas .dropdown-grid.width-full-services,
+    .offcanvas .dropdown-grid.width-full-2,
+    .offcanvas-body .dropdown-grid.width-full-services,
+    .offcanvas-body .dropdown-grid.width-full-2,
+    #offcanvasWithBackdrop .dropdown-grid {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Dropdown Grid Items - PURE WHITE */
+    .offcanvas .dropdown-grid-item,
+    .offcanvas-body .dropdown-grid-item,
+    #offcanvasWithBackdrop .dropdown-grid-item,
+    .offcanvas .dropdown-grid-item.radius-left-side,
+    .offcanvas .dropdown-grid-item.radius-right-side {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Section Headings - PURE WHITE */
+    .offcanvas .drop-heading,
+    .offcanvas-body .drop-heading,
+    .offcanvas h6.drop-heading,
+    .offcanvas-body h6.drop-heading,
+    #offcanvasWithBackdrop .drop-heading,
+    #offcanvasWithBackdrop h6.drop-heading {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Dropdown Links - WHITE with light border */
+    .offcanvas .dropdown-link,
+    .offcanvas-body .dropdown-link,
+    #offcanvasWithBackdrop .dropdown-link {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        border: 1px solid #e9ecef !important;
+    }
+    
+    /* Icon Wrappers - Light gradient (keep for visual) */
+    .offcanvas .service-icon-wrapper,
+    .offcanvas .industry-icon-wrapper,
+    .offcanvas-body .service-icon-wrapper,
+    .offcanvas-body .industry-icon-wrapper,
+    #offcanvasWithBackdrop .service-icon-wrapper,
+    #offcanvasWithBackdrop .industry-icon-wrapper {
+        background: linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 100%) !important;
+    }
+    
+    /* Dropdown Info - WHITE */
+    .offcanvas .dropdown-info,
+    .offcanvas-body .dropdown-info,
+    #offcanvasWithBackdrop .dropdown-info {
+        background: transparent !important;
+    }
+    
+    /* Main Menu - WHITE */
+    .offcanvas .main-menu,
+    .offcanvas-body .main-menu,
+    #offcanvasWithBackdrop .main-menu {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Nav Item Dropdown - WHITE */
+    .offcanvas .nav-item.dropdown,
+    .offcanvas-body .nav-item.dropdown,
+    #offcanvasWithBackdrop .nav-item.dropdown {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Mobile Dropdown Header - WHITE */
+    .offcanvas .mobile-dropdown-header,
+    .offcanvas-body .mobile-dropdown-header,
+    #offcanvasWithBackdrop .mobile-dropdown-header {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Offcanvas Body - WHITE */
+    .offcanvas,
+    .offcanvas-body,
+    .offcanvas-end,
+    #offcanvasWithBackdrop,
+    #offcanvasWithBackdrop .offcanvas-body {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Offcanvas Header - WHITE */
+    .offcanvas-header,
+    #offcanvasWithBackdrop .offcanvas-header {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* All list items - WHITE */
+    .offcanvas .main-menu > li,
+    .offcanvas-body .main-menu > li,
+    #offcanvasWithBackdrop .main-menu > li {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Remove any inherited backgrounds */
+    .offcanvas *,
+    .offcanvas-body *,
+    #offcanvasWithBackdrop * {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Dropdown when shown - WHITE */
+    .offcanvas .dropdown-menu.show,
+    .offcanvas .mobile-dropdown-content.show,
+    .offcanvas-body .dropdown-menu.show,
+    .offcanvas-body .mobile-dropdown-content.show,
+    #offcanvasWithBackdrop .dropdown-menu.show,
+    #offcanvasWithBackdrop .mobile-dropdown-content.show {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Override any Bootstrap bg classes */
+    .offcanvas .bg-white,
+    .offcanvas .bg-light,
+    .offcanvas .bg-light-subtle,
+    .offcanvas-body .bg-white,
+    .offcanvas-body .bg-light,
+    .offcanvas-body .bg-light-subtle {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+}
+
+
+/* ========================================
+   MOBILE DROPDOWN - SMALLER ICON CARDS + HOVER EFFECT
+   Compact size with smooth animations
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Dropdown Grid - Tighter spacing */
+    .offcanvas .dropdown-grid,
+    .offcanvas-body .dropdown-grid,
+    #offcanvasWithBackdrop .dropdown-grid {
+        padding: 8px !important;
+        gap: 8px !important;
+    }
+    
+    /* Grid Items - 2 columns, smaller gap */
+    .offcanvas .dropdown-grid-item,
+    .offcanvas-body .dropdown-grid-item,
+    #offcanvasWithBackdrop .dropdown-grid-item {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        padding: 8px 0 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Section Heading - Smaller */
+    .offcanvas .dropdown-grid-item h6.drop-heading,
+    .offcanvas-body .dropdown-grid-item h6.drop-heading,
+    #offcanvasWithBackdrop .dropdown-grid-item h6.drop-heading {
+        grid-column: 1 / -1 !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        color: #0d6efd !important;
+        margin: 0 0 8px 0 !important;
+        padding: 0 4px 6px 4px !important;
+        border-bottom: 2px solid #dee2e6 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* Dropdown Link Cards - SMALLER SIZE */
+    .offcanvas .dropdown-link,
+    .offcanvas-body .dropdown-link,
+    #offcanvasWithBackdrop .dropdown-link {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        padding: 8px 5px !important;
+        text-decoration: none !important;
+        color: #555555 !important;
+        width: 100% !important;
+        border-radius: 8px !important;
+        text-align: center !important;
+        min-height: 70px !important;
+        background: #ffffff !important;
+        border: 1px solid #e9ecef !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    /* HOVER EFFECT - Lift + Glow */
+    .offcanvas .dropdown-link:hover,
+    .offcanvas .dropdown-link:active,
+    .offcanvas .dropdown-link:focus,
+    .offcanvas-body .dropdown-link:hover,
+    .offcanvas-body .dropdown-link:active,
+    #offcanvasWithBackdrop .dropdown-link:hover,
+    #offcanvasWithBackdrop .dropdown-link:active {
+        transform: translateY(-3px) scale(1.02) !important;
+        border-color: #0d6efd !important;
+        background: linear-gradient(135deg, #f8faff 0%, #eef4ff 100%) !important;
+        box-shadow: 0 6px 15px rgba(13, 110, 253, 0.2) !important;
+    }
+    
+    /* Icon Wrapper - SMALLER */
+    .offcanvas .service-icon-wrapper,
+    .offcanvas .industry-icon-wrapper,
+    .offcanvas-body .service-icon-wrapper,
+    .offcanvas-body .industry-icon-wrapper,
+    #offcanvasWithBackdrop .service-icon-wrapper,
+    #offcanvasWithBackdrop .industry-icon-wrapper {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        background: linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 100%) !important;
+        border: 1.5px solid rgba(13, 110, 253, 0.15) !important;
+        margin: 0 auto !important;
+        transition: all 0.25s ease !important;
+    }
+    
+    /* Icon Wrapper HOVER - Rotate + Scale */
+    .offcanvas .dropdown-link:hover .service-icon-wrapper,
+    .offcanvas .dropdown-link:hover .industry-icon-wrapper,
+    .offcanvas .dropdown-link:active .service-icon-wrapper,
+    .offcanvas .dropdown-link:active .industry-icon-wrapper,
+    #offcanvasWithBackdrop .dropdown-link:hover .service-icon-wrapper,
+    #offcanvasWithBackdrop .dropdown-link:hover .industry-icon-wrapper {
+        background: linear-gradient(135deg, #dbeafe 0%, #c7d2fe 100%) !important;
+        border-color: #0d6efd !important;
+        transform: scale(1.15) rotate(5deg) !important;
+        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25) !important;
+    }
+    
+    /* Icon - SMALLER */
+    .offcanvas .service-icon-wrapper i,
+    .offcanvas .industry-icon-wrapper i,
+    .offcanvas-body .service-icon-wrapper i,
+    .offcanvas-body .industry-icon-wrapper i,
+    #offcanvasWithBackdrop .service-icon-wrapper i,
+    #offcanvasWithBackdrop .industry-icon-wrapper i {
+        font-size: 16px !important;
+        color: #0d6efd !important;
+        transition: all 0.25s ease !important;
+    }
+    
+    /* Icon HOVER - Color change */
+    .offcanvas .dropdown-link:hover .service-icon-wrapper i,
+    .offcanvas .dropdown-link:hover .industry-icon-wrapper i,
+    #offcanvasWithBackdrop .dropdown-link:hover .service-icon-wrapper i,
+    #offcanvasWithBackdrop .dropdown-link:hover .industry-icon-wrapper i {
+        color: #0d6efd !important;
+        transform: scale(1.1) !important;
+    }
+    
+    /* Icon Images - SMALLER */
+    .offcanvas .service-icon-img,
+    .offcanvas-body .service-icon-img,
+    #offcanvasWithBackdrop .service-icon-img {
+        width: 20px !important;
+        height: 20px !important;
+        object-fit: contain !important;
+        transition: transform 0.25s ease !important;
+    }
+    
+    /* Icon Image HOVER */
+    .offcanvas .dropdown-link:hover .service-icon-img,
+    #offcanvasWithBackdrop .dropdown-link:hover .service-icon-img {
+        transform: scale(1.15) !important;
+    }
+    
+    /* Title Text - SMALLER */
+    .offcanvas .drop-title,
+    .offcanvas-body .drop-title,
+    #offcanvasWithBackdrop .drop-title {
+        font-size: 0.7rem !important;
+        font-weight: 500 !important;
+        color: #333333 !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+        transition: color 0.25s ease !important;
+    }
+    
+    /* Title HOVER - Color change */
+    .offcanvas .dropdown-link:hover .drop-title,
+    #offcanvasWithBackdrop .dropdown-link:hover .drop-title {
+        color: #0d6efd !important;
+    }
+    
+    /* Dropdown Info - Compact */
+    .offcanvas .dropdown-info,
+    .offcanvas-body .dropdown-info,
+    #offcanvasWithBackdrop .dropdown-info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    /* Hide descriptions on mobile */
+    .offcanvas .dropdown-info p,
+    .offcanvas-body .dropdown-info p,
+    #offcanvasWithBackdrop .dropdown-info p {
+        display: none !important;
+    }
+    
+    /* Touch Feedback - Instant response */
+    @media (hover: none) and (pointer: coarse) {
+        .offcanvas .dropdown-link:active,
+        #offcanvasWithBackdrop .dropdown-link:active {
+            transform: translateY(-1px) scale(0.98) !important;
+            transition: all 0.1s ease !important;
+        }
+        
+        .offcanvas .dropdown-link:active .service-icon-wrapper,
+        .offcanvas .dropdown-link:active .industry-icon-wrapper {
+            transform: scale(1.1) rotate(10deg) !important;
+        }
+    }
+    
+    /* Ripple Effect on tap */
+    .offcanvas .dropdown-link::after,
+    #offcanvasWithBackdrop .dropdown-link::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 0 !important;
+        height: 0 !important;
+        background: rgba(13, 110, 253, 0.15) !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        transition: width 0.3s ease, height 0.3s ease !important;
+    }
+    
+    .offcanvas .dropdown-link:active::after,
+    #offcanvasWithBackdrop .dropdown-link:active::after {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+
+/* Extra Small Screens - Even smaller */
+@media (max-width: 399.98px) {
+    .offcanvas .dropdown-link,
+    #offcanvasWithBackdrop .dropdown-link {
+        padding: 6px 4px !important;
+        min-height: 60px !important;
+        gap: 4px !important;
+    }
+    
+    .offcanvas .service-icon-wrapper,
+    .offcanvas .industry-icon-wrapper,
+    #offcanvasWithBackdrop .service-icon-wrapper,
+    #offcanvasWithBackdrop .industry-icon-wrapper {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+    }
+    
+    .offcanvas .service-icon-wrapper i,
+    .offcanvas .industry-icon-wrapper i,
+    #offcanvasWithBackdrop .service-icon-wrapper i,
+    #offcanvasWithBackdrop .industry-icon-wrapper i {
+        font-size: 14px !important;
+    }
+    
+    .offcanvas .service-icon-img,
+    #offcanvasWithBackdrop .service-icon-img {
+        width: 18px !important;
+        height: 18px !important;
+    }
+    
+    .offcanvas .drop-title,
+    #offcanvasWithBackdrop .drop-title {
+        font-size: 0.65rem !important;
+    }
+    
+    .offcanvas .dropdown-grid-item h6.drop-heading,
+    #offcanvasWithBackdrop .dropdown-grid-item h6.drop-heading {
+        font-size: 0.7rem !important;
+    }
+}
+
+
+/* ========================================
+   FIX: MOBILE DROPDOWN SECTION TITLES - CENTER ALIGN
+   Database Development, Web Development etc. titles
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Section Heading - CENTER ALIGNED */
+    .offcanvas .dropdown-grid-item h6.drop-heading,
+    .offcanvas-body .dropdown-grid-item h6.drop-heading,
+    #offcanvasWithBackdrop .dropdown-grid-item h6.drop-heading,
+    .offcanvas .drop-heading,
+    .offcanvas-body .drop-heading,
+    #offcanvasWithBackdrop .drop-heading,
+    #services-dropdown .drop-heading,
+    #industry-dropdown .drop-heading,
+    .mobile-dropdown-content .drop-heading,
+    .dropdown-menu .drop-heading {
+        grid-column: 1 / -1 !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        color: #0d6efd !important;
+        margin: 0 0 10px 0 !important;
+        padding: 8px 10px !important;
+        border-bottom: 2px solid #dee2e6 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        background: #ffffff !important;
+    }
+    
+    /* Dropdown Grid Item - Ensure full width for heading */
+    .offcanvas .dropdown-grid-item,
+    .offcanvas-body .dropdown-grid-item,
+    #offcanvasWithBackdrop .dropdown-grid-item {
+        width: 100% !important;
+    }
+}

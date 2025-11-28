@@ -4458,3 +4458,61 @@ img.team-member-img {
 #phone::placeholder {
     font-size: 14px !important;
 }
+
+
+/* ========================================
+   STICKY SIDEBAR - LAN/INTEGRATION PAGES
+   Image stays fixed while scrolling content
+   ======================================== */
+
+/* Integration Details Section - Sticky Image */
+.integration-details .sticky-sidebar,
+.integration-details .job-overview-wrap,
+.job-overview-wrap.sticky-sidebar {
+    position: relative !important;
+}
+
+@media (min-width: 992px) {
+    /* Enable sticky positioning on desktop */
+    .integration-details .sticky-sidebar,
+    .integration-details .job-overview-wrap,
+    .job-overview-wrap.sticky-sidebar {
+        position: sticky !important;
+        top: 120px !important;
+        align-self: flex-start !important;
+        z-index: 10 !important;
+    }
+    
+    /* Ensure parent row allows sticky to work */
+    .integration-details .row {
+        align-items: flex-start !important;
+    }
+    
+    /* Image container styling */
+    .integration-details .col-lg-4 {
+        position: relative !important;
+    }
+    
+    /* Smooth transition for sticky */
+    .integration-details .job-overview-wrap {
+        transition: top 0.3s ease !important;
+    }
+    
+    /* Image inside sticky container */
+    .integration-details .job-overview-wrap img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+/* Tablet - Disable sticky */
+@media (max-width: 991.98px) {
+    .integration-details .sticky-sidebar,
+    .integration-details .job-overview-wrap,
+    .job-overview-wrap.sticky-sidebar {
+        position: relative !important;
+        top: auto !important;
+    }
+}
