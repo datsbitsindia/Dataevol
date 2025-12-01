@@ -1138,27 +1138,42 @@ img[src$="/img/results.png"] {
    FOOTER LINK SPACING FIX - REDUCE EXCESSIVE SPACE
    ======================================== */
 
-/* Footer navigation list - Reduce spacing between links */
+/* Footer navigation list - Default spacing for address */
 .footer-nav-list li {
-  margin-bottom: 8px !important;
-  line-height: 1.4 !important;
+  margin: 6px 0 !important;
+  line-height: 1.5 !important;
 }
 
 .footer-nav-list li:last-child {
   margin-bottom: 0 !important;
 }
 
-/* Footer links - Proper spacing */
+/* Footer links - Display block for proper spacing */
 .footer-nav-list li a {
-  display: inline-block !important;
-  padding: 2px 0 !important;
-  line-height: 1.4 !important;
+  display: block !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
 }
 
-/* Mobile responsive - Even tighter spacing */
+/* Primary Pages, Our Services, Sales Inquiry columns - Tight spacing */
+.footer-top .col-md-4 .footer-nav-list li,
+.footer-top .col-lg-4 .footer-nav-list li {
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Mobile responsive - Same logic */
 @media (max-width: 767.98px) {
   .footer-nav-list li {
-    margin-bottom: 6px !important;
+    margin: 6px 0 !important;
+    line-height: 1.5 !important;
+  }
+  
+  .footer-top .col-md-4 .footer-nav-list li,
+  .footer-top .col-lg-4 .footer-nav-list li {
+    margin: 0 !important;
+    line-height: 1.2 !important;
   }
 }ng .h1 {
   color: #ffffff !important;
@@ -1564,12 +1579,13 @@ img[src$="/img/results.png"] {
   }
   
   .footer-nav-list li {
-    margin-bottom: 0.4rem !important;
+    margin: -2px 0 !important;
   }
   
   .footer-nav-list li a {
-    padding: 5px 10px !important;
+    padding: 0 !important;
     font-size: 14px !important;
+    line-height: 0.9 !important;
   }
   
   .footer-nav-list li a:hover {
@@ -2794,7 +2810,7 @@ html {
     border-radius: 50px;
     text-decoration: none;
     margin-bottom: 16px;
-    align-self: flex-start;
+    align-self: center;
     transition: all 0.3s ease;
 }
 
@@ -2848,6 +2864,19 @@ html {
     .tech-card img {
         height: 200px;
     }
+    
+    .tech-card-body {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .tech-card-badge {
+        align-self: center !important;
+    }
+    
+    .tech-card-desc {
+        text-align: center !important;
+    }
 }
 
 /* Responsive: Mobile */
@@ -2875,15 +2904,24 @@ html {
     
     .tech-card-body {
         padding: 16px 20px 20px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
     }
     
     .tech-card-badge {
         font-size: 0.85rem;
         padding: 8px 16px;
+        align-self: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
     
     .tech-card-desc {
         font-size: 0.9rem;
+        text-align: center !important;
+        width: 100%;
     }
 }
 
@@ -3657,8 +3695,8 @@ ul.brand-logo-grid li.logo-card {
 }
 
 .footer-nav-list li {
-    margin-bottom: 8px !important;
-    line-height: 1.6 !important;
+    margin: -2px 0 !important;
+    line-height: 0.9 !important;
 }
 
 /* Footer Headings */

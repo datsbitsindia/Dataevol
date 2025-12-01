@@ -678,7 +678,7 @@
     section.hero-it-solution,
     section.hero-section,
     section.ptb-120[style*="padding"] {
-        padding: 90px 15px 50px 15px !important;
+        padding: 70px 15px 20px 15px !important;
         text-align: center !important;
         overflow: visible !important;
     }
@@ -686,7 +686,7 @@
     /* Override inline padding:80px 60px from About section */
     section[style*="padding:80px"],
     section[style*="padding: 80px"] {
-        padding: 50px 15px !important;
+        padding: 20px 15px !important;
     }
     
     /* Hero Content Wrapper - Full Width */
@@ -865,9 +865,9 @@
    ======================================== */
 
 @media (max-width: 991.98px) {
-    /* All Sections - Proper Padding */
+    /* All Sections - Reduced Padding (half of original) */
     section {
-        padding: 50px 15px !important;
+        padding: 20px 15px !important;
         overflow: visible !important;
     }
     
@@ -877,7 +877,7 @@
     h2 {
         font-size: 1.5rem !important;
         text-align: center !important;
-        margin-bottom: 1rem !important;
+        margin-bottom: 0.75rem !important;
         line-height: 1.35 !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
@@ -904,7 +904,7 @@
     .section-heading p {
         font-size: 0.95rem !important;
         text-align: center !important;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
         line-height: 1.6 !important;
         word-wrap: break-word !important;
         max-width: 100% !important;
@@ -940,7 +940,7 @@
 @media (max-width: 991.98px) {
     /* Services Icon Section - DataEvol Tech Stacks */
     .services-icon {
-        padding: 40px 15px !important;
+        padding: 20px 15px !important;
         overflow: visible !important;
     }
     
@@ -2062,24 +2062,36 @@
         text-align: left !important;
     }
     
+    /* Default: Address lines (without links) - Normal readable spacing */
     .footer-nav-list li {
-        margin-bottom: 0.65rem !important;
-        line-height: 1.6 !important;
+        margin: 6px 0 !important;
+        line-height: 1.5 !important;
         font-size: 0.9rem !important;
         color: rgba(255, 255, 255, 0.65) !important;
         text-align: left !important;
     }
     
+    /* Footer links - Tight spacing */
     .footer-nav-list li a {
         color: rgba(255, 255, 255, 0.85) !important;
         text-decoration: none !important;
-        display: inline-block !important;
+        display: block !important;
         cursor: pointer !important;
         pointer-events: auto !important;
         position: relative !important;
         z-index: 100 !important;
         transition: all 0.3s ease !important;
         font-size: 0.95rem !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* Primary Pages & Our Services & Sales Inquiry columns - Tight spacing for links */
+    .footer-top .col-md-4 .footer-nav-list li,
+    .footer-top .col-lg-4 .footer-nav-list li {
+        margin: 0 !important;
+        line-height: 1.2 !important;
     }
     
     .footer-nav-list li a:hover,
@@ -4714,7 +4726,7 @@
     .footer-nav-list li a {
         position: relative !important;
         display: inline-block !important;
-        padding: 5px 10px !important;
+        padding: 0 !important;
         border-radius: 8px !important;
         background: rgba(255, 255, 255, 0.0) !important;
         backdrop-filter: blur(10px) !important;
@@ -6437,9 +6449,9 @@
     }
     
     .footer-nav-list li {
-        margin-bottom: 6px !important;
+        margin: -2px 0 !important;
         font-size: 14px !important;
-        line-height: 1.5 !important;
+        line-height: 0.9 !important;
     }
     
     .footer-section .logo-white {
@@ -6474,7 +6486,7 @@
     
     .footer-nav-list li {
         display: block !important;
-        margin-bottom: 8px !important;
+        margin: -2px 0 !important;
     }
     
     .footer-bottom {
@@ -7073,7 +7085,7 @@
     }
     
     .footer-nav-list li {
-        margin-bottom: 8px !important;
+        margin: -2px 0 !important;
     }
     
     .footer-nav-list a {
@@ -7259,27 +7271,45 @@
         padding-bottom: 2rem !important;
     }
     
-    /* PTB-120 Override */
+    /* PTB-120 Override - Reduced to half */
     .ptb-120 {
-        padding-top: 50px !important;
-        padding-bottom: 50px !important;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
     }
     
     .pt-120 {
-        padding-top: 50px !important;
+        padding-top: 20px !important;
     }
     
     .pb-120 {
-        padding-bottom: 50px !important;
+        padding-bottom: 20px !important;
     }
     
-    /* PT-60 Override */
+    /* PT-60 Override - Reduced */
     .pt-60 {
-        padding-top: 30px !important;
+        padding-top: 16px !important;
     }
     
     .pb-60 {
-        padding-bottom: 30px !important;
+        padding-bottom: 16px !important;
+    }
+    
+    /* Row gaps - Reduced */
+    .row {
+        row-gap: 16px !important;
+    }
+    
+    /* Card margins - Reduced */
+    .card,
+    .feature-card,
+    .service-card,
+    .tech-card {
+        margin-bottom: 16px !important;
+    }
+    
+    /* Section heading margins - Reduced */
+    .section-heading {
+        margin-bottom: 16px !important;
     }
 }
 
@@ -7818,9 +7848,9 @@
     /* Reduce line-height and margin on all footer links */
     .footer-nav-list a,
     .footer-nav-list li {
-        margin: 3px 0 !important;
-        padding: 3px 0 !important;
-        line-height: 1.1 !important;
+        margin: -2px 0 !important;
+        padding: 0 !important;
+        line-height: 0.9 !important;
     }
     
     /* Reduce column spacing between items */
@@ -7860,9 +7890,9 @@
     /* Even tighter spacing on small mobile */
     .footer-nav-list a,
     .footer-nav-list li {
-        margin: 2px 0 !important;
-        padding: 2px 0 !important;
-        line-height: 1.1 !important;
+        margin: -2px 0 !important;
+        padding: 0 !important;
+        line-height: 0.9 !important;
     }
     
     .footer-single-col h3 {
@@ -9198,5 +9228,215 @@ img.team-member-img {
     .offcanvas-body .dropdown-grid-item,
     #offcanvasWithBackdrop .dropdown-grid-item {
         width: 100% !important;
+    }
+}
+
+
+/* ========================================
+   MOBILE SPACING REDUCTION - GLOBAL
+   Reduce all white gaps between sections
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* All sections - Tight vertical spacing */
+    section,
+    .section,
+    [class*="section"] {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+    
+    /* Hero sections need more top padding for header */
+    .hero-section,
+    .hero-it-solution,
+    .page-header {
+        padding-top: 70px !important;
+        padding-bottom: 20px !important;
+    }
+    
+    /* Reduce margin-bottom on all common elements */
+    .mb-4, .mb-5, .my-4, .my-5 {
+        margin-bottom: 16px !important;
+    }
+    
+    .mt-4, .mt-5, .my-4, .my-5 {
+        margin-top: 16px !important;
+    }
+    
+    /* Reduce padding on common utility classes */
+    .py-4, .py-5, .pb-4, .pb-5 {
+        padding-bottom: 16px !important;
+    }
+    
+    .py-4, .py-5, .pt-4, .pt-5 {
+        padding-top: 16px !important;
+    }
+    
+    /* Cards and content blocks */
+    .card,
+    .feature-card,
+    .service-card,
+    .tech-card,
+    .single-article,
+    .feature-box,
+    .icon-box {
+        margin-bottom: 16px !important;
+    }
+    
+    /* Row and column gaps */
+    .row,
+    [class*="row"] {
+        row-gap: 16px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .col, [class*="col-"] {
+        margin-bottom: 0 !important;
+    }
+    
+    /* Section headings */
+    .section-heading,
+    .section-title {
+        margin-bottom: 16px !important;
+    }
+    
+    /* Swiper/Carousel spacing */
+    .swiper,
+    .swiper-container,
+    .techStacksSwiper {
+        padding-bottom: 16px !important;
+    }
+    
+    /* Footer spacing */
+    .footer-section,
+    .footer-top {
+        padding-top: 20px !important;
+        padding-bottom: 16px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Even tighter on small mobile */
+    section,
+    .section,
+    [class*="section"] {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+    
+    .hero-section,
+    .hero-it-solution,
+    .page-header {
+        padding-top: 60px !important;
+        padding-bottom: 16px !important;
+    }
+    
+    .ptb-120, .pt-120, .pb-120 {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+}
+
+
+/* ========================================
+   OUR TEAM SECTION - MOBILE CENTER
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Team section - Center everything */
+    .team-section {
+        text-align: center !important;
+    }
+    
+    .team-section .row {
+        justify-content: center !important;
+    }
+    
+    /* Team member cards - Center */
+    .team-single-wrap {
+        text-align: center !important;
+        margin: 0 auto 20px auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    /* Team image - Center */
+    .team-img {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+    }
+    
+    .team-img img,
+    .team-member-img {
+        display: block !important;
+        margin: 0 auto !important;
+        max-width: 200px !important;
+        height: auto !important;
+    }
+    
+    /* Team info - Center */
+    .team-info {
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .team-info h5,
+    .team-info p {
+        text-align: center !important;
+    }
+    
+    /* Column auto - Full width on mobile */
+    .team-section .col-auto {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .team-img img,
+    .team-member-img {
+        max-width: 180px !important;
+    }
+}
+
+
+/* ========================================
+   GOOGLE MAPS - MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Map iframe - Reduced height on tablet */
+    .w-100 iframe[src*="google.com/maps"] {
+        height: 400px !important;
+    }
+    
+    /* Map container */
+    .w-100 .position-relative:has(iframe) {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Map iframe - Reduced height on mobile */
+    .w-100 iframe[src*="google.com/maps"] {
+        height: 350px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Map iframe - Even smaller on small mobile */
+    .w-100 iframe[src*="google.com/maps"] {
+        height: 300px !important;
+    }
+    
+    /* Office address text - Smaller on mobile */
+    .text-center.mt-4.small {
+        font-size: 12px !important;
+        padding: 0 10px !important;
     }
 }
