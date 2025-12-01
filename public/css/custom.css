@@ -4554,3 +4554,96 @@ img.team-member-img {
         top: auto !important;
     }
 }
+
+
+/* ========================================
+   MAP TOGGLE BUTTONS - Google Maps & Apple Maps
+   ======================================== */
+
+.map-toggle-buttons {
+    padding: 15px 20px;
+    background: #f8f9fa;
+}
+
+.map-btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 2px solid #dee2e6;
+    background: #ffffff;
+    color: #495057;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.map-btn:hover {
+    border-color: #0d6efd;
+    color: #0d6efd;
+    background: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+}
+
+.map-btn.active {
+    background: linear-gradient(135deg, #0d6efd 0%, #0056d2 100%);
+    color: #ffffff;
+    border-color: #0d6efd;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.map-btn.active:hover {
+    background: linear-gradient(135deg, #0056d2 0%, #004bb5 100%);
+    color: #ffffff;
+}
+
+/* Google Maps button specific */
+#googleMapBtn i {
+    color: inherit;
+}
+
+/* Apple Maps button specific */
+#appleMapBtn i {
+    font-size: 18px;
+}
+
+/* Apple Maps placeholder styling */
+#appleMapFrame {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+}
+
+#appleMapFrame h4 {
+    color: #1a1a2e;
+}
+
+#appleMapFrame .btn-dark {
+    background: #1a1a2e;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#appleMapFrame .btn-dark:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+    .map-toggle-buttons {
+        flex-direction: column;
+        gap: 10px !important;
+        padding: 15px;
+    }
+    
+    .map-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+}
