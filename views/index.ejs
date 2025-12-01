@@ -51,6 +51,8 @@
     <link rel="stylesheet" href="/css/custom.css">
     <!--Image optimization css-->
     <link rel="stylesheet" href="/css/image-optimization.css">
+    <!--Performance optimization css-->
+    <link rel="stylesheet" href="/css/performance.css">
     <!--Mobile responsive - Perfect Desktop Replica-->
     <link rel="stylesheet" href="/css/mobile-responsive.css">
     <!--Industry Icons - Modern CSS Design-->
@@ -62,6 +64,9 @@
     <!-- DNS Prefetch for external resources -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Performance optimization script - load early -->
+    <script src="/js/performance.js" defer></script>
 
 </head>
 
@@ -223,34 +228,34 @@
                     <div class="col-lg-12">
                         <div class="service-tabs">
                             <ul class="nav nav-pills d-flex justify-content-center" style="border-bottom: 1px solid #b0b0b0; margin-bottom: -1px;" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation" style="margin: 0px 20px;">
-                                    <button class="nav-link active" id="pills-sql-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" style="padding: 15px 20px; min-width: 140px; text-align: center;">
-                                        <i class="fa-solid fa-database" style="color: #737373; font-size: 20px; display: block; margin-bottom: 8px;"></i>
-                                        <span style="color: #737373; font-size: 14px; line-height: 1.4; display: block; white-space: normal;">Database<br>Development</span>
+                                <li class="nav-item" role="presentation" style="margin: 0px 10px;">
+                                    <button class="nav-link active" id="pills-sql-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" style="padding: 12px 15px; text-align: center;">
+                                        <i class="fa-solid fa-database" style="color: #737373; font-size: 18px; display: inline-block; margin-right: 8px; vertical-align: middle;"></i>
+                                        <span style="color: #737373; font-size: 14px; display: inline-block; vertical-align: middle; white-space: nowrap;">Database Development</span>
                                     </button>
                                 </li>
-                                <li class="nav-item" role="presentation" style="margin: 0px 20px;">
-                                    <button class="nav-link" id="pills-web-tab" data-bs-toggle="pill" data-bs-target="#pills-web" type="button" role="tab" aria-controls="pills-web" aria-selected="false" style="padding: 15px 20px; min-width: 140px; text-align: center;">
-                                        <i class="fa fa-file" style="color: #737373; font-size: 20px; display: block; margin-bottom: 8px;"></i>
-                                        <span style="color: #737373; font-size: 14px; line-height: 1.4; display: block; white-space: normal;">Web<br>Development</span>
+                                <li class="nav-item" role="presentation" style="margin: 0px 10px;">
+                                    <button class="nav-link" id="pills-web-tab" data-bs-toggle="pill" data-bs-target="#pills-web" type="button" role="tab" aria-controls="pills-web" aria-selected="false" style="padding: 12px 15px; text-align: center;">
+                                        <i class="fa fa-file" style="color: #737373; font-size: 18px; display: inline-block; margin-right: 8px; vertical-align: middle;"></i>
+                                        <span style="color: #737373; font-size: 14px; display: inline-block; vertical-align: middle; white-space: nowrap;">Web Development</span>
                                     </button>
                                 </li>
-                                <li class="nav-item" role="presentation" style="margin: 0px 20px;">
-                                    <button class="nav-link" id="pills-moapp-tab" data-bs-toggle="pill" data-bs-target="#pills-moapp" type="button" role="tab" aria-controls="pills-moapp" aria-selected="false" style="padding: 15px 20px; min-width: 140px; text-align: center;">
-                                        <i class="fas fa-tablet-alt" style="color: #737373; font-size: 20px; display: block; margin-bottom: 8px;"></i>
-                                        <span style="color: #737373; font-size: 14px; line-height: 1.4; display: block; white-space: normal;">Mobile App<br>Development</span>
+                                <li class="nav-item" role="presentation" style="margin: 0px 10px;">
+                                    <button class="nav-link" id="pills-moapp-tab" data-bs-toggle="pill" data-bs-target="#pills-moapp" type="button" role="tab" aria-controls="pills-moapp" aria-selected="false" style="padding: 12px 15px; text-align: center;">
+                                        <i class="fas fa-tablet-alt" style="color: #737373; font-size: 18px; display: inline-block; margin-right: 8px; vertical-align: middle;"></i>
+                                        <span style="color: #737373; font-size: 14px; display: inline-block; vertical-align: middle; white-space: nowrap;">Mobile App Dev.</span>
                                     </button>
                                 </li> 
-                                 <li class="nav-item" role="presentation" style="margin: 0px 20px;">
-                                    <button class="nav-link" id="pills-uiux-tab" data-bs-toggle="pill" data-bs-target="#pills-uiux" type="button" role="tab" aria-controls="pills-uiux" aria-selected="false" style="padding: 15px 20px; min-width: 140px; text-align: center;">
-                                        <i class="fas fa-object-group" style="color: #737373; font-size: 20px; display: block; margin-bottom: 8px;"></i>
-                                        <span style="color: #737373; font-size: 14px; line-height: 1.4; display: block; white-space: normal;">UI/UX<br>Design</span>
+                                 <li class="nav-item" role="presentation" style="margin: 0px 10px;">
+                                    <button class="nav-link" id="pills-uiux-tab" data-bs-toggle="pill" data-bs-target="#pills-uiux" type="button" role="tab" aria-controls="pills-uiux" aria-selected="false" style="padding: 12px 15px; text-align: center;">
+                                        <i class="fas fa-object-group" style="color: #737373; font-size: 18px; display: inline-block; margin-right: 8px; vertical-align: middle;"></i>
+                                        <span style="color: #737373; font-size: 14px; display: inline-block; vertical-align: middle; white-space: nowrap;">UI/UX Design</span>
                                     </button>
                                 </li>   
-                                 <li class="nav-item" role="presentation" style="margin: 0px 20px;">
-                                    <button class="nav-link" id="pills-cloud-tab" data-bs-toggle="pill" data-bs-target="#pills-cloud" type="button" role="tab" aria-controls="pills-cloud" aria-selected="false" style="padding: 15px 20px; min-width: 140px; text-align: center;">
-                                        <i class="fas fa-cloud" style="color: #737373; font-size: 20px; display: block; margin-bottom: 8px;"></i>
-                                        <span style="color: #737373; font-size: 14px; line-height: 1.4; display: block; white-space: normal;">Cloud<br>Development</span>
+                                 <li class="nav-item" role="presentation" style="margin: 0px 10px;">
+                                    <button class="nav-link" id="pills-cloud-tab" data-bs-toggle="pill" data-bs-target="#pills-cloud" type="button" role="tab" aria-controls="pills-cloud" aria-selected="false" style="padding: 12px 15px; text-align: center;">
+                                        <i class="fas fa-cloud" style="color: #737373; font-size: 18px; display: inline-block; margin-right: 8px; vertical-align: middle;"></i>
+                                        <span style="color: #737373; font-size: 14px; display: inline-block; vertical-align: middle; white-space: nowrap;">Cloud Development</span>
                                     </button>
                                 </li>  
                             </ul>

@@ -9440,3 +9440,139 @@ img.team-member-img {
         padding: 0 10px !important;
     }
 }
+
+
+/* ========================================
+   HOMEPAGE SECTIONS - SPACING FIX (MOBILE)
+   Same as desktop - reduce spacing between sections
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* DataEvol Offers tabs section - reduce padding */
+    section.ptb-120.bg-light-subtle {
+        padding-top: 15px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    /* Tech Stacks Section - white background and reduce padding */
+    .tech-stacks-section {
+        background-color: #ffffff !important;
+    }
+    
+    .tech-stacks-section.ptb-120 {
+        background-color: #ffffff !important;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+    
+    /* How We Work section - white background and reduce padding */
+    #open-positions {
+        background-color: #ffffff !important;
+        padding-top: 15px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    /* Brand Logo Section - reduce spacing before footer */
+    .brand-logo.ptb-120 {
+        padding-top: 30px !important;
+        padding-bottom: 15px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .brand-logo .logo-grid-container {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .brand-logo .brand-logo-grid {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .brand-logo .logo-card {
+        margin-bottom: 0 !important;
+    }
+    
+    .brand-logo .section-heading {
+        margin-bottom: 15px !important;
+    }
+    
+    .brand-logo .section-heading p {
+        margin-bottom: 0 !important;
+    }
+    
+    /* Footer top padding reduce */
+    .footer-section .footer-top {
+        padding-top: 20px !important;
+    }
+}
+
+/* Small Mobile - Even tighter spacing */
+@media (max-width: 575.98px) {
+    section.ptb-120.bg-light-subtle {
+        padding-top: 10px !important;
+        padding-bottom: 25px !important;
+    }
+    
+    .tech-stacks-section.ptb-120 {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+    
+    #open-positions {
+        padding-top: 10px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    .brand-logo.ptb-120 {
+        padding-top: 25px !important;
+        padding-bottom: 10px !important;
+    }
+}
+
+/* ========================================
+   ABOUT PAGE - SCROLL FIX (MOBILE)
+   Content should scroll together
+   ======================================== */
+
+@media (max-width: 991.98px) {
+    /* Disable parallax on mobile */
+    .about-header-section .parallax-element,
+    .our-story-section .parallax-element,
+    .feature-section-two .parallax-element {
+        transform: none !important;
+        display: none !important;
+    }
+    
+    /* About header - fix scroll */
+    .about-header-section {
+        position: relative !important;
+    }
+    
+    .about-header-section .section-heading-wrap,
+    .about-header-section .about-content-left,
+    .about-header-section .about-content-right {
+        position: relative !important;
+        transform: none !important;
+    }
+    
+    /* Our Story - remove sticky, scroll together */
+    .our-story-section .sticky-sidebar {
+        position: relative !important;
+        top: auto !important;
+    }
+    
+    .our-story-section .section-heading {
+        position: relative !important;
+        top: auto !important;
+    }
+    
+    /* Feature/Values section - fix scroll */
+    .feature-section-two .section-heading,
+    .feature-section-two .values-list {
+        position: relative !important;
+        transform: none !important;
+    }
+}
+
+

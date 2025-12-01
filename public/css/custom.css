@@ -626,15 +626,16 @@ section {
   max-width: 100% !important;
 }
 
-/* Our Story Section - Sticky sidebar fix */
+/* Our Story Section - Remove sticky, content should scroll together */
 .our-story-section .sticky-sidebar {
   position: relative !important;
+  top: auto !important;
 }
 
 @media (min-width: 992px) {
   .our-story-section .sticky-sidebar {
-    position: sticky !important;
-    top: 100px !important;
+    position: relative !important;
+    top: auto !important;
   }
 }
 
@@ -3527,12 +3528,13 @@ ul.brand-logo-grid li.logo-card {
 
 .our-story-section .sticky-sidebar {
     position: relative !important;
+    top: auto !important;
 }
 
 @media (min-width: 992px) {
     .our-story-section .sticky-sidebar {
-        position: sticky !important;
-        top: 120px !important;
+        position: relative !important;
+        top: auto !important;
     }
 }
 
@@ -4645,5 +4647,258 @@ img.team-member-img {
         width: 100%;
         justify-content: center;
         padding: 14px 20px;
+    }
+}
+
+
+/* ========================================
+   BRAND LOGO SECTION - REDUCE BOTTOM SPACING
+   Footer ko pass lane ke liye
+   ======================================== */
+
+/* Brand logo section - reduce bottom padding to bring footer closer */
+.brand-logo.ptb-120 {
+    padding-top: 40px !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Logo grid container - reduce bottom margin */
+.brand-logo .logo-grid-container {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Logo cards - reduce bottom spacing */
+.brand-logo .brand-logo-grid {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    gap: 10px !important;
+}
+
+/* Logo card items - tighter spacing */
+.brand-logo .logo-card {
+    margin-bottom: 0 !important;
+}
+
+/* Section heading - reduce bottom margin */
+.brand-logo .section-heading {
+    margin-bottom: 15px !important;
+}
+
+.brand-logo .section-heading p {
+    margin-bottom: 0 !important;
+}
+
+/* Remove any extra spacing before footer */
+.brand-logo + footer,
+.brand-logo + .footer-section,
+section.brand-logo + footer {
+    margin-top: 0 !important;
+}
+
+/* Footer top padding reduce */
+.footer-section .footer-top {
+    padding-top: 25px !important;
+}
+
+@media (max-width: 991.98px) {
+    .brand-logo.ptb-120 {
+        padding-top: 30px !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .footer-section .footer-top {
+        padding-top: 20px !important;
+    }
+}
+
+/* ========================================
+   TECH STACKS SECTION - WHITE BACKGROUND
+   ======================================== */
+
+/* DataEvol Offers tabs section - reduce top and bottom padding */
+section.ptb-120.bg-light-subtle {
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Tech stacks section - white background and reduce padding */
+.tech-stacks-section {
+    background-color: #ffffff !important;
+}
+
+.tech-stacks-section.ptb-120 {
+    background-color: #ffffff !important;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+
+/* How We Work section - white background and reduce top padding */
+#open-positions {
+    background-color: #ffffff !important;
+    padding-top: 20px !important;
+    padding-bottom: 60px !important;
+}
+
+@media (max-width: 991.98px) {
+    section.ptb-120.bg-light-subtle {
+        padding-bottom: 30px !important;
+    }
+    
+    .tech-stacks-section.ptb-120 {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+    
+    #open-positions {
+        padding-top: 15px !important;
+        padding-bottom: 40px !important;
+    }
+}
+
+
+/* ========================================
+   ABOUT PAGE - FIX SCROLL BEHAVIOR
+   Content should scroll together, no parallax effect
+   ======================================== */
+
+/* Disable parallax effect on about page */
+.about-header-section .parallax-element,
+.our-story-section .parallax-element,
+.feature-section-two .parallax-element {
+    transform: none !important;
+    position: absolute !important;
+}
+
+.about-header-section .parallax-element .layer,
+.our-story-section .parallax-element .layer,
+.feature-section-two .parallax-element .layer {
+    transform: none !important;
+}
+
+/* About header section - fix content scroll */
+.about-header-section {
+    position: relative !important;
+}
+
+.about-header-section .section-heading-wrap {
+    position: relative !important;
+}
+
+.about-header-section .about-content-left,
+.about-header-section .about-content-right {
+    position: relative !important;
+    transform: none !important;
+}
+
+/* Our Story section - all content scrolls together */
+.our-story-section {
+    position: relative !important;
+}
+
+.our-story-section .section-heading {
+    position: relative !important;
+    top: auto !important;
+}
+
+.our-story-section .story-grid-wrapper {
+    position: relative !important;
+}
+
+/* Feature/Values section - fix scroll */
+.feature-section-two {
+    position: relative !important;
+}
+
+.feature-section-two .section-heading,
+.feature-section-two .values-list {
+    position: relative !important;
+    transform: none !important;
+}
+
+/* Team section - fix scroll */
+.team-section {
+    position: relative !important;
+}
+
+/* Remove any fixed/sticky positioning that causes scroll issues */
+.about-header-section *,
+.our-story-section *,
+.feature-section-two *,
+.team-section * {
+    will-change: auto !important;
+}
+
+
+/* ========================================
+   SERVICE TABS - SINGLE LINE LAYOUT
+   Icon and text in one line like dropdown
+   ======================================== */
+
+/* Service tabs container */
+.service-tabs .nav-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+}
+
+/* Tab button - horizontal layout */
+.service-tabs .nav-link {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 12px 20px !important;
+    white-space: nowrap !important;
+}
+
+/* Icon in tab */
+.service-tabs .nav-link i {
+    display: inline-block !important;
+    margin-right: 8px !important;
+    margin-bottom: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Text in tab */
+.service-tabs .nav-link span {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+}
+
+/* Remove br tags effect */
+.service-tabs .nav-link span br {
+    display: none !important;
+}
+
+
+/* ========================================
+   ABOUT PAGE - REDUCE SPACING BETWEEN SECTIONS
+   Values section and Team section
+   ======================================== */
+
+/* Feature section (Values) - reduce bottom padding */
+.feature-section-two.ptb-120 {
+    padding-bottom: 20px !important;
+}
+
+/* Team section - reduce top padding */
+.team-section.ptb-120 {
+    padding-top: 20px !important;
+}
+
+@media (max-width: 991.98px) {
+    .feature-section-two.ptb-120 {
+        padding-bottom: 15px !important;
+    }
+    
+    .team-section.ptb-120 {
+        padding-top: 15px !important;
     }
 }

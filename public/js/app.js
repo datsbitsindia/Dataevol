@@ -39,9 +39,9 @@ jQuery(function($) {
         initializeHeader();
     });
 
-    //preloader - Fast fade out
-    $(window).ready(function() {
-        $("#preloader").delay(50).fadeOut(200);
+    //preloader - Ultra fast fade out (no delay)
+    $(document).ready(function() {
+        $("#preloader").fadeOut(150);
         // Re-initialize header after preloader
         initializeHeader();
     });

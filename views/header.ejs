@@ -53,16 +53,21 @@
     <link rel="preload" as="image" href="/img/Logo 2.png">
     <link rel="preload" as="image" href="/img/company/LogoICon.png">
     
-    <!-- Add the Font Awesome CSS link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add the Font Awesome CSS link - async load for performance -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
     <!-- Image Optimization CSS -->
     <link rel="stylesheet" href="/css/image-optimization.css">
+    <!-- Performance Optimization CSS -->
+    <link rel="stylesheet" href="/css/performance.css">
     <!-- Mobile Responsive - Perfect Desktop Replica -->
     <link rel="stylesheet" href="/css/mobile-responsive.css">
     <!-- Service & Industry Icons CSS -->
     <link rel="stylesheet" href="/css/service-icons.css">
     <link rel="stylesheet" href="/css/industry-icons.css">
+    <!-- Performance optimization script -->
+    <script src="/js/performance.js" defer></script>
 
 
 
