@@ -1,38 +1,44 @@
 /**
  * Performance Optimization Script
- * Lazy loading, preloader optimization, faster page load
+ * Ultra-fast loading, lazy loading, preloader optimization
  */
 
 (function() {
     'use strict';
 
-    // 1. Fast preloader hide - don't wait for all images
+    // 1. INSTANT preloader hide - no waiting
     function hidePreloader() {
         const preloader = document.getElementById('preloader');
         if (preloader) {
-            preloader.classList.add('loaded');
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 0.15s ease';
             setTimeout(() => {
                 preloader.style.display = 'none';
-            }, 200);
+                preloader.classList.add('loaded');
+            }, 150);
         }
     }
 
-    // Hide preloader when DOM is ready (not waiting for all resources)
+    // Hide preloader IMMEDIATELY when DOM is interactive
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            // Hide preloader after a very short delay
-            setTimeout(hidePreloader, 300);
+            // Hide preloader instantly - no delay
+            requestAnimationFrame(hidePreloader);
         });
     } else {
-        setTimeout(hidePreloader, 200);
+        // DOM already ready - hide immediately
+        requestAnimationFrame(hidePreloader);
     }
+    
+    // Backup - force hide after 500ms max
+    setTimeout(hidePreloader, 500);
     
     // Also hide on window load as backup
     window.addEventListener('load', hidePreloader);
 
-    // 2. Lazy load images with Intersection Observer
+    // 2. Lazy load images with Intersection Observer - OPTIMIZED
     function lazyLoadImages() {
-        const images = document.querySelectorAll('img[loading="lazy"]');
+        const images = document.querySelectorAll('img[loading="lazy"], img[data-src]');
         
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -43,17 +49,16 @@
                         // Load the image
                         if (img.dataset.src) {
                             img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
                         }
                         
-                        img.onload = function() {
-                            img.classList.add('loaded');
-                        };
-                        
+                        // Add loaded class immediately for faster visual feedback
+                        img.classList.add('loaded');
                         observer.unobserve(img);
                     }
                 });
             }, {
-                rootMargin: '50px 0px',
+                rootMargin: '100px 0px', // Load images 100px before they enter viewport
                 threshold: 0.01
             });
 
@@ -69,6 +74,14 @@
                 img.classList.add('loaded');
             });
         }
+    }
+    
+    // 2.5 Critical images - load immediately above the fold
+    function loadCriticalImages() {
+        const criticalImages = document.querySelectorAll('img:not([loading="lazy"])');
+        criticalImages.forEach(img => {
+            img.classList.add('loaded');
+        });
     }
 
     // 3. Defer non-critical JavaScript
@@ -130,15 +143,23 @@
         }, { passive: true });
     }
 
-    // Initialize all optimizations
+    // Initialize all optimizations - FAST
     document.addEventListener('DOMContentLoaded', function() {
-        lazyLoadImages();
-        optimizeAOS();
-        preloadOnHover();
+        // Critical first - load immediately
+        loadCriticalImages();
         optimizeScroll();
         
-        // Load deferred scripts after page is interactive
-        setTimeout(loadDeferredScripts, 1000);
+        // Then lazy load rest
+        requestAnimationFrame(function() {
+            lazyLoadImages();
+            optimizeAOS();
+        });
+        
+        // Non-critical - defer
+        setTimeout(function() {
+            preloadOnHover();
+            loadDeferredScripts();
+        }, 500);
     });
 
     // Mark all images as loaded after window load
@@ -147,5 +168,17 @@
             img.classList.add('loaded');
         });
     });
+    
+    // 7. Reduce layout shifts - set image dimensions
+    function preventLayoutShift() {
+        document.querySelectorAll('img:not([width]):not([height])').forEach(img => {
+            if (img.naturalWidth && img.naturalHeight) {
+                img.setAttribute('width', img.naturalWidth);
+                img.setAttribute('height', img.naturalHeight);
+            }
+        });
+    }
+    
+    window.addEventListener('load', preventLayoutShift);
 
 })();

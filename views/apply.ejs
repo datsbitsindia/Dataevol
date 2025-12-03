@@ -602,7 +602,7 @@
 
             try {
                 // Call the backend API
-                const backendUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin;
+                const backendUrl = window.location.origin;
                 const response = await fetch(`${backendUrl}/api/apply-job`, {
                     method: 'POST',
                     headers: {

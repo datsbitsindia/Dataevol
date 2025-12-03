@@ -3,15 +3,32 @@
    Lazy loading, image optimization, faster rendering
    ======================================== */
 
-/* Lazy loading images - show placeholder until loaded */
+/* Lazy loading images - FAST transition */
 img[loading="lazy"] {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
 }
 
 img[loading="lazy"].loaded,
 img.loaded {
     opacity: 1;
+}
+
+/* Prevent image layout shift */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Blog images - prevent cut off on mobile */
+@media (max-width: 767px) {
+    .blog-card-img img,
+    .featured-blog-img img,
+    .blog-featured-img img,
+    .related-post-img img {
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
 }
 
 /* Optimize font rendering */
@@ -57,7 +74,7 @@ html {
     }
 }
 
-/* Preloader optimization */
+/* Preloader optimization - ULTRA FAST */
 #preloader {
     position: fixed;
     top: 0;
@@ -69,13 +86,14 @@ html {
     align-items: center;
     justify-content: center;
     background: #fff;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
 }
 
 #preloader.loaded {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important;
 }
 
 /* Critical above-the-fold content */

@@ -144,7 +144,7 @@ pm2 restart dataevol-website
 ### Issue: Email not sending
 - Verify SMTP credentials in .env
 - Check firewall allows port 465
-- Test with: http://yourdomain.com/api/contact/test
+- Check server logs: `pm2 logs dataevol-website`
 
 ### Issue: Slow performance
 - Verify GZIP is enabled: `curl -H "Accept-Encoding: gzip" -I http://yourdomain.com/`

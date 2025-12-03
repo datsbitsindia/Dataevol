@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0dcaf0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d6efd;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cloudGrad)"/>
+  
+  <!-- Cloud shapes -->
+  <ellipse cx="250" cy="200" rx="120" ry="60" fill="rgba(255,255,255,0.25)"/>
+  <ellipse cx="350" cy="180" rx="100" ry="70" fill="rgba(255,255,255,0.25)"/>
+  <ellipse cx="450" cy="200" rx="130" ry="65" fill="rgba(255,255,255,0.25)"/>
+  
+  <ellipse cx="500" cy="320" rx="140" ry="70" fill="rgba(255,255,255,0.2)"/>
+  <ellipse cx="600" cy="300" rx="110" ry="75" fill="rgba(255,255,255,0.2)"/>
+  
+  <!-- Server icons -->
+  <rect x="150" y="350" width="80" height="100" rx="5" fill="rgba(255,255,255,0.3)"/>
+  <rect x="160" y="360" width="60" height="15" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <rect x="160" y="385" width="60" height="15" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <rect x="160" y="410" width="60" height="15" rx="2" fill="rgba(255,255,255,0.4)"/>
+  
+  <text x="400" y="460" font-family="Arial, sans-serif" font-size="48" fill="white" text-anchor="middle" font-weight="bold">Cloud Migration</text>
+</svg>

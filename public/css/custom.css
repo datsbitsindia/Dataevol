@@ -1,3 +1,28 @@
+/* Fix: Reduce space between company logo section and Blog section on homepage */
+/* Default (mobile-first) adjustments kept small so mobile remains compact */
+.brand-logo.ptb-120 {
+  /* Reduce the vertical gap between the previous section and this brand-logo section */
+  /* Keep mobile tight; desktop also uses smaller spacing than the original huge gap */
+  padding-top: 40px !important;
+  padding-bottom: 20px !important;
+}
+.home-blog-section.ptb-120 {
+  padding-top: 40px !important;
+}
+
+/* Desktop: increase spacing so Blog heading sits lower, matching other large sections */
+@media (min-width: 992px) {
+  /* Increased spacing per request to make the Blog heading sit lower */
+  .brand-logo.ptb-120 {
+    /* keep desktop spacing modest so the section doesn't push content too far down */
+    padding-top: 40px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .home-blog-section.ptb-120 {
+    padding-top: 110px !important;
+  }
+}
 /* ========================================
    HEADER REFRESH FIX - PREVENT HEADER ISSUES ON PAGE REFRESH
    ======================================== */
@@ -4736,9 +4761,10 @@ section.ptb-120.bg-light-subtle {
 
 /* How We Work section - white background and reduce top padding */
 #open-positions {
-    background-color: #ffffff !important;
-    padding-top: 20px !important;
-    padding-bottom: 60px !important;
+  background-color: #ffffff !important;
+  padding-top: 20px !important;
+  /* Reduce bottom padding so the next section (brand-logo) sits closer */
+  padding-bottom: 30px !important;
 }
 
 @media (max-width: 991.98px) {
@@ -4901,4 +4927,167 @@ section.ptb-120.bg-light-subtle {
     .team-section.ptb-120 {
         padding-top: 15px !important;
     }
+}
+
+
+/* Blog Card Hover Effects */
+.blog-card-hover {
+    transition: all 0.3s ease;
+}
+
+.blog-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+.blog-img-hover {
+    transition: transform 0.5s ease;
+}
+
+.blog-card-hover:hover .blog-img-hover {
+    transform: scale(1.05);
+}
+
+.single-article .article-img {
+    overflow: hidden;
+}
+
+.single-article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.single-article {
+    transition: all 0.3s ease;
+}
+
+/* Info soft badge */
+.bg-info-soft {
+    background-color: rgba(13, 202, 240, 0.1) !important;
+}
+
+
+/* ========================================
+   BLOG ARTICLE IMAGE HOVER FIX - ONLY ZOOM, NO ROTATE
+   ======================================== */
+
+/* Override the default rotate + scale effect with just a subtle zoom */
+.single-article:hover .article-img img {
+    -webkit-transform: scale(1.05) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Smooth transition for the zoom effect */
+.article-img img {
+    transition: transform 0.3s ease !important;
+    -webkit-transition: transform 0.3s ease !important;
+}
+
+/* Remove any overlay effect on hover */
+.single-article:hover .article-img:before {
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
+
+/* ========================================
+   BLOG SIDEBAR CATEGORIES FIX - PROPER ALIGNMENT & STYLING
+   ======================================== */
+
+/* Ensure category list items are properly aligned */
+.sidebar-widget ul li {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.75rem 0 !important;
+}
+
+/* Ensure category links take full width */
+.sidebar-widget ul li a.category-link {
+    flex: 1 !important;
+    text-align: left !important;
+    transition: color 0.3s ease !important;
+}
+
+/* Category link hover effect */
+.sidebar-widget ul li a.category-link:hover {
+    color: #0d6efd !important;
+    text-decoration: none !important;
+}
+
+/* Ensure badges stay on the right and are visible */
+.sidebar-widget ul li .badge {
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.875rem !important;
+    min-width: 30px !important;
+    text-align: center !important;
+}
+
+/* Badge hover effect */
+.sidebar-widget ul li:hover .badge {
+    background-color: #0b5ed7 !important;
+    transform: scale(1.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+
+/* ========================================
+   BLOG CARD - CLICKABLE CARD STYLING
+   ======================================== */
+
+/* Make entire blog card clickable with smooth hover effect */
+.blog-item > a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-item > a:hover {
+    transform: translateY(-8px);
+}
+
+.blog-item > a:hover .blog-card {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Ensure card content stays properly styled */
+.blog-item > a .blog-card {
+    transition: box-shadow 0.3s ease;
+}
+
+/* Keep text colors consistent */
+.blog-item > a .text-dark {
+    color: #1a1a1a !important;
+}
+
+.blog-item > a:hover .text-dark {
+    color: #0d6efd !important;
+}
+
+.blog-item > a .text-muted {
+    color: #6c757d !important;
+}
+
+/* Dark mode support */
+[data-bs-theme=dark] .blog-item > a .blog-card {
+    background-color: #1f2937 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme=dark] .blog-item > a .text-dark {
+    color: #ffffff !important;
+}
+
+[data-bs-theme=dark] .blog-item > a:hover .text-dark {
+    color: #3b82f6 !important;
+}
+
+[data-bs-theme=dark] .blog-item > a .text-muted {
+    color: #9ca3af !important;
 }

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="transformGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c757d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#343a40;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#transformGrad)"/>
+  
+  <!-- Transformation arrow -->
+  <rect x="150" y="200" width="150" height="100" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="225" y="260" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Legacy</text>
+  
+  <path d="M 320 250 L 420 250 L 400 230 M 420 250 L 400 270" stroke="rgba(255,255,255,0.5)" stroke-width="6" fill="none"/>
+  
+  <rect x="500" y="200" width="150" height="100" rx="10" fill="rgba(255,255,255,0.3)"/>
+  <text x="575" y="260" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Modern</text>
+  
+  <!-- Digital elements -->
+  <circle cx="200" cy="380" r="15" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="250" cy="380" r="15" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="300" cy="380" r="15" fill="rgba(255,255,255,0.2)"/>
+  
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="40" fill="white" text-anchor="middle" font-weight="bold">Digital Transformation</text>
+</svg>

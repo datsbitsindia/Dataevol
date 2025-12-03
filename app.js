@@ -107,6 +107,89 @@ app.get('/industry/:slug', (req, res) => {
   res.render('industry');
 });
 
+// Import blog data
+const { blogPosts, getBlogBySlug, getRelatedBlogs, getCategoryCounts } = require('./backend/data/blogData');
+const newBlogs = require('./backend/data/newBlogs');
+
+// Merge all blogs
+const allBlogPosts = { ...newBlogs, ...blogPosts };
+
+// Custom getAllBlogs function
+function getAllBlogs() {
+    return Object.values(allBlogPosts);
+}
+
+// Custom getBlog function
+function getBlog(slug) {
+    return allBlogPosts[slug] || null;
+}
+
+// Custom category counts
+function getCustomCategoryCounts() {
+    const counts = { development: 0, cloud: 0, ai: 0, mobile: 0, database: 0, trends: 0 };
+    Object.values(allBlogPosts).forEach(blog => {
+        if (counts.hasOwnProperty(blog.categorySlug)) counts[blog.categorySlug]++;
+    });
+    return counts;
+}
+
+// Get popular posts sorted by views
+function getPopularPosts(excludeSlug = null, limit = 4) {
+    return Object.values(allBlogPosts)
+        .filter(blog => blog.slug !== excludeSlug)
+        .sort((a, b) => {
+            // Parse views like "2.4k", "1.8k", "500" etc
+            const parseViews = (v) => {
+                if (!v) return 0;
+                const str = String(v).toLowerCase().replace(/,/g, '');
+                if (str.includes('k')) return parseFloat(str) * 1000;
+                return parseFloat(str) || 0;
+            };
+            return parseViews(b.views) - parseViews(a.views);
+        })
+        .slice(0, limit);
+}
+
+// Blog routes
+app.get('/blog', (req, res) => {
+  const blogs = getAllBlogs();
+  const categoryCounts = getCustomCategoryCounts();
+  res.render('blog', { blogs, categoryCounts });
+});
+
+// Tag colors for blog pages
+const tagColors = [
+  { bg: '#e8f4ff', color: '#0066cc', border: '#b3d9ff' },
+  { bg: '#e6f7e6', color: '#2d7a2d', border: '#b3e6b3' },
+  { bg: '#fff4e6', color: '#cc7a00', border: '#ffe0b3' },
+  { bg: '#f0e6ff', color: '#6600cc', border: '#d9b3ff' },
+  { bg: '#ffe6e6', color: '#cc0000', border: '#ffb3b3' },
+  { bg: '#e6f7ff', color: '#0088cc', border: '#b3e6ff' },
+  { bg: '#fff0e6', color: '#cc5500', border: '#ffd9b3' },
+  { bg: '#e6ffe6', color: '#009900', border: '#b3ffb3' }
+];
+
+// Dynamic blog post routes - must come after /blog but before other routes
+app.get('/blog/:slug', (req, res) => {
+  const { slug } = req.params;
+  const blog = getBlog(slug);
+  
+  if (!blog) {
+    return res.status(404).render('404', { 
+      message: 'Blog post not found' 
+    });
+  }
+  
+  // Get related blogs from merged posts
+  let relatedBlogs = [];
+  if (blog.relatedPosts) {
+    relatedBlogs = blog.relatedPosts.map(s => allBlogPosts[s]).filter(Boolean);
+  }
+  const categoryCounts = getCustomCategoryCounts();
+  const popularPosts = getPopularPosts(slug, 4); // Get top 4 popular posts excluding current
+  res.render('blog_single', { blog, relatedBlogs, categoryCounts, popularPosts, tagColors });
+});
+
 // Configuring our data parsing
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -116,7 +199,7 @@ const nodemailer = require('nodemailer');
 
 // Create transporter for email
 const createEmailTransporter = () => {
-    return nodemailer.createTransporter({
+    return nodemailer.createTransport({
         host: process.env.SMTP_HOST || 'mail.dataevol.net',
         port: parseInt(process.env.SMTP_PORT) || 465,
         secure: process.env.SMTP_SECURE === 'true' || true,
@@ -433,261 +516,7 @@ app.post('/api/apply-job', async (req, res) => {
     }
 });
 
-// Test routes
-app.get('/api/contact/test', async (req, res) => {
-    try {
-        const transporter = createEmailTransporter();
-        
-        const testData = {
-            firstName: 'Test',
-            lastName: 'User',
-            email: 'test@example.com',
-            fullPhone: '+919876543210',
-            message: 'This is a test message from the contact form API.',
-            submittedAt: new Date().toISOString()
-        };
 
-        const mailOptions = {
-            from: '"DataEvol Contact Form" <no-reply@dataevol.net>',
-            to: process.env.NOTIFY_TO || 'connect@dataevol.net',
-            subject: 'Test Contact Message from API',
-            html: `<h2>Test Contact Message</h2><p>Name: ${testData.firstName} ${testData.lastName}</p><p>Email: ${testData.email}</p><p>Phone: ${testData.fullPhone}</p><p>Message: ${testData.message}</p>`
-        };
-
-        await transporter.sendMail(mailOptions);
-
-        res.status(200).json({
-            success: true,
-            message: 'Test contact email sent successfully! Check connect@dataevol.net inbox.',
-            testData: testData
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Failed to send test email',
-            error: error.message
-        });
-    }
-});
-
-app.get('/api/apply/test-email', async (req, res) => {
-    try {
-        const transporter = createEmailTransporter();
-        
-        const testData = {
-            position: 'Software Developer',
-            name: 'Test Candidate',
-            email: 'testcandidate@example.com',
-            mobile: '+91-9876543210',
-            experience: '3 years',
-            submittedAt: new Date().toISOString()
-        };
-
-        const mailOptions = {
-            from: '"DataEvol Careers" <no-reply@dataevol.net>',
-            to: process.env.NOTIFY_TO || 'connect@dataevol.net',
-            subject: 'Test Job Application from API',
-            html: `<h2>Test Job Application</h2><p>Position: ${testData.position}</p><p>Name: ${testData.name}</p><p>Email: ${testData.email}</p><p>Mobile: ${testData.mobile}</p><p>Experience: ${testData.experience}</p>`
-        };
-
-        await transporter.sendMail(mailOptions);
-
-        res.status(200).json({
-            success: true,
-            message: 'Test job application email sent successfully! Check connect@dataevol.net inbox.',
-            testData: testData
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Failed to send test job application email',
-            error: error.message
-        });
-    }
-});
-
-
-
-app.post('/email', async (req, res) => {
-    // Redirect to new backend API
-    res.status(301).json({ 
-        message: 'This endpoint has moved. Please use /api/contact/send',
-        newEndpoint: '/api/contact/send'
-    });
-});
-
-app.post('/email_resume', async (req, res) => {
-    // Redirect to new backend API
-    res.status(301).json({ 
-        message: 'This endpoint has moved. Please use /api/apply',
-        newEndpoint: '/api/apply'
-    });
-});
-
-// Backend API integration test route
-app.get('/backend-test', (req, res) => {
-    res.send(`
-        <h1>Backend API Integration Test</h1>
-        <p>This page tests the connection to your backend API.</p>
-        <button onclick="testBackend()">Test Backend Connection</button>
-        <div id="result"></div>
-        
-        <script>
-        async function testBackend() {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '<p>Testing connection...</p>';
-            
-            try {
-                const response = await fetch('http://localhost:5000/health');
-                const data = await response.json();
-                
-                if (data.status) {
-                    resultDiv.innerHTML = '<p style="color: green;">✅ Backend is running successfully!</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
-                } else {
-                    resultDiv.innerHTML = '<p style="color: red;">❌ Backend responded but with error</p>';
-                }
-            } catch (error) {
-                resultDiv.innerHTML = '<p style="color: red;">❌ Cannot connect to backend. Make sure it is running on port 5000.</p><p>Error: ' + error.message + '</p>';
-            }
-        }
-        </script>
-    `);
-});
-
-// Contact form test route
-app.get('/contact-test', (req, res) => {
-    res.send(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Contact Form Test</title>
-            <style>
-                body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
-                .form-group { margin-bottom: 15px; }
-                label { display: block; margin-bottom: 5px; font-weight: bold; }
-                input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-                .row { display: flex; gap: 10px; }
-                .col { flex: 1; }
-                button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
-                button:disabled { background: #ccc; }
-                .result { margin-top: 20px; padding: 10px; border-radius: 4px; }
-                .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-                .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-            </style>
-        </head>
-        <body>
-            <h1>Contact Form API Test</h1>
-            <p>Test your contact form backend API integration.</p>
-            
-            <form id="contactForm" onsubmit="handleSubmit(event)">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label>First Name *</label>
-                            <input type="text" id="firstName" required>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Last Name *</label>
-                            <input type="text" id="lastName" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" id="email" required>
-                </div>
-                
-                <div class="row">
-                    <div class="col" style="flex: 0 0 120px;">
-                        <div class="form-group">
-                            <label>Country Code *</label>
-                            <select id="countryCode" required>
-                                <option value="+91">🇮🇳 +91</option>
-                                <option value="+1">🇺🇸 +1</option>
-                                <option value="+44">🇬🇧 +44</option>
-                                <option value="+61">🇦🇺 +61</option>
-                                <option value="+49">🇩🇪 +49</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Phone Number *</label>
-                            <input type="tel" id="phone" placeholder="1234567890" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Message * (min 10 characters)</label>
-                    <textarea id="message" rows="4" required></textarea>
-                </div>
-                
-                <button type="submit" id="submitBtn">Send Test Message</button>
-            </form>
-            
-            <div id="result"></div>
-            
-            <script>
-            async function handleSubmit(event) {
-                event.preventDefault();
-                
-                const submitBtn = document.getElementById('submitBtn');
-                const resultDiv = document.getElementById('result');
-                
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                resultDiv.innerHTML = '';
-                
-                const formData = {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    email: document.getElementById('email').value,
-                    countryCode: document.getElementById('countryCode').value,
-                    phone: document.getElementById('phone').value,
-                    message: document.getElementById('message').value
-                };
-                
-                try {
-                    const response = await fetch('http://localhost:5000/api/contact/send', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (result.success) {
-                        resultDiv.innerHTML = '<div class="result success">✅ Message sent successfully! Check connect@dataevol.net for the email.</div>';
-                        document.getElementById('contactForm').reset();
-                    } else {
-                        let errorMsg = result.message;
-                        if (result.errors) {
-                            errorMsg += '<br><br>Validation errors:<ul>';
-                            result.errors.forEach(err => {
-                                errorMsg += '<li>' + err.field + ': ' + err.message + '</li>';
-                            });
-                            errorMsg += '</ul>';
-                        }
-                        resultDiv.innerHTML = '<div class="result error">❌ ' + errorMsg + '</div>';
-                    }
-                } catch (error) {
-                    resultDiv.innerHTML = '<div class="result error">❌ Network error: ' + error.message + '<br>Make sure backend is running on port 5000.</div>';
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Test Message';
-                }
-            }
-            </script>
-        </body>
-        </html>
-    `);
-});
 
 
 
@@ -696,46 +525,3 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
   startCronJobs();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get('/aspdotnet', (req, res) => {
-//   res.render('aspdotnet');
-// });
-
-// app.get('/angular', (req, res) => {
-//   res.render('angular');
-// });
-
-// app.get('/ionic', (req, res) => {
-//   res.render('ionic');
-// });
-
-// app.get('/html_css', (req, res) => {
-//   res.render('html_css');
-// });
-
-// app.get('/ssis', (req, res) => {
-//   res.render('ssis');
-// });
-
-// app.get('/ssrs', (req, res) => {
-//   res.render('ssrs');
-// });
-
-// app.get('/devoops', (req, res) => {
-//   res.render('devoops');
-// });

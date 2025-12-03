@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="pwaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="pwaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5a0fc8"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#pwaBg)"/>
+  <!-- PWA Logo -->
+  <g transform="translate(300, 60)">
+    <polygon points="100,0 180,50 180,130 100,180 20,130 20,50" fill="url(#pwaGrad)" opacity="0.9"/>
+    <text x="100" y="85" font-family="Arial" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold">PWA</text>
+    <text x="100" y="110" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" opacity="0.8">Progressive</text>
+    <text x="100" y="125" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" opacity="0.8">Web App</text>
+  </g>
+  <!-- Devices -->
+  <g transform="translate(80, 150)">
+    <!-- Desktop -->
+    <rect x="0" y="0" width="120" height="80" rx="5" fill="#2d3748" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="10" y="10" width="100" height="55" fill="#1a1a2e"/>
+    <rect x="40" y="80" width="40" height="10" fill="#2d3748"/>
+    <rect x="30" y="90" width="60" height="5" rx="2" fill="#2d3748"/>
+    <text x="60" y="45" font-family="Arial" font-size="8" fill="#7c3aed" text-anchor="middle">Desktop</text>
+  </g>
+  <g transform="translate(550, 150)">
+    <!-- Mobile -->
+    <rect x="20" y="0" width="60" height="100" rx="8" fill="#2d3748" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="25" y="15" width="50" height="65" fill="#1a1a2e"/>
+    <circle cx="50" cy="90" r="5" fill="#1a1a2e" stroke="#7c3aed" stroke-width="1"/>
+    <text x="50" y="50" font-family="Arial" font-size="8" fill="#7c3aed" text-anchor="middle">Mobile</text>
+  </g>
+  <!-- Features -->
+  <g transform="translate(250, 180)">
+    <!-- Offline -->
+    <rect x="0" y="0" width="100" height="70" rx="8" fill="#1e1e1e" stroke="#7c3aed" stroke-width="1"/>
+    <text x="50" y="25" font-family="Arial" font-size="20" fill="#7c3aed" text-anchor="middle">📴</text>
+    <text x="50" y="50" font-family="Arial" font-size="10" fill="#888" text-anchor="middle">Offline</text>
+    <text x="50" y="62" font-family="Arial" font-size="10" fill="#888" text-anchor="middle">Support</text>
+  </g>
+  <g transform="translate(370, 180)">
+    <!-- Fast -->
+    <rect x="0" y="0" width="100" height="70" rx="8" fill="#1e1e1e" stroke="#7c3aed" stroke-width="1"/>
+    <text x="50" y="25" font-family="Arial" font-size="20" fill="#7c3aed" text-anchor="middle">⚡</text>
+    <text x="50" y="50" font-family="Arial" font-size="10" fill="#888" text-anchor="middle">Lightning</text>
+    <text x="50" y="62" font-family="Arial" font-size="10" fill="#888" text-anchor="middle">Fast</text>
+  </g>
+  <!-- Service Worker -->
+  <g transform="translate(200, 280)">
+    <rect x="0" y="0" width="400" height="80" rx="10" fill="#1e1e1e" stroke="#7c3aed" stroke-width="1"/>
+    <text x="200" y="25" font-family="Arial" font-size="12" fill="#7c3aed" text-anchor="middle" font-weight="bold">Service Worker</text>
+    <g transform="translate(30, 35)">
+      <rect x="0" y="0" width="80" height="30" rx="5" fill="#7c3aed" opacity="0.3"/>
+      <text x="40" y="20" font-family="Arial" font-size="9" fill="#7c3aed" text-anchor="middle">Cache</text>
+    </g>
+    <g transform="translate(130" y="35)">
+      <rect x="0" y="0" width="80" height="30" rx="5" fill="#7c3aed" opacity="0.3"/>
+      <text x="40" y="20" font-family="Arial" font-size="9" fill="#7c3aed" text-anchor="middle">Sync</text>
+    </g>
+    <g transform="translate(230, 35)">
+      <rect x="0" y="0" width="80" height="30" rx="5" fill="#7c3aed" opacity="0.3"/>
+      <text x="40" y="20" font-family="Arial" font-size="9" fill="#7c3aed" text-anchor="middle">Push</text>
+    </g>
+    <g transform="translate(330, 35)">
+      <rect x="0" y="0" width="50" height="30" rx="5" fill="#7c3aed" opacity="0.3"/>
+      <text x="25" y="20" font-family="Arial" font-size="9" fill="#7c3aed" text-anchor="middle">...</text>
+    </g>
+  </g>
+  <!-- Install Prompt -->
+  <g transform="translate(620, 280)">
+    <rect x="0" y="0" width="100" height="80" rx="10" fill="#7c3aed"/>
+    <text x="50" y="30" font-family="Arial" font-size="20" fill="#fff" text-anchor="middle">📲</text>
+    <text x="50" y="55" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle">Install</text>
+    <text x="50" y="70" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle">App</text>
+  </g>
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">Progressive Web Apps</text>
+  <text x="400" y="455" font-family="Arial, sans-serif" font-size="16" fill="#7c3aed" text-anchor="middle">The Future of Mobile Web Experience</text>
+</svg>

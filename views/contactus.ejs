@@ -743,7 +743,7 @@
 
                 try {
                     // Call the backend API with timeout and retry logic
-                    const backendUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin;
+                    const backendUrl = window.location.origin;
                     console.log('Backend URL:', backendUrl); // Debug log
                     
                     // Create AbortController for timeout

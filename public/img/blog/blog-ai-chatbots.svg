@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="chatBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="chatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d2ff"/>
+      <stop offset="100%" style="stop-color:#3a7bd5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#chatBg)"/>
+  <!-- Robot Head -->
+  <g transform="translate(300, 80)">
+    <rect x="50" y="0" width="100" height="120" rx="20" fill="url(#chatGrad)"/>
+    <rect x="30" y="30" width="30" height="20" rx="5" fill="url(#chatGrad)"/>
+    <rect x="140" y="30" width="30" height="20" rx="5" fill="url(#chatGrad)"/>
+    <!-- Eyes -->
+    <circle cx="80" cy="50" r="15" fill="#fff"/>
+    <circle cx="120" cy="50" r="15" fill="#fff"/>
+    <circle cx="80" cy="50" r="8" fill="#1a1a2e"/>
+    <circle cx="120" cy="50" r="8" fill="#1a1a2e"/>
+    <circle cx="82" cy="48" r="3" fill="#fff"/>
+    <circle cx="122" cy="48" r="3" fill="#fff"/>
+    <!-- Mouth -->
+    <rect x="70" y="85" width="60" height="15" rx="5" fill="#1a1a2e"/>
+    <rect x="75" y="88" width="10" height="8" rx="2" fill="#4caf50"/>
+    <rect x="90" y="88" width="10" height="8" rx="2" fill="#4caf50"/>
+    <rect x="105" y="88" width="10" height="8" rx="2" fill="#4caf50"/>
+    <!-- Antenna -->
+    <line x1="100" y1="0" x2="100" y2="-20" stroke="url(#chatGrad)" stroke-width="4"/>
+    <circle cx="100" cy="-25" r="8" fill="#00d2ff"/>
+  </g>
+  <!-- Chat Bubbles -->
+  <g transform="translate(100, 220)">
+    <rect x="0" y="0" width="200" height="60" rx="15" fill="#2d3748"/>
+    <polygon points="180,60 200,80 160,60" fill="#2d3748"/>
+    <text x="20" y="25" font-family="Arial" font-size="12" fill="#a0aec0">How can I help you</text>
+    <text x="20" y="45" font-family="Arial" font-size="12" fill="#a0aec0">today?</text>
+  </g>
+  <g transform="translate(500, 220)">
+    <rect x="0" y="0" width="200" height="60" rx="15" fill="url(#chatGrad)"/>
+    <polygon points="20,60 0,80 40,60" fill="url(#chatGrad)"/>
+    <text x="20" y="25" font-family="Arial" font-size="12" fill="#fff">I need help with</text>
+    <text x="20" y="45" font-family="Arial" font-size="12" fill="#fff">my order status</text>
+  </g>
+  <g transform="translate(100, 310)">
+    <rect x="0" y="0" width="250" height="60" rx="15" fill="#2d3748"/>
+    <polygon points="230,60 250,80 210,60" fill="#2d3748"/>
+    <text x="20" y="25" font-family="Arial" font-size="12" fill="#a0aec0">Your order #12345 is</text>
+    <text x="20" y="45" font-family="Arial" font-size="12" fill="#4caf50">Out for delivery! 🚚</text>
+  </g>
+  <!-- AI Brain Icon -->
+  <g transform="translate(600, 100)" opacity="0.5">
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#00d2ff" stroke-width="2"/>
+    <path d="M30 40 Q50 20 70 40" fill="none" stroke="#00d2ff" stroke-width="2"/>
+    <path d="M25 55 Q50 35 75 55" fill="none" stroke="#00d2ff" stroke-width="2"/>
+    <path d="M30 70 Q50 50 70 70" fill="none" stroke="#00d2ff" stroke-width="2"/>
+    <circle cx="40" cy="45" r="4" fill="#00d2ff"/>
+    <circle cx="60" cy="45" r="4" fill="#00d2ff"/>
+    <circle cx="50" cy="60" r="4" fill="#00d2ff"/>
+  </g>
+  <!-- Features -->
+  <g transform="translate(550, 300)">
+    <text x="0" y="0" font-family="Arial" font-size="11" fill="#00d2ff">✓ 24/7 Support</text>
+    <text x="0" y="20" font-family="Arial" font-size="11" fill="#00d2ff">✓ Natural Language</text>
+    <text x="0" y="40" font-family="Arial" font-size="11" fill="#00d2ff">✓ Multi-language</text>
+    <text x="0" y="60" font-family="Arial" font-size="11" fill="#00d2ff">✓ Smart Responses</text>
+  </g>
+  <!-- Title -->
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">AI Chatbots Integration</text>
+  <text x="400" y="455" font-family="Arial, sans-serif" font-size="16" fill="#00d2ff" text-anchor="middle">A Practical Guide for Business</text>
+</svg>
